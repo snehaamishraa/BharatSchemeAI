@@ -455,17 +455,46 @@ function changeLanguage(lang) {
 
 // Update page translations
 function updatePageTranslations() {
-  // This function will be called from main.js to update all text on the page
+  // Update all elements with data-i18n attribute
   document.querySelectorAll('[data-i18n]').forEach(element => {
     const key = element.getAttribute('data-i18n')
-    element.textContent = t(key)
+    const translation = t(key)
+    
+    // Preserve placeholders and other attributes
+    if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+      // For inputs, update placeholder or value
+      if (element.placeholder && element.placeholder !== '') {
+        // Keep placeholder as is
+      }
+    } else {
+      // For other elements, update text content
+      element.textContent = translation
+    }
   })
+  
+  // Also sync the dropdown selectors
+  const appLangSelector = document.getElementById('language-selector')
+  const authLangSelector = document.getElementById('auth-language-selector')
+  
+  if (appLangSelector) appLangSelector.value = currentLanguage
+  if (authLangSelector) authLangSelector.value = currentLanguage
+  
+  // Add RTL class for RTL languages
+  const htmlElement = document.documentElement
+  if (['ar', 'ur', 'he'].includes(currentLanguage)) {
+    htmlElement.setAttribute('dir', 'rtl')
+    document.body.style.direction = 'rtl'
+  } else {
+    htmlElement.setAttribute('dir', 'ltr')
+    document.body.style.direction = 'ltr'
+  }
 }
 
 // Load saved language on page load
 document.addEventListener('DOMContentLoaded', () => {
   const saved = localStorage.getItem('selectedLanguage')
-  if (saved) {
+  if (saved && translations[saved]) {
     currentLanguage = saved
   }
+  updatePageTranslations()
 })
