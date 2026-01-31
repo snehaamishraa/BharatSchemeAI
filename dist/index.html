@@ -7,8 +7,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;600;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <script type="module" crossorigin src="/assets/index-D-FOhQEt.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/index-C_4KA98b.css">
+  <script type="module" crossorigin src="/assets/index-XYJlFBFc.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-B2XD8xlG.css">
 </head>
 <body>
   <!-- National Anthem Audio -->
@@ -31,10 +31,25 @@
         <img src="360_F_1034820009_4d9vIv2Q4YdaFVXih7cas1qGMfHUVZH6.jpg" alt="Rural India" class="gov-image">
       </div>
     </div>
+    
+    <!-- Dark Mode Toggle -->
+    <button id="theme-toggle" class="theme-toggle" onclick="toggleTheme()" title="Toggle Dark/Light Mode">
+      <span class="theme-icon">🌙</span>
+    </button>
   </div>
 
   <!-- AUTH PAGE (Login/Register) -->
   <div id="auth-container" class="auth-page">
+    <!-- Animated Background -->
+    <div class="auth-animated-bg">
+      <div class="floating-shape shape-1"></div>
+      <div class="floating-shape shape-2"></div>
+      <div class="floating-shape shape-3"></div>
+      <div class="floating-shape shape-4"></div>
+      <div class="floating-shape shape-5"></div>
+      <div class="particles"></div>
+    </div>
+    
     <div class="auth-box">
       <div class="auth-header">
         <span class="logo-icon">🇮🇳</span>
@@ -350,6 +365,34 @@
         messages.scrollTop = messages.scrollHeight;
       }, 500);
     }
+    
+    // Dark/Light Mode Toggle
+    function toggleTheme() {
+      const body = document.body;
+      const themeIcon = document.querySelector('.theme-icon');
+      
+      body.classList.toggle('dark-mode');
+      
+      // Update icon
+      if (body.classList.contains('dark-mode')) {
+        themeIcon.textContent = '☀️';
+        localStorage.setItem('theme', 'dark');
+      } else {
+        themeIcon.textContent = '🌙';
+        localStorage.setItem('theme', 'light');
+      }
+    }
+    
+    // Load saved theme on page load
+    document.addEventListener('DOMContentLoaded', () => {
+      const savedTheme = localStorage.getItem('theme');
+      const themeIcon = document.querySelector('.theme-icon');
+      
+      if (savedTheme === 'dark') {
+        document.body.classList.add('dark-mode');
+        if (themeIcon) themeIcon.textContent = '☀️';
+      }
+    });
     
     function answerQuickQuestion(question) {
       const messages = document.getElementById('chatbot-messages');
