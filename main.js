@@ -74,16 +74,30 @@ function playNationalAnthem() {
 
 // Load schemes from JSON
 async function loadSchemes() {
+  console.log('loadSchemes called')
   try {
     const response = await fetch('/schemes.json')
+    console.log('Fetch response:', response.status, response.statusText)
+    
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`)
+    }
+    
     const data = await response.json()
+    console.log('Parsed JSON, schemes in data:', data.schemes ? data.schemes.length : 0)
+    
     allSchemes = data.schemes || []
     console.log('Loaded schemes:', allSchemes.length)
+    
+    if (allSchemes.length === 0) {
+      console.warn('No schemes loaded!')
+    }
+    
     filterAndDisplaySchemes()
   } catch (error) {
     console.error('Error loading schemes:', error)
     if (resultsList) {
-      resultsList.innerHTML = '<p>Error loading schemes</p>'
+      resultsList.innerHTML = `<p style="color: #ff6b6b;">Error loading schemes: ${error.message}</p>`
     }
   }
 }
@@ -145,6 +159,16 @@ function filterAndDisplaySchemes() {
 
 // Display schemes
 function displaySchemes(schemes) {
+  // Make sure resultsList is initialized
+  if (!resultsList) {
+    resultsList = document.getElementById('results-list')
+  }
+  
+  if (!resultsList) {
+    console.error('results-list element not found in DOM')
+    return
+  }
+  
   if (!schemes || schemes.length === 0) {
     const noSchemesText = typeof t === 'function' ? t('no_schemes') : 'No schemes found'
     resultsList.innerHTML = `<p style="color: #b0b5c1;">${noSchemesText}</p>`
@@ -386,6 +410,12 @@ function clearCurrentUser() {
   // Profile form submit
   profileForm.addEventListener('submit', (e) => {
     e.preventDefault()
+    
+    // Make sure resultsSection is initialized
+    if (!resultsSection) {
+      resultsSection = document.getElementById('results-section')
+    }
+    
     const profile = {
       state: document.getElementById('state').value,
       age: document.getElementById('age').value,
@@ -396,7 +426,9 @@ function clearCurrentUser() {
     alert('✅ Profile saved! Showing schemes for you...')
     
     // Show schemes after profile is saved
-    resultsSection.style.display = 'block'
+    if (resultsSection) {
+      resultsSection.style.display = 'block'
+    }
     loadSchemes()  // Load schemes from JSON, then filter
   })
 
