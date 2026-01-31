@@ -589,7 +589,15 @@ let currentLanguage = 'en'
 
 // Get translation
 function t(key) {
-  return translations[currentLanguage]?.[key] || translations['en']?.[key] || key
+  const result = translations[currentLanguage]?.[key] || translations['en']?.[key] || key
+  if (!translations[currentLanguage]?.[key]) {
+    if (!translations[currentLanguage]) {
+      console.warn(`Language ${currentLanguage} not found in translations`)
+    } else {
+      console.warn(`Key "${key}" not found in language ${currentLanguage}`)
+    }
+  }
+  return result
 }
 
 // Expose to global scope
@@ -597,8 +605,10 @@ window.t = t
 
 // Change language
 function changeLanguage(lang) {
+  console.log('changeLanguage called with lang:', lang)
   currentLanguage = lang
   localStorage.setItem('selectedLanguage', lang)
+  console.log('Language set to:', currentLanguage)
   updatePageTranslations()
   // Refresh schemes display if visible
   if (typeof refreshSchemesDisplay === 'function') {
@@ -611,10 +621,16 @@ window.changeLanguage = changeLanguage
 
 // Update page translations
 function updatePageTranslations() {
+  console.log('updatePageTranslations called, currentLanguage:', currentLanguage)
+  
   // Update all elements with data-i18n attribute
-  document.querySelectorAll('[data-i18n]').forEach(element => {
+  const elements = document.querySelectorAll('[data-i18n]')
+  console.log('Found elements with data-i18n:', elements.length)
+  
+  elements.forEach(element => {
     const key = element.getAttribute('data-i18n')
     const translation = t(key)
+    console.log(`Translating ${key} (${element.tagName}): "${translation}"`)
     
     if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
       // For inputs, update placeholder or value
@@ -631,8 +647,17 @@ function updatePageTranslations() {
   const appLangSelector = document.getElementById('language-selector')
   const authLangSelector = document.getElementById('auth-language-selector')
   
-  if (appLangSelector) appLangSelector.value = currentLanguage
-  if (authLangSelector) authLangSelector.value = currentLanguage
+  console.log('appLangSelector:', appLangSelector?.id)
+  console.log('authLangSelector:', authLangSelector?.id)
+  
+  if (appLangSelector) {
+    appLangSelector.value = currentLanguage
+    console.log('Set appLangSelector value to:', currentLanguage)
+  }
+  if (authLangSelector) {
+    authLangSelector.value = currentLanguage
+    console.log('Set authLangSelector value to:', currentLanguage)
+  }
   
   // Add RTL class for RTL languages
   const htmlElement = document.documentElement
