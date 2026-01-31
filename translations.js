@@ -592,6 +592,9 @@ function t(key) {
   return translations[currentLanguage]?.[key] || translations['en']?.[key] || key
 }
 
+// Expose to global scope
+window.t = t
+
 // Change language
 function changeLanguage(lang) {
   currentLanguage = lang
@@ -602,6 +605,9 @@ function changeLanguage(lang) {
     refreshSchemesDisplay()
   }
 }
+
+// Expose to global scope
+window.changeLanguage = changeLanguage
 
 // Update page translations
 function updatePageTranslations() {
@@ -638,6 +644,9 @@ function updatePageTranslations() {
     document.body.style.direction = 'ltr'
   }
 }
+
+// Expose to global scope
+window.updatePageTranslations = updatePageTranslations
 
 // Load saved language on page load
 document.addEventListener('DOMContentLoaded', () => {
