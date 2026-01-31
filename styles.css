@@ -1540,20 +1540,20 @@ body::after {
 
 /* Floating Chat Button */
 .chatbot-toggle {
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, var(--gov-saffron) 0%, var(--gov-green) 100%);
-  border: none;
-  cursor: pointer;
-  box-shadow: 0 4px 20px rgba(255, 153, 51, 0.4);
-  z-index: 9999;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  position: fixed !important;
+  bottom: 30px !important;
+  right: 30px !important;
+  width: 60px !important;
+  height: 60px !important;
+  border-radius: 50% !important;
+  background: linear-gradient(135deg, var(--gov-saffron) 0%, var(--gov-green) 100%) !important;
+  border: 3px solid white !important;
+  cursor: pointer !important;
+  box-shadow: 0 4px 20px rgba(255, 153, 51, 0.4) !important;
+  z-index: 99999 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   animation: pulse 2s infinite;
 }
@@ -1600,25 +1600,25 @@ body::after {
 
 /* Chatbot Container */
 .chatbot-container {
-  position: fixed;
-  bottom: 100px;
-  right: 30px;
-  width: 380px;
-  max-width: calc(100vw - 40px);
-  height: 550px;
-  max-height: calc(100vh - 150px);
-  background: white;
-  border-radius: 16px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-  z-index: 9998;
-  display: none;
+  position: fixed !important;
+  bottom: 100px !important;
+  right: 30px !important;
+  width: 380px !important;
+  max-width: calc(100vw - 40px) !important;
+  height: 550px !important;
+  max-height: calc(100vh - 150px) !important;
+  background: white !important;
+  border-radius: 16px !important;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2) !important;
+  z-index: 99998 !important;
+  display: none !important;
   flex-direction: column;
   overflow: hidden;
   animation: slideUp 0.3s ease;
 }
 
 .chatbot-container.active {
-  display: flex;
+  display: flex !important;
 }
 
 @keyframes slideUp {

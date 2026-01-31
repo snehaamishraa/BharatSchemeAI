@@ -303,11 +303,29 @@
   </div>
 
   <!-- Chatbot Floating Button -->
-  <button id="chatbot-toggle" class="chatbot-toggle" onclick="window.toggleChatbot && window.toggleChatbot()">
+  <button id="chatbot-toggle" class="chatbot-toggle" onclick="document.getElementById('chatbot-container').classList.toggle('active'); console.log('Button clicked!');">
     <span class="chatbot-icon">💬</span>
     <span class="chatbot-badge">1</span>
   </button>
 
   <script type="module" src="/main.js"></script>
+  
+  <!-- Simple inline test script -->
+  <script>
+    console.log('🔍 Checking chatbot elements...')
+    setTimeout(() => {
+      const btn = document.getElementById('chatbot-toggle')
+      const container = document.getElementById('chatbot-container')
+      console.log('Button found:', !!btn)
+      console.log('Container found:', !!container)
+      if (btn) {
+        console.log('Button styles:', window.getComputedStyle(btn).display)
+        console.log('Button position:', window.getComputedStyle(btn).position)
+      }
+      if (container) {
+        console.log('Container styles:', window.getComputedStyle(container).display)
+      }
+    }, 500)
+  </script>
 </body>
 </html>
