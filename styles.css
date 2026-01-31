@@ -623,6 +623,40 @@ body::after {
   box-shadow: 0 4px 12px rgba(149, 165, 166, 0.35);
 }
 
+/* Language Selector */
+.language-selector {
+  background: linear-gradient(135deg, #ff9933 0%, #138808 100%);
+  border: none;
+  color: #ffffff;
+  padding: 10px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  letter-spacing: 0.5px;
+  box-shadow: 0 2px 8px rgba(255, 153, 51, 0.2);
+  margin-right: 10px;
+  font-family: 'Noto Sans Devanagari', 'Inter', sans-serif;
+}
+
+.language-selector:hover {
+  background: linear-gradient(135deg, #e68800 0%, #0f7005 100%);
+  box-shadow: 0 4px 12px rgba(255, 153, 51, 0.35);
+  transform: translateY(-1px);
+}
+
+.language-selector:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255, 153, 51, 0.2);
+}
+
+.language-selector option {
+  background: white;
+  color: #333;
+  padding: 8px;
+}
+
 /* ===== MAIN CONTENT ===== */
 .app-main {
   flex: 1;

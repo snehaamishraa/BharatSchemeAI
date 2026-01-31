@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;600;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-</head>
+  <script src="translations.js"></script>
 <body>
   <!-- National Anthem Audio -->
   <audio id="national-anthem" preload="auto">
@@ -107,6 +107,17 @@
       </div>
       <div class="header-right">
         <span id="user-name" class="user-name"></span>
+        <select id="language-selector" class="language-selector" onchange="changeLanguage(this.value)" title="Select Language">
+          <option value="en">🇬🇧 English</option>
+          <option value="hi">🇮🇳 हिंदी</option>
+          <option value="ta">🇮🇳 தமிழ்</option>
+          <option value="te">🇮🇳 తెలుగు</option>
+          <option value="kn">🇮🇳 ಕನ್ನಡ</option>
+          <option value="ml">🇮🇳 മലയാളം</option>
+          <option value="mr">🇮🇳 मराठी</option>
+          <option value="gu">🇮🇳 ગુજરાતી</option>
+          <option value="bn">🇮🇳 বাংলা</option>
+        </select>
         <button id="audio-toggle-btn" class="btn-audio-toggle" title="Toggle Audio">🔊 Audio On</button>
         <button id="logout-btn" class="btn-logout">Logout</button>
       </div>
