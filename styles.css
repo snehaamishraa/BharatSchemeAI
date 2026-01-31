@@ -1129,9 +1129,9 @@ body.dark-mode .scheme-card:hover {
 }
 
 body.dark-mode .app-footer {
-  background: var(--bg-tertiary);
+  background: var(--bg-secondary);
   border-top-color: var(--gov-saffron);
-  box-shadow: 0 -2px 12px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 -2px 12px rgba(0, 0, 0, 0.4);
 }
 
 .footer-content {
