@@ -139,7 +139,7 @@ function filterAndDisplaySchemes() {
 // Display schemes
 function displaySchemes(schemes) {
   if (!schemes || schemes.length === 0) {
-    resultsList.innerHTML = '<p style="color: #b0b5c1;">No schemes found</p>'
+    resultsList.innerHTML = `<p style="color: #b0b5c1;">${t('no_schemes')}</p>`
     return
   }
 
@@ -149,7 +149,7 @@ function displaySchemes(schemes) {
       <div class="scheme-desc">${scheme.description}</div>
       <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 12px;">
         <span class="scheme-category">${scheme.category || 'General'}</span>
-        <span style="color: #ff9933; font-weight: 600; cursor: pointer; font-size: 14px;">Read More →</span>
+        <span style="color: #ff9933; font-weight: 600; cursor: pointer; font-size: 14px;">${t('read_more')}</span>
       </div>
     </div>
   `).join('')
@@ -181,25 +181,25 @@ window.viewScheme = function(schemeId) {
           <p style="margin: 0; color: #333; font-size: 15px; line-height: 1.6;">${scheme.description}</p>
         </div>
 
-        <h3 style="color: #138808; font-size: 16px; margin-top: 20px; margin-bottom: 10px;">✅ Who is Eligible?</h3>
+        <h3 style="color: #138808; font-size: 16px; margin-top: 20px; margin-bottom: 10px;">✅ ${t('eligibility')}</h3>
         ${eligibilityHTML}
 
-        <h3 style="color: #138808; font-size: 16px; margin-top: 20px; margin-bottom: 10px;">💰 Benefits</h3>
+        <h3 style="color: #138808; font-size: 16px; margin-top: 20px; margin-bottom: 10px;">💰 ${t('benefits')}</h3>
         <div style="background: #f0fff0; border-left: 4px solid #138808; padding: 12px; border-radius: 4px; margin-bottom: 20px;">
           <p style="margin: 0; color: #333;">${scheme.benefits}</p>
         </div>
 
-        <h3 style="color: #138808; font-size: 16px; margin-top: 20px; margin-bottom: 10px;">📎 Required Documents</h3>
+        <h3 style="color: #138808; font-size: 16px; margin-top: 20px; margin-bottom: 10px;">📎 ${t('documents')}</h3>
         <div style="margin-bottom: 20px;">
           ${requiredDocsHTML}
         </div>
 
-        <h3 style="color: #138808; font-size: 16px; margin-top: 20px; margin-bottom: 10px;">🔹 How to Apply?</h3>
+        <h3 style="color: #138808; font-size: 16px; margin-top: 20px; margin-bottom: 10px;">🔹 ${t('how_to_apply')}</h3>
         <ol style="color: #333; line-height: 1.8; padding-left: 20px;">
           ${howToApplyHTML}
         </ol>
 
-        <h3 style="color: #138808; font-size: 16px; margin-top: 20px; margin-bottom: 10px;">🌐 Official Website</h3>
+        <h3 style="color: #138808; font-size: 16px; margin-top: 20px; margin-bottom: 10px;">🌐 ${t('official_website')}</h3>
         <a href="${scheme.officialLink}" target="_blank" style="color: #0052cc; text-decoration: none; font-weight: 600; font-size: 15px;">
           Visit: ${scheme.officialLink} →
         </a>
@@ -216,7 +216,7 @@ window.viewScheme = function(schemeId) {
             cursor: pointer;
             width: 100%;
             transition: all 0.3s ease;
-          " onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(255,153,51,0.3)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">🔗 Register on Official Website</button>
+          " onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(255,153,51,0.3)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">🔗 ${t('register_button')}</button>
         </div>
       </div>
     `
@@ -452,6 +452,13 @@ document.addEventListener('click', () => {
     nationalAnthem.play().catch(() => {})
   }
 })
+
+// Refresh schemes display (called when language changes)
+window.refreshSchemesDisplay = function() {
+  if (resultsSection && resultsSection.style.display !== 'none' && allSchemes.length > 0) {
+    displaySchemes(allSchemes)
+  }
+}
 
 // Initialize on page load
 checkLogin()

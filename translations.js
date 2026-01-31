@@ -597,6 +597,10 @@ function changeLanguage(lang) {
   currentLanguage = lang
   localStorage.setItem('selectedLanguage', lang)
   updatePageTranslations()
+  // Refresh schemes display if visible
+  if (typeof refreshSchemesDisplay === 'function') {
+    refreshSchemesDisplay()
+  }
 }
 
 // Update page translations
