@@ -609,11 +609,17 @@ function changeLanguage(lang) {
   currentLanguage = lang
   localStorage.setItem('selectedLanguage', lang)
   console.log('Language set to:', currentLanguage)
-  updatePageTranslations()
-  // Refresh schemes display if visible
-  if (typeof refreshSchemesDisplay === 'function') {
-    refreshSchemesDisplay()
-  }
+  
+  // Use a small delay to ensure DOM is ready for updates
+  setTimeout(() => {
+    console.log('Calling updatePageTranslations after delay, currentLanguage is:', currentLanguage)
+    updatePageTranslations()
+    // Refresh schemes display if visible
+    if (typeof refreshSchemesDisplay === 'function') {
+      console.log('Calling refreshSchemesDisplay')
+      refreshSchemesDisplay()
+    }
+  }, 50)
 }
 
 // Expose to global scope

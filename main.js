@@ -509,6 +509,14 @@ document.addEventListener('DOMContentLoaded', () => {
   initializeDOMElements()
   setupEventListeners()
   checkLogin()
+  
+  // Ensure translations are applied after small delay to ensure DOM is fully ready
+  setTimeout(() => {
+    if (typeof updatePageTranslations === 'function') {
+      console.log('Calling updatePageTranslations from main.js DOMContentLoaded')
+      updatePageTranslations()
+    }
+  }, 100)
 })
 
 
