@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BharatScheme – Government Scheme Finder</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;600;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- National Anthem Audio -->
+  <audio id="national-anthem" preload="auto">
+    <source src="vande-matram-violin-background-music-268744.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- GOVERNMENT HEADER -->
+  <div class="gov-header">
+    <div class="gov-header-content">
+      <div class="gov-logo-left">
+        <img src="03.jpg" alt="Narendra Modi" class="gov-image">
+      </div>
+      <div class="gov-text-center">
+        <p class="gov-text-hindi">भारत सरकार</p>
+        <p class="gov-text-english">GOVERNMENT OF INDIA</p>
+        <p class="ministry-text">Ministry of Government Affairs</p>
+      </div>
+      <div class="gov-logo-right">
+        <img src="360_F_1034820009_4d9vIv2Q4YdaFVXih7cas1qGMfHUVZH6.jpg" alt="Rural India" class="gov-image">
+      </div>
+    </div>
+  </div>
+
+  <!-- AUTH PAGE (Login/Register) -->
+  <div id="auth-container" class="auth-page">
+    <div class="auth-box">
+      <div class="auth-header">
+        <span class="logo-icon">🇮🇳</span>
+        <h1>BharatScheme</h1>
+        <p class="tagline-text">Discover Government Schemes Tailored for Your Benefits</p>
+        <p class="auth-subtitle">Official Portal for Government Schemes</p>
+      </div>
+
+      <!-- Auth Tabs -->
+      <div class="auth-tabs">
+        <button id="tab-login" class="tab-btn active">Login</button>
+        <button id="tab-register" class="tab-btn">Register</button>
+      </div>
+
+      <!-- Login Form -->
+      <form id="login-form" class="auth-form">
+        <div class="form-group">
+          <label for="login-email">Email</label>
+          <input type="email" id="login-email" placeholder="your@email.com" required />
+        </div>
+        <div class="form-group">
+          <label for="login-password">Password</label>
+          <input type="password" id="login-password" placeholder="Enter password" required />
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Login</button>
+      </form>
+
+      <!-- Register Form -->
+      <form id="register-form" class="auth-form" style="display: none;">
+        <div class="form-group">
+          <label for="register-name">Full Name</label>
+          <input type="text" id="register-name" placeholder="Your name" required />
+        </div>
+        <div class="form-group">
+          <label for="register-email">Email</label>
+          <input type="email" id="register-email" placeholder="your@email.com" required />
+        </div>
+        <div class="form-group">
+          <label for="register-password">Password</label>
+          <input type="password" id="register-password" placeholder="Enter password" required />
+        </div>
+        <div class="form-group">
+          <label for="register-confirm">Confirm Password</label>
+          <input type="password" id="register-confirm" placeholder="Confirm password" required />
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Register</button>
+      </form>
+
+      <p class="auth-hint" id="auth-message"></p>
+    </div>
+  </div>
+
+  <!-- SCHEME DETAIL MODAL -->
+  <div id="scheme-modal" class="scheme-modal" style="display: none;">
+    <div class="scheme-modal-content">
+      <button class="scheme-modal-close" onclick="closeSchemeModal()">&times;</button>
+      <div id="scheme-detail-content"></div>
+    </div>
+  </div>
+
+  <!-- APP PAGE (After Login) -->
+  <div id="app-container" class="app-page" style="display: none;">
+    <!-- Header -->
+    <header class="app-header">
+      <div class="header-left">
+        <span class="logo-icon">🇮🇳</span>
+        <div class="header-title">
+          <h1>BharatScheme</h1>
+          <p class="tagline-text">Discover Government Schemes Tailored for Your Benefits</p>
+        </div>
+      </div>
+      <div class="header-right">
+        <span id="user-name" class="user-name"></span>
+        <button id="audio-toggle-btn" class="btn-audio-toggle" title="Toggle Audio">🔊 Audio On</button>
+        <button id="logout-btn" class="btn-logout">Logout</button>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="app-main">
+      <!-- Profile Section -->
+      <section class="section profile-section">
+        <h2 class="section-title">📋 Your Details</h2>
+        <form id="profile-form" class="form">
+          <div class="form-group">
+            <label for="state">State</label>
+            <select id="state" required>
+              <option value="">Select state</option>
+              <!-- Union Territories -->
+              <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+              <option value="Chandigarh">Chandigarh</option>
+              <option value="Dadra and Nagar Haveli and Daman and Diu">Dadra and Nagar Haveli and Daman and Diu</option>
+              <option value="Lakshadweep">Lakshadweep</option>
+              <option value="Delhi">Delhi</option>
+              <option value="Puducherry">Puducherry</option>
+              <option value="Ladakh">Ladakh</option>
+              <!-- States -->
+              <option value="Andhra Pradesh">Andhra Pradesh</option>
+              <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+              <option value="Assam">Assam</option>
+              <option value="Bihar">Bihar</option>
+              <option value="Chhattisgarh">Chhattisgarh</option>
+              <option value="Goa">Goa</option>
+              <option value="Gujarat">Gujarat</option>
+              <option value="Haryana">Haryana</option>
+              <option value="Himachal Pradesh">Himachal Pradesh</option>
+              <option value="Jharkhand">Jharkhand</option>
+              <option value="Karnataka">Karnataka</option>
+              <option value="Kerala">Kerala</option>
+              <option value="Madhya Pradesh">Madhya Pradesh</option>
+              <option value="Maharashtra">Maharashtra</option>
+              <option value="Manipur">Manipur</option>
+              <option value="Meghalaya">Meghalaya</option>
+              <option value="Mizoram">Mizoram</option>
+              <option value="Nagaland">Nagaland</option>
+              <option value="Odisha">Odisha</option>
+              <option value="Punjab">Punjab</option>
+              <option value="Rajasthan">Rajasthan</option>
+              <option value="Sikkim">Sikkim</option>
+              <option value="Tamil Nadu">Tamil Nadu</option>
+              <option value="Telangana">Telangana</option>
+              <option value="Tripura">Tripura</option>
+              <option value="Uttar Pradesh">Uttar Pradesh</option>
+              <option value="Uttarakhand">Uttarakhand</option>
+              <option value="West Bengal">West Bengal</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="age">Age</label>
+            <input type="number" id="age" min="1" max="120" placeholder="e.g., 35" required />
+          </div>
+
+          <div class="form-group">
+            <label for="occupation">Occupation</label>
+            <select id="occupation" required>
+              <option value="">Select occupation</option>
+              <option value="Farmer">Farmer</option>
+              <option value="Student">Student</option>
+              <option value="Senior Citizen">Senior Citizen</option>
+              <option value="Unemployed">Unemployed</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="gender">Gender</label>
+            <select id="gender" required>
+              <option value="">Select gender</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              <option value="Non-binary">Non-binary</option>
+              <option value="Prefer not to say">Prefer not to say</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+
+          <button type="submit" class="btn btn-primary">Save Profile</button>
+        </form>
+      </section>
+
+      <!-- Results Section -->
+      <section class="section results-section" id="results-section" style="display: none;">
+        <h2 class="section-title">📊 Available Schemes for You</h2>
+        <p style="color: #b0b5c1; margin-bottom: 20px; font-size: 14px;">Click on any scheme to see full details</p>
+        <div id="results-list" class="results-list"></div>
+      </section>
+
+      <!-- Footer -->
+      <footer class="app-footer">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h3>💬 Feedback</h3>
+            <p>Help us improve! Share your feedback at:</p>
+            <p><a href="mailto:feedback@bharatscheme.in">feedback@bharatscheme.in</a></p>
+            <p style="font-size: 12px; color: #00f3ff; margin-top: 10px;">Your suggestions help us serve you better</p>
+          </div>
+          <div class="footer-section">
+            <h3>📞 Contact Us</h3>
+            <p>Email: <a href="mailto:support@bharatscheme.in">support@bharatscheme.in</a></p>
+            <p>Phone: +91-1800-SCHEME</p>
+            <p>Address: Ministry of Government Affairs, New Delhi</p>
+          </div>
+          <div class="footer-section">
+            <h3>ℹ️ About</h3>
+            <p>BharatScheme helps you discover government schemes you're eligible for</p>
+            <p style="font-size: 12px; color: #b0b5c1; margin-top: 10px;">© 2026 BharatScheme. All rights reserved.</p>
+          </div>
+        </div>
+      </footer>
+
+      <!-- Government Disclaimer -->
+      <div class="gov-disclaimer">
+        <p>🏛️ <strong>Official Government Portal</strong> – This is an authorized service to help citizens discover government schemes</p>
+      </div>
+    </main>
+  </div>
+
+  <script type="module" src="/main.js"></script>
+</body>
+</html>
