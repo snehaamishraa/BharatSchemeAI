@@ -1094,3 +1094,353 @@ body::after {
     border-radius: 8px;
   }
 }
+
+/* ============================================
+   COMPREHENSIVE MOBILE & TABLET OPTIMIZATION
+   ============================================ */
+
+/* SMALL PHONES (320px - 480px) */
+@media (max-width: 480px) {
+  * {
+    box-sizing: border-box;
+  }
+
+  /* Header */
+  .gov-header {
+    padding: 12px 0;
+  }
+
+  .gov-header-content {
+    flex-direction: column;
+    gap: 8px;
+    padding: 0 10px;
+  }
+
+  .gov-image {
+    max-width: 100px;
+    width: 100px;
+    height: 100px;
+  }
+
+  .gov-text-hindi {
+    font-size: 14px;
+  }
+
+  .gov-text-english {
+    font-size: 12px;
+  }
+
+  .ministry-text {
+    font-size: 10px;
+  }
+
+  /* Auth Box */
+  .auth-page {
+    min-height: calc(100vh - 140px);
+    padding: 30px 12px 60px 12px;
+  }
+
+  .auth-box {
+    max-width: 100%;
+    padding: 20px;
+    border-radius: 8px;
+  }
+
+  .auth-header h1 {
+    font-size: 24px;
+  }
+
+  .tagline-text {
+    font-size: 13px;
+    letter-spacing: 0;
+  }
+
+  .auth-subtitle {
+    font-size: 12px;
+  }
+
+  .tab-btn {
+    font-size: 12px;
+    padding: 10px 12px;
+  }
+
+  .form-group label {
+    font-size: 13px;
+  }
+
+  .form-group input {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  .btn {
+    font-size: 13px;
+    padding: 12px;
+  }
+
+  /* App Header */
+  .app-header {
+    flex-direction: column;
+    gap: 10px;
+    padding: 15px 10px;
+  }
+
+  .header-left,
+  .header-right {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .logo-icon {
+    font-size: 24px;
+  }
+
+  .header-title h1 {
+    font-size: 18px;
+  }
+
+  .tagline-text {
+    font-size: 11px;
+  }
+
+  .user-name {
+    font-size: 12px;
+  }
+
+  .btn-audio-toggle,
+  .btn-logout {
+    font-size: 11px;
+    padding: 8px 10px;
+    margin-right: 5px;
+  }
+
+  /* Profile Section */
+  .section-title {
+    font-size: 16px;
+  }
+
+  .form-group {
+    margin-bottom: 12px;
+  }
+
+  .form-group label {
+    font-size: 12px;
+  }
+
+  .form-group input,
+  .form-group select {
+    font-size: 13px;
+    padding: 8px;
+  }
+
+  /* Scheme Cards */
+  .scheme-card {
+    padding: 12px;
+  }
+
+  .scheme-name {
+    font-size: 14px;
+  }
+
+  .scheme-desc {
+    font-size: 12px;
+  }
+
+  .scheme-category {
+    font-size: 11px;
+  }
+
+  /* Modal */
+  .scheme-modal {
+    padding: 10px;
+  }
+
+  .scheme-modal-content {
+    max-height: 90vh;
+    padding: 20px;
+    max-width: 100%;
+  }
+
+  .scheme-modal-close {
+    font-size: 24px;
+    width: 32px;
+    height: 32px;
+  }
+
+  /* Footer */
+  .app-footer {
+    padding: 25px 15px 30px;
+    margin-top: 30px;
+  }
+
+  .footer-section {
+    padding: 15px;
+  }
+
+  .footer-section h3 {
+    font-size: 14px;
+  }
+
+  .footer-section p {
+    font-size: 12px;
+  }
+
+  .gov-disclaimer {
+    padding: 12px 15px;
+  }
+
+  .gov-disclaimer p {
+    font-size: 11px;
+  }
+
+  .app-main {
+    max-width: 100%;
+    padding: 15px 10px;
+  }
+
+  .results-section h2 {
+    font-size: 16px;
+  }
+}
+
+/* MEDIUM PHONES & SMALL TABLETS (481px - 768px) */
+@media (max-width: 768px) and (min-width: 481px) {
+  .gov-header {
+    padding: 15px 0;
+  }
+
+  .gov-image {
+    max-width: 130px;
+  }
+
+  .auth-page {
+    min-height: calc(100vh - 160px);
+    padding: 40px 15px 70px 15px;
+  }
+
+  .auth-box {
+    max-width: 95%;
+    padding: 30px;
+  }
+
+  .app-header {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .scheme-modal-content {
+    max-height: 85vh;
+    padding: 30px;
+    max-width: 95%;
+  }
+
+  .app-main {
+    max-width: 100%;
+    padding: 20px 15px;
+  }
+
+  .footer-content {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+/* TABLETS (769px - 1024px) */
+@media (max-width: 1024px) and (min-width: 769px) {
+  .app-header {
+    flex-wrap: wrap;
+  }
+
+  .app-main {
+    max-width: 95%;
+  }
+
+  .scheme-modal-content {
+    max-width: 85%;
+  }
+
+  .footer-content {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+}
+
+/* LARGE DEVICES (1025px+) */
+@media (min-width: 1025px) {
+  .footer-content {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
+
+/* LANDSCAPE MODE ADJUSTMENTS */
+@media (max-height: 600px) and (orientation: landscape) {
+  .auth-page {
+    min-height: auto;
+    padding: 20px;
+  }
+
+  .auth-box {
+    padding: 20px;
+  }
+
+  .app-header {
+    padding: 12px;
+  }
+
+  .section-title {
+    margin: 12px 0 8px 0;
+  }
+
+  .form-group {
+    margin-bottom: 10px;
+  }
+}
+
+/* TOUCH DEVICE OPTIMIZATIONS */
+@media (hover: none) and (pointer: coarse) {
+  /* Larger touch targets */
+  button,
+  input[type="submit"],
+  input[type="button"],
+  a {
+    min-height: 44px;
+    min-width: 44px;
+    padding: 12px 16px;
+  }
+
+  /* Remove hover effects on touch */
+  button:hover {
+    transform: none;
+  }
+
+  .btn:hover {
+    transform: none;
+  }
+
+  /* Better touch spacing */
+  .form-group {
+    margin-bottom: 16px;
+  }
+}
+
+/* PRINT OPTIMIZATION */
+@media print {
+  .gov-header,
+  .app-header,
+  .btn-audio-toggle,
+  .btn-logout,
+  .auth-tabs,
+  .auth-hint {
+    display: none;
+  }
+
+  .scheme-card {
+    page-break-inside: avoid;
+    border: 1px solid #ccc;
+  }
+
+  .app-main {
+    max-width: 100%;
+  }
+}
