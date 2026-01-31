@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;600;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <script type="module" crossorigin src="/assets/index-CJRtjuTg.js"></script>
+  <script type="module" crossorigin src="/assets/index-zS298NKk.js"></script>
   <link rel="stylesheet" crossorigin href="/assets/index-C_4KA98b.css">
 </head>
 <body>
@@ -289,8 +289,9 @@
         class="chatbot-input" 
         placeholder="Type your question..."
         data-i18n-placeholder="chatbot_input_placeholder"
+        onkeypress="if(event.key === 'Enter' && window.chatbotSendMessage) { event.preventDefault(); window.chatbotSendMessage(); }"
       />
-      <button id="chatbot-send" class="chatbot-send">
+      <button id="chatbot-send" class="chatbot-send" onclick="window.chatbotSendMessage && window.chatbotSendMessage()">
         <span>📤</span>
       </button>
     </div>

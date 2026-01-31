@@ -289,8 +289,9 @@
         class="chatbot-input" 
         placeholder="Type your question..."
         data-i18n-placeholder="chatbot_input_placeholder"
+        onkeypress="if(event.key === 'Enter' && window.chatbotSendMessage) { event.preventDefault(); window.chatbotSendMessage(); }"
       />
-      <button id="chatbot-send" class="chatbot-send">
+      <button id="chatbot-send" class="chatbot-send" onclick="window.chatbotSendMessage && window.chatbotSendMessage()">
         <span>📤</span>
       </button>
     </div>

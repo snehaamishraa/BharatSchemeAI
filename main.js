@@ -597,12 +597,22 @@ function initChatbot() {
 
   // Send message
   function sendMessage() {
-    if (!chatbotInput) return
+    console.log('sendMessage called')
+    console.log('chatbotInput exists:', !!chatbotInput)
+    console.log('chatbotMessages exists:', !!chatbotMessages)
+    
+    if (!chatbotInput) {
+      console.error('chatbotInput not found!')
+      return
+    }
     
     const message = chatbotInput.value.trim()
-    console.log('Sending message:', message)
+    console.log('Message value:', message)
     
-    if (!message) return
+    if (!message) {
+      console.log('Empty message, returning')
+      return
+    }
 
     // Add user message
     addMessage(message, 'user')
@@ -615,20 +625,33 @@ function initChatbot() {
     }, 500)
   }
 
+  // Expose sendMessage globally for debugging
+  window.chatbotSendMessage = sendMessage
+
   if (chatbotSend) {
-    chatbotSend.addEventListener('click', () => {
-      console.log('Send button clicked')
+    console.log('Adding click listener to send button')
+    chatbotSend.addEventListener('click', (e) => {
+      e.preventDefault()
+      e.stopPropagation()
+      console.log('Send button clicked via event listener')
       sendMessage()
     })
+  } else {
+    console.error('chatbotSend button not found!')
   }
   
   if (chatbotInput) {
+    console.log('Adding keypress listener to input')
     chatbotInput.addEventListener('keypress', (e) => {
+      console.log('Key pressed:', e.key)
       if (e.key === 'Enter') {
-        console.log('Enter pressed')
+        e.preventDefault()
+        console.log('Enter key detected')
         sendMessage()
       }
     })
+  } else {
+    console.error('chatbotInput element not found!')
   }
 
   // Quick questions
@@ -646,6 +669,13 @@ function initChatbot() {
   })
 
   function addMessage(text, type) {
+    console.log('addMessage called:', { text, type, messagesExists: !!chatbotMessages })
+    
+    if (!chatbotMessages) {
+      console.error('chatbotMessages element not found!')
+      return
+    }
+    
     const messageDiv = document.createElement('div')
     messageDiv.className = `chatbot-message ${type}-message`
     
@@ -663,6 +693,8 @@ function initChatbot() {
     messageDiv.appendChild(avatar)
     messageDiv.appendChild(content)
     chatbotMessages.appendChild(messageDiv)
+    
+    console.log('Message added to DOM')
     
     // Scroll to bottom
     chatbotMessages.scrollTop = chatbotMessages.scrollHeight
