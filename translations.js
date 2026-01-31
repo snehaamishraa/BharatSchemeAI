@@ -68,7 +68,16 @@ const translations = {
     'address_contact': 'Address: ',
     'about_text': 'BharatScheme helps you discover government schemes you\'re eligible for',
     'copyright': '© 2026 BharatScheme. All rights reserved.',
-    'suggestions_help': 'Your suggestions help us serve you better'
+    'suggestions_help': 'Your suggestions help us serve you better',
+    
+    // Chatbot
+    'chatbot_title': 'BharatScheme Assistant',
+    'chatbot_status': 'Online • Here to help',
+    'chatbot_welcome': 'Namaste! 🙏 I\'m here to help you find government schemes. How can I assist you today?',
+    'chatbot_input_placeholder': 'Type your question...',
+    'quick_schemes': 'What schemes are available?',
+    'quick_eligibility': 'How do I check eligibility?',
+    'quick_apply': 'How to apply?'
   },
 
   'hi': {
@@ -132,7 +141,16 @@ const translations = {
     'address_contact': 'पता: ',
     'about_text': 'भारत स्कीम आपको सरकारी योजनाओं की खोज करने में मदद करता है',
     'copyright': '© 2026 भारत स्कीम। सर्वाधिकार सुरक्षित।',
-    'suggestions_help': 'आपके सुझाव हमें बेहतर सेवा देने में मदद करते हैं'
+    'suggestions_help': 'आपके सुझाव हमें बेहतर सेवा देने में मदद करते हैं',
+    
+    // Chatbot
+    'chatbot_title': 'भारत स्कीम सहायक',
+    'chatbot_status': 'ऑनलाइन • मदद के लिए तैयार',
+    'chatbot_welcome': 'नमस्ते! 🙏 मैं आपको सरकारी योजनाएं खोजने में मदद करूंगा। आज मैं आपकी कैसे सहायता कर सकता हूं?',
+    'chatbot_input_placeholder': 'अपना सवाल लिखें...',
+    'quick_schemes': 'कौन सी योजनाएं उपलब्ध हैं?',
+    'quick_eligibility': 'योग्यता कैसे जांचें?',
+    'quick_apply': 'आवेदन कैसे करें?'
   },
 
   'ta': {

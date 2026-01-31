@@ -504,11 +504,150 @@ window.refreshSchemesDisplay = function() {
   }
 }
 
+// ============================================
+// CHATBOT FUNCTIONALITY
+// ============================================
+
+const chatbotResponses = {
+  schemes: {
+    en: "We have 50+ government schemes including PM Kisan, Ayushman Bharat, Sukanya Samriddhi Yojana, and more. Fill your profile details to see schemes you're eligible for! 🎯",
+    hi: "हमारे पास 50+ सरकारी योजनाएं हैं जिनमें पीएम किसान, आयुष्मान भारत, सुकन्या समृद्धि योजना आदि शामिल हैं। अपने योग्य योजनाओं को देखने के लिए अपना प्रोफाइल भरें! 🎯"
+  },
+  eligibility: {
+    en: "1. Fill in your details (age, occupation, gender, state)\n2. Click 'Save Details'\n3. We'll show schemes you're eligible for\n4. Click on any scheme to see full details! ✅",
+    hi: "1. अपना विवरण भरें (उम्र, व्यवसाय, लिंग, राज्य)\n2. 'विवरण सहेजें' पर क्लिक करें\n3. हम आपके योग्य योजनाएं दिखाएंगे\n4. पूरी जानकारी के लिए किसी भी योजना पर क्लिक करें! ✅"
+  },
+  apply: {
+    en: "To apply:\n1. View scheme details by clicking on a scheme card\n2. Check eligibility and required documents\n3. Click 'Register on Official Website' button\n4. You'll be redirected to the official government portal to complete your application 🔗",
+    hi: "आवेदन करने के लिए:\n1. योजना कार्ड पर क्लिक करके विवरण देखें\n2. योग्यता और आवश्यक दस्तावेज जांचें\n3. 'आधिकारिक वेबसाइट पर पंजीकृत करें' बटन पर क्लिक करें\n4. आवेदन पूरा करने के लिए आपको आधिकारिक सरकारी पोर्टल पर भेजा जाएगा 🔗"
+  },
+  help: {
+    en: "I can help you with:\n• Finding government schemes 🎯\n• Checking eligibility ✅\n• Understanding how to apply 📝\n• Navigating the portal 🧭\n\nWhat would you like to know?",
+    hi: "मैं आपकी इनमें मदद कर सकता हूं:\n• सरकारी योजनाएं खोजना 🎯\n• योग्यता जांचना ✅\n• आवेदन कैसे करें समझना 📝\n• पोर्टल का उपयोग करना 🧭\n\nआप क्या जानना चाहेंगे?"
+  },
+  default: {
+    en: "I'm here to help you discover government schemes! 😊\n\nYou can ask me about:\n• Available schemes\n• Eligibility criteria\n• How to apply\n• Any other questions about the portal\n\nHow can I assist you?",
+    hi: "मैं आपको सरकारी योजनाएं खोजने में मदद करने के लिए यहां हूं! 😊\n\nआप मुझसे पूछ सकते हैं:\n• उपलब्ध योजनाएं\n• योग्यता मानदंड\n• आवेदन कैसे करें\n• पोर्टल के बारे में कोई अन्य प्रश्न\n\nमैं आपकी कैसे सहायता कर सकता हूं?"
+  }
+}
+
+function initChatbot() {
+  const chatbotToggle = document.getElementById('chatbot-toggle')
+  const chatbotContainer = document.getElementById('chatbot-container')
+  const chatbotClose = document.getElementById('chatbot-close')
+  const chatbotInput = document.getElementById('chatbot-input')
+  const chatbotSend = document.getElementById('chatbot-send')
+  const chatbotMessages = document.getElementById('chatbot-messages')
+  const quickQuestions = document.querySelectorAll('.quick-question')
+
+  if (!chatbotToggle || !chatbotContainer) return
+
+  // Toggle chatbot
+  chatbotToggle.addEventListener('click', () => {
+    chatbotContainer.classList.toggle('active')
+    if (chatbotContainer.classList.contains('active')) {
+      chatbotInput.focus()
+      // Remove badge when opened
+      const badge = chatbotToggle.querySelector('.chatbot-badge')
+      if (badge) badge.style.display = 'none'
+    }
+  })
+
+  chatbotClose.addEventListener('click', () => {
+    chatbotContainer.classList.remove('active')
+  })
+
+  // Send message
+  function sendMessage() {
+    const message = chatbotInput.value.trim()
+    if (!message) return
+
+    // Add user message
+    addMessage(message, 'user')
+    chatbotInput.value = ''
+
+    // Get bot response
+    setTimeout(() => {
+      const response = getBotResponse(message)
+      addMessage(response, 'bot')
+    }, 500)
+  }
+
+  chatbotSend.addEventListener('click', sendMessage)
+  chatbotInput.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') sendMessage()
+  })
+
+  // Quick questions
+  quickQuestions.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const question = btn.getAttribute('data-question')
+      const questionText = btn.textContent
+      addMessage(questionText, 'user')
+      
+      setTimeout(() => {
+        const response = getQuickResponse(question)
+        addMessage(response, 'bot')
+      }, 500)
+    })
+  })
+
+  function addMessage(text, type) {
+    const messageDiv = document.createElement('div')
+    messageDiv.className = `chatbot-message ${type}-message`
+    
+    const avatar = document.createElement('div')
+    avatar.className = 'message-avatar'
+    avatar.textContent = type === 'bot' ? '🤖' : '👤'
+    
+    const content = document.createElement('div')
+    content.className = 'message-content'
+    const p = document.createElement('p')
+    p.textContent = text
+    p.style.whiteSpace = 'pre-line'
+    content.appendChild(p)
+    
+    messageDiv.appendChild(avatar)
+    messageDiv.appendChild(content)
+    chatbotMessages.appendChild(messageDiv)
+    
+    // Scroll to bottom
+    chatbotMessages.scrollTop = chatbotMessages.scrollHeight
+  }
+
+  function getBotResponse(message) {
+    const lang = currentLanguage || 'en'
+    const lowerMessage = message.toLowerCase()
+    
+    // Check for keywords
+    if (lowerMessage.includes('scheme') || lowerMessage.includes('योजना')) {
+      return chatbotResponses.schemes[lang] || chatbotResponses.schemes.en
+    }
+    if (lowerMessage.includes('eligible') || lowerMessage.includes('योग्य')) {
+      return chatbotResponses.eligibility[lang] || chatbotResponses.eligibility.en
+    }
+    if (lowerMessage.includes('apply') || lowerMessage.includes('आवेदन')) {
+      return chatbotResponses.apply[lang] || chatbotResponses.apply.en
+    }
+    if (lowerMessage.includes('help') || lowerMessage.includes('मदद')) {
+      return chatbotResponses.help[lang] || chatbotResponses.help.en
+    }
+    
+    return chatbotResponses.default[lang] || chatbotResponses.default.en
+  }
+
+  function getQuickResponse(question) {
+    const lang = currentLanguage || 'en'
+    return chatbotResponses[question]?.[lang] || chatbotResponses[question]?.en || chatbotResponses.default[lang]
+  }
+}
+
 // Initialize on page load
 document.addEventListener('DOMContentLoaded', () => {
   initializeDOMElements()
   setupEventListeners()
   checkLogin()
+  initChatbot()
   
   // Ensure translations are applied after small delay to ensure DOM is fully ready
   setTimeout(() => {
