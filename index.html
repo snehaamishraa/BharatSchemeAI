@@ -289,17 +289,17 @@
         class="chatbot-input" 
         placeholder="Type your question..."
         data-i18n-placeholder="chatbot_input_placeholder"
-        onkeypress="if(event.key === 'Enter' && window.chatbotSendMessage) { event.preventDefault(); window.chatbotSendMessage(); }"
+        onkeypress="if(event.key === 'Enter') { event.preventDefault(); sendChatMessage(); }"
       />
-      <button id="chatbot-send" class="chatbot-send" onclick="window.chatbotSendMessage && window.chatbotSendMessage()">
+      <button id="chatbot-send" class="chatbot-send" onclick="sendChatMessage()">
         <span>📤</span>
       </button>
     </div>
     
     <div class="chatbot-quick-questions">
-      <button class="quick-question" data-question="schemes" data-i18n="quick_schemes" onclick="window.handleQuickQuestion && window.handleQuickQuestion('schemes', this.textContent)">What schemes are available?</button>
-      <button class="quick-question" data-question="eligibility" data-i18n="quick_eligibility" onclick="window.handleQuickQuestion && window.handleQuickQuestion('eligibility', this.textContent)">How do I check eligibility?</button>
-      <button class="quick-question" data-question="apply" data-i18n="quick_apply" onclick="window.handleQuickQuestion && window.handleQuickQuestion('apply', this.textContent)">How to apply?</button>
+      <button class="quick-question" data-question="schemes" data-i18n="quick_schemes" onclick="answerQuickQuestion('schemes')">What schemes are available?</button>
+      <button class="quick-question" data-question="eligibility" data-i18n="quick_eligibility" onclick="answerQuickQuestion('eligibility')">How do I check eligibility?</button>
+      <button class="quick-question" data-question="apply" data-i18n="quick_apply" onclick="answerQuickQuestion('apply')">How to apply?</button>
     </div>
   </div>
 
@@ -311,22 +311,79 @@
 
   <script type="module" src="/main.js"></script>
   
-  <!-- Simple inline test script -->
+  <!-- Inline chatbot functionality -->
   <script>
-    console.log('🔍 Checking chatbot elements...')
-    setTimeout(() => {
-      const btn = document.getElementById('chatbot-toggle')
-      const container = document.getElementById('chatbot-container')
-      console.log('Button found:', !!btn)
-      console.log('Container found:', !!container)
-      if (btn) {
-        console.log('Button styles:', window.getComputedStyle(btn).display)
-        console.log('Button position:', window.getComputedStyle(btn).position)
-      }
-      if (container) {
-        console.log('Container styles:', window.getComputedStyle(container).display)
-      }
-    }, 500)
+    // Simple chatbot functions that always work
+    function sendChatMessage() {
+      const input = document.getElementById('chatbot-input');
+      const messages = document.getElementById('chatbot-messages');
+      
+      if (!input || !messages) return;
+      
+      const text = input.value.trim();
+      if (!text) return;
+      
+      // Add user message
+      const userMsg = document.createElement('div');
+      userMsg.className = 'chatbot-message user-message';
+      userMsg.innerHTML = '<div class="message-avatar">👤</div><div class="message-content"><p>' + text + '</p></div>';
+      messages.appendChild(userMsg);
+      
+      input.value = '';
+      messages.scrollTop = messages.scrollHeight;
+      
+      // Add bot response
+      setTimeout(() => {
+        const botMsg = document.createElement('div');
+        botMsg.className = 'chatbot-message bot-message';
+        let response = 'I can help you discover government schemes! Ask me about eligibility, how to apply, or available schemes. 😊';
+        
+        if (text.toLowerCase().includes('scheme') || text.toLowerCase().includes('योजना')) {
+          response = 'We have 50+ government schemes including PM Kisan, Ayushman Bharat, Sukanya Samriddhi Yojana, and more. Fill your profile to see eligible schemes! 🎯';
+        } else if (text.toLowerCase().includes('eligible') || text.toLowerCase().includes('योग्य')) {
+          response = '1. Fill your details (age, occupation, gender, state)\\n2. Click Save Details\\n3. We will show schemes you are eligible for\\n4. Click any scheme for full details! ✅';
+        } else if (text.toLowerCase().includes('apply') || text.toLowerCase().includes('आवेदन')) {
+          response = 'To apply:\\n1. Click on a scheme card\\n2. Check eligibility and documents\\n3. Click Register on Official Website\\n4. Complete application on government portal 🔗';
+        }
+        
+        botMsg.innerHTML = '<div class="message-avatar">🤖</div><div class="message-content"><p style="white-space: pre-line;">' + response + '</p></div>';
+        messages.appendChild(botMsg);
+        messages.scrollTop = messages.scrollHeight;
+      }, 500);
+    }
+    
+    function answerQuickQuestion(question) {
+      const messages = document.getElementById('chatbot-messages');
+      if (!messages) return;
+      
+      const questions = {
+        schemes: 'What schemes are available?',
+        eligibility: 'How do I check eligibility?',
+        apply: 'How to apply?'
+      };
+      
+      const answers = {
+        schemes: 'We have 50+ government schemes including PM Kisan, Ayushman Bharat, Sukanya Samriddhi Yojana, and more. Fill your profile to see eligible schemes! 🎯',
+        eligibility: '1. Fill your details (age, occupation, gender, state)\\n2. Click Save Details\\n3. We will show schemes you are eligible for\\n4. Click any scheme for full details! ✅',
+        apply: 'To apply:\\n1. Click on a scheme card\\n2. Check eligibility and documents\\n3. Click Register on Official Website\\n4. Complete application on government portal 🔗'
+      };
+      
+      // User message
+      const userMsg = document.createElement('div');
+      userMsg.className = 'chatbot-message user-message';
+      userMsg.innerHTML = '<div class="message-avatar">👤</div><div class="message-content"><p>' + questions[question] + '</p></div>';
+      messages.appendChild(userMsg);
+      messages.scrollTop = messages.scrollHeight;
+      
+      // Bot response
+      setTimeout(() => {
+        const botMsg = document.createElement('div');
+        botMsg.className = 'chatbot-message bot-message';
+        botMsg.innerHTML = '<div class="message-avatar">🤖</div><div class="message-content"><p style="white-space: pre-line;">' + answers[question] + '</p></div>';
+        messages.appendChild(botMsg);
+        messages.scrollTop = messages.scrollHeight;
+      }, 500);
+    }
   </script>
 </body>
 </html>
