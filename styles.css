@@ -78,6 +78,55 @@ body {
   position: relative;
   overflow-x: hidden;
   transition: background 0.3s ease, color 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  padding: 0;
+}
+
+/* Main Container Frame - Centers entire website */
+.main-container-frame {
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+  background: var(--card-bg);
+  box-shadow: 
+    0 0 60px rgba(0, 0, 0, 0.15),
+    0 0 120px rgba(255, 153, 51, 0.08),
+    inset 0 0 0 1px var(--border-color);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+body.dark-mode .main-container-frame {
+  box-shadow: 
+    0 0 80px rgba(0, 0, 0, 0.4),
+    0 0 140px rgba(255, 153, 51, 0.15),
+    inset 0 0 0 1px rgba(255, 153, 51, 0.2);
+}
+
+/* On very large screens, add side margins */
+@media (min-width: 1650px) {
+  body {
+    padding: 20px;
+  }
+  
+  .main-container-frame {
+    border-radius: 12px;
+    box-shadow: 
+      0 0 80px rgba(0, 0, 0, 0.2),
+      0 0 150px rgba(255, 153, 51, 0.12),
+      inset 0 0 0 2px var(--border-color);
+  }
+  
+  body.dark-mode .main-container-frame {
+    box-shadow: 
+      0 0 100px rgba(0, 0, 0, 0.5),
+      0 0 180px rgba(255, 153, 51, 0.2),
+      inset 0 0 0 2px rgba(255, 153, 51, 0.3);
+  }
 }
 
 /* Subtle grid background */
@@ -112,7 +161,8 @@ body::after {
     inset 0 0 30px rgba(255, 153, 51, 0.15),
     inset 0 0 60px rgba(19, 136, 8, 0.1);
   border-bottom: 5px solid var(--gov-blue);
-  position: relative;
+  position: sticky;
+  top: 0;
   z-index: 100;
   filter: drop-shadow(0 0 15px rgba(255, 153, 51, 0.2)) drop-shadow(0 0 12px rgba(19, 136, 8, 0.15));
   overflow: visible;
