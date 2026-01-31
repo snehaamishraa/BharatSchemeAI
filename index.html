@@ -190,41 +190,41 @@
           </div>
 
           <div class="form-group">
-            <label for="age">Age</label>
+            <label for="age" data-i18n="age">Age</label>
             <input type="number" id="age" min="1" max="120" placeholder="e.g., 35" required />
           </div>
 
           <div class="form-group">
-            <label for="occupation">Occupation</label>
+            <label for="occupation" data-i18n="occupation">Occupation</label>
             <select id="occupation" required>
-              <option value="">Select occupation</option>
-              <option value="Farmer">Farmer</option>
-              <option value="Student">Student</option>
-              <option value="Senior Citizen">Senior Citizen</option>
-              <option value="Unemployed">Unemployed</option>
-              <option value="Other">Other</option>
+              <option value="" data-i18n="select_occupation">Select occupation</option>
+              <option value="Farmer" data-i18n="farmer">Farmer</option>
+              <option value="Student" data-i18n="student">Student</option>
+              <option value="Senior Citizen" data-i18n="senior_citizen">Senior Citizen</option>
+              <option value="Unemployed" data-i18n="unemployed">Unemployed</option>
+              <option value="Other" data-i18n="other">Other</option>
             </select>
           </div>
 
           <div class="form-group">
-            <label for="gender">Gender</label>
+            <label for="gender" data-i18n="gender">Gender</label>
             <select id="gender" required>
-              <option value="">Select gender</option>
-              <option value="Male">Male</option>
-              <option value="Female">Female</option>
-              <option value="Non-binary">Non-binary</option>
-              <option value="Prefer not to say">Prefer not to say</option>
-              <option value="Other">Other</option>
+              <option value="" data-i18n="select_gender">Select gender</option>
+              <option value="Male" data-i18n="male">Male</option>
+              <option value="Female" data-i18n="female">Female</option>
+              <option value="Non-binary" data-i18n="other">Non-binary</option>
+              <option value="Prefer not to say" data-i18n="other">Prefer not to say</option>
+              <option value="Other" data-i18n="other">Other</option>
             </select>
           </div>
 
-          <button type="submit" class="btn btn-primary">Save Profile</button>
+          <button type="submit" class="btn btn-primary" data-i18n="btn_save">Save Profile</button>
         </form>
       </section>
 
       <!-- Results Section -->
       <section class="section results-section" id="results-section" style="display: none;">
-        <h2 class="section-title">📊 Available Schemes for You</h2>
+        <h2 class="section-title" data-i18n="available_schemes">📊 Available Schemes for You</h2>
         <p style="color: #b0b5c1; margin-bottom: 20px; font-size: 14px;">Click on any scheme to see full details</p>
         <div id="results-list" class="results-list"></div>
       </section>
@@ -233,21 +233,21 @@
       <footer class="app-footer">
         <div class="footer-content">
           <div class="footer-section">
-            <h3>💬 Feedback</h3>
-            <p>Help us improve! Share your feedback at:</p>
+            <h3 data-i18n="feedback">💬 Feedback</h3>
+            <p data-i18n="help_improve">Help us improve! Share your feedback at:</p>
             <p><a href="mailto:feedback@bharatscheme.in">feedback@bharatscheme.in</a></p>
-            <p style="font-size: 12px; color: #00f3ff; margin-top: 10px;">Your suggestions help us serve you better</p>
+            <p style="font-size: 12px; color: #00f3ff; margin-top: 10px;" data-i18n="suggestions_help">Your suggestions help us serve you better</p>
           </div>
           <div class="footer-section">
-            <h3>📞 Contact Us</h3>
-            <p>Email: <a href="mailto:support@bharatscheme.in">support@bharatscheme.in</a></p>
-            <p>Phone: +91-1800-SCHEME</p>
-            <p>Address: Ministry of Government Affairs, New Delhi</p>
+            <h3 data-i18n="contact_us">📞 Contact Us</h3>
+            <p><span data-i18n="email_contact">Email: </span><a href="mailto:support@bharatscheme.in">support@bharatscheme.in</a></p>
+            <p><span data-i18n="phone_contact">Phone: </span>+91-1800-SCHEME</p>
+            <p><span data-i18n="address_contact">Address: </span>Ministry of Government Affairs, New Delhi</p>
           </div>
           <div class="footer-section">
-            <h3>ℹ️ About</h3>
-            <p>BharatScheme helps you discover government schemes you're eligible for</p>
-            <p style="font-size: 12px; color: #b0b5c1; margin-top: 10px;">© 2026 BharatScheme. All rights reserved.</p>
+            <h3 data-i18n="about">ℹ️ About</h3>
+            <p data-i18n="about_text">BharatScheme helps you discover government schemes you're eligible for</p>
+            <p style="font-size: 12px; color: #b0b5c1; margin-top: 10px;" data-i18n="copyright">© 2026 BharatScheme. All rights reserved.</p>
           </div>
         </div>
       </footer>
