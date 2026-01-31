@@ -1550,7 +1550,7 @@ body::after {
   border: none;
   cursor: pointer;
   box-shadow: 0 4px 20px rgba(255, 153, 51, 0.4);
-  z-index: 999;
+  z-index: 9999;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1610,7 +1610,7 @@ body::after {
   background: white;
   border-radius: 16px;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-  z-index: 1000;
+  z-index: 9998;
   display: none;
   flex-direction: column;
   overflow: hidden;

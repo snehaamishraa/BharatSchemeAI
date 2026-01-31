@@ -557,24 +557,40 @@ function initChatbot() {
     return
   }
 
-  // Toggle chatbot
-  chatbotToggle.addEventListener('click', () => {
-    console.log('Chatbot toggle clicked')
-    chatbotContainer.classList.toggle('active')
-    if (chatbotContainer.classList.contains('active')) {
-      console.log('Chatbot opened')
+  // Create global toggle function
+  window.toggleChatbot = function() {
+    console.log('🔔 toggleChatbot called!')
+    const isActive = chatbotContainer.classList.contains('active')
+    console.log('Current state:', isActive ? 'open' : 'closed')
+    
+    if (isActive) {
+      chatbotContainer.classList.remove('active')
+      console.log('Closing chatbot')
+    } else {
+      chatbotContainer.classList.add('active')
+      console.log('Opening chatbot')
       if (chatbotInput) {
-        chatbotInput.focus()
+        setTimeout(() => chatbotInput.focus(), 100)
       }
       // Remove badge when opened
       const badge = chatbotToggle.querySelector('.chatbot-badge')
       if (badge) badge.style.display = 'none'
     }
+  }
+
+  // Also add traditional event listener as backup
+  chatbotToggle.addEventListener('click', (e) => {
+    e.preventDefault()
+    e.stopPropagation()
+    console.log('Chatbot toggle clicked via event listener')
+    window.toggleChatbot()
   })
 
   if (chatbotClose) {
-    chatbotClose.addEventListener('click', () => {
-      console.log('Chatbot closed')
+    chatbotClose.addEventListener('click', (e) => {
+      e.preventDefault()
+      e.stopPropagation()
+      console.log('Chatbot closed via X button')
       chatbotContainer.classList.remove('active')
     })
   }
