@@ -1262,6 +1262,12 @@ body.dark-mode .footer-section a:hover {
   position: relative;
 }
 
+body.dark-mode .gov-disclaimer {
+  background: linear-gradient(90deg, var(--bg-secondary) 0%, var(--bg-tertiary) 50%, var(--bg-secondary) 100%);
+  border-top-color: var(--gov-saffron);
+  border-bottom-color: var(--gov-green);
+}
+
 .gov-disclaimer::before {
   content: '';
   position: absolute;
@@ -1271,6 +1277,10 @@ body.dark-mode .footer-section a:hover {
   width: 100%;
   background: linear-gradient(180deg, rgba(255, 153, 51, 0.02) 0%, transparent 100%);
   pointer-events: none;
+}
+
+body.dark-mode .gov-disclaimer::before {
+  background: linear-gradient(180deg, rgba(255, 153, 51, 0.08) 0%, transparent 100%);
 }
 
 .gov-disclaimer p {
@@ -1283,6 +1293,10 @@ body.dark-mode .footer-section a:hover {
   z-index: 1;
 }
 
+body.dark-mode .gov-disclaimer p {
+  color: var(--text-color);
+}
+
 .gov-disclaimer a {
   color: var(--gov-saffron);
   text-decoration: none;
@@ -1291,10 +1305,20 @@ body.dark-mode .footer-section a:hover {
   border-bottom: 2px solid rgba(255, 153, 51, 0.3);
 }
 
+body.dark-mode .gov-disclaimer a {
+  color: var(--gov-saffron);
+  border-bottom-color: rgba(255, 153, 51, 0.5);
+}
+
 .gov-disclaimer a:hover {
   color: var(--gov-green);
   text-decoration: none;
   border-bottom-color: rgba(19, 136, 8, 0.6);
+}
+
+body.dark-mode .gov-disclaimer a:hover {
+  color: var(--gov-green);
+  border-bottom-color: rgba(19, 136, 8, 0.7);
 }
 /* ============================================
    Scheme Detail Modal Styling
