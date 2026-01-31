@@ -621,6 +621,16 @@ function t(key) {
 // Expose to global scope
 window.t = t
 
+// Expose currentLanguage getter
+Object.defineProperty(window, 'currentLanguage', {
+  get: function() {
+    return currentLanguage
+  },
+  set: function(value) {
+    currentLanguage = value
+  }
+})
+
 // Change language
 function changeLanguage(lang) {
   console.log('changeLanguage called with lang:', lang)
@@ -659,7 +669,11 @@ function updatePageTranslations() {
     if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
       // For inputs, update placeholder or value
       if (element.placeholder && element.placeholder !== '') {
-        // Keep placeholder as is
+        // Keep placeholder as is, but check for data-i18n-placeholder
+        const placeholderKey = element.getAttribute('data-i18n-placeholder')
+        if (placeholderKey) {
+          element.placeholder = t(placeholderKey)
+        }
       }
     } else {
       // For other elements, update text content

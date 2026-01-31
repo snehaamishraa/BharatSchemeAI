@@ -532,6 +532,8 @@ const chatbotResponses = {
 }
 
 function initChatbot() {
+  console.log('🤖 Initializing chatbot...')
+  
   const chatbotToggle = document.getElementById('chatbot-toggle')
   const chatbotContainer = document.getElementById('chatbot-container')
   const chatbotClose = document.getElementById('chatbot-close')
@@ -540,26 +542,50 @@ function initChatbot() {
   const chatbotMessages = document.getElementById('chatbot-messages')
   const quickQuestions = document.querySelectorAll('.quick-question')
 
-  if (!chatbotToggle || !chatbotContainer) return
+  console.log('Chatbot elements:', {
+    toggle: !!chatbotToggle,
+    container: !!chatbotContainer,
+    close: !!chatbotClose,
+    input: !!chatbotInput,
+    send: !!chatbotSend,
+    messages: !!chatbotMessages,
+    quickQuestions: quickQuestions.length
+  })
+
+  if (!chatbotToggle || !chatbotContainer) {
+    console.error('❌ Chatbot elements not found!')
+    return
+  }
 
   // Toggle chatbot
   chatbotToggle.addEventListener('click', () => {
+    console.log('Chatbot toggle clicked')
     chatbotContainer.classList.toggle('active')
     if (chatbotContainer.classList.contains('active')) {
-      chatbotInput.focus()
+      console.log('Chatbot opened')
+      if (chatbotInput) {
+        chatbotInput.focus()
+      }
       // Remove badge when opened
       const badge = chatbotToggle.querySelector('.chatbot-badge')
       if (badge) badge.style.display = 'none'
     }
   })
 
-  chatbotClose.addEventListener('click', () => {
-    chatbotContainer.classList.remove('active')
-  })
+  if (chatbotClose) {
+    chatbotClose.addEventListener('click', () => {
+      console.log('Chatbot closed')
+      chatbotContainer.classList.remove('active')
+    })
+  }
 
   // Send message
   function sendMessage() {
+    if (!chatbotInput) return
+    
     const message = chatbotInput.value.trim()
+    console.log('Sending message:', message)
+    
     if (!message) return
 
     // Add user message
@@ -573,10 +599,21 @@ function initChatbot() {
     }, 500)
   }
 
-  chatbotSend.addEventListener('click', sendMessage)
-  chatbotInput.addEventListener('keypress', (e) => {
-    if (e.key === 'Enter') sendMessage()
-  })
+  if (chatbotSend) {
+    chatbotSend.addEventListener('click', () => {
+      console.log('Send button clicked')
+      sendMessage()
+    })
+  }
+  
+  if (chatbotInput) {
+    chatbotInput.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') {
+        console.log('Enter pressed')
+        sendMessage()
+      }
+    })
+  }
 
   // Quick questions
   quickQuestions.forEach(btn => {
@@ -616,7 +653,11 @@ function initChatbot() {
   }
 
   function getBotResponse(message) {
-    const lang = currentLanguage || 'en'
+    // Get current language from localStorage or translations.js
+    const lang = (typeof window.currentLanguage !== 'undefined' ? window.currentLanguage : null) || 
+                 localStorage.getItem('selectedLanguage') || 'en'
+    console.log('Getting bot response in language:', lang)
+    
     const lowerMessage = message.toLowerCase()
     
     // Check for keywords
@@ -637,9 +678,13 @@ function initChatbot() {
   }
 
   function getQuickResponse(question) {
-    const lang = currentLanguage || 'en'
+    // Get current language from localStorage or translations.js
+    const lang = (typeof window.currentLanguage !== 'undefined' ? window.currentLanguage : null) || 
+                 localStorage.getItem('selectedLanguage') || 'en'
     return chatbotResponses[question]?.[lang] || chatbotResponses[question]?.en || chatbotResponses.default[lang]
   }
+  
+  console.log('✅ Chatbot initialized successfully!')
 }
 
 // Initialize on page load
