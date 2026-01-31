@@ -557,6 +557,108 @@ function initChatbot() {
     return
   }
 
+  // Helper functions exposed globally
+  function addMessage(text, type) {
+    console.log('addMessage called:', { text, type })
+    
+    const messages = document.getElementById('chatbot-messages')
+    if (!messages) {
+      console.error('chatbotMessages element not found!')
+      return
+    }
+    
+    const messageDiv = document.createElement('div')
+    messageDiv.className = `chatbot-message ${type}-message`
+    
+    const avatar = document.createElement('div')
+    avatar.className = 'message-avatar'
+    avatar.textContent = type === 'bot' ? '🤖' : '👤'
+    
+    const content = document.createElement('div')
+    content.className = 'message-content'
+    const p = document.createElement('p')
+    p.textContent = text
+    p.style.whiteSpace = 'pre-line'
+    content.appendChild(p)
+    
+    messageDiv.appendChild(avatar)
+    messageDiv.appendChild(content)
+    messages.appendChild(messageDiv)
+    
+    console.log('Message added to DOM')
+    
+    // Scroll to bottom
+    messages.scrollTop = messages.scrollHeight
+  }
+
+  function getBotResponse(message) {
+    const lang = (typeof window.currentLanguage !== 'undefined' ? window.currentLanguage : null) || 
+                 localStorage.getItem('selectedLanguage') || 'en'
+    console.log('Getting bot response in language:', lang)
+    
+    const lowerMessage = message.toLowerCase()
+    
+    if (lowerMessage.includes('scheme') || lowerMessage.includes('योजना')) {
+      return chatbotResponses.schemes[lang] || chatbotResponses.schemes.en
+    }
+    if (lowerMessage.includes('eligible') || lowerMessage.includes('योग्य')) {
+      return chatbotResponses.eligibility[lang] || chatbotResponses.eligibility.en
+    }
+    if (lowerMessage.includes('apply') || lowerMessage.includes('आवेदन')) {
+      return chatbotResponses.apply[lang] || chatbotResponses.apply.en
+    }
+    if (lowerMessage.includes('help') || lowerMessage.includes('मदद')) {
+      return chatbotResponses.help[lang] || chatbotResponses.help.en
+    }
+    
+    return chatbotResponses.default[lang] || chatbotResponses.default.en
+  }
+
+  function getQuickResponse(question) {
+    const lang = (typeof window.currentLanguage !== 'undefined' ? window.currentLanguage : null) || 
+                 localStorage.getItem('selectedLanguage') || 'en'
+    return chatbotResponses[question]?.[lang] || chatbotResponses[question]?.en || chatbotResponses.default[lang]
+  }
+
+  // Global send message function
+  window.chatbotSendMessage = function() {
+    console.log('chatbotSendMessage called')
+    
+    const input = document.getElementById('chatbot-input')
+    if (!input) {
+      console.error('chatbotInput not found!')
+      return
+    }
+    
+    const message = input.value.trim()
+    console.log('Message value:', message)
+    
+    if (!message) {
+      console.log('Empty message, returning')
+      return
+    }
+
+    addMessage(message, 'user')
+    input.value = ''
+
+    setTimeout(() => {
+      const response = getBotResponse(message)
+      addMessage(response, 'bot')
+    }, 500)
+  }
+
+  // Global quick question handler
+  window.handleQuickQuestion = function(question, questionText) {
+    console.log('handleQuickQuestion called:', question, questionText)
+    
+    addMessage(questionText, 'user')
+    
+    setTimeout(() => {
+      const response = getQuickResponse(question)
+      addMessage(response, 'bot')
+    }, 500)
+  }
+
   // Create global toggle function
   window.toggleChatbot = function() {
     console.log('🔔 toggleChatbot called!')
@@ -595,49 +697,15 @@ function initChatbot() {
     })
   }
 
-  // Send message
-  function sendMessage() {
-    console.log('sendMessage called')
-    console.log('chatbotInput exists:', !!chatbotInput)
-    console.log('chatbotMessages exists:', !!chatbotMessages)
-    
-    if (!chatbotInput) {
-      console.error('chatbotInput not found!')
-      return
-    }
-    
-    const message = chatbotInput.value.trim()
-    console.log('Message value:', message)
-    
-    if (!message) {
-      console.log('Empty message, returning')
-      return
-    }
-
-    // Add user message
-    addMessage(message, 'user')
-    chatbotInput.value = ''
-
-    // Get bot response
-    setTimeout(() => {
-      const response = getBotResponse(message)
-      addMessage(response, 'bot')
-    }, 500)
-  }
-
-  // Expose sendMessage globally for debugging
-  window.chatbotSendMessage = sendMessage
-
+  // Also add event listeners as backup
   if (chatbotSend) {
     console.log('Adding click listener to send button')
     chatbotSend.addEventListener('click', (e) => {
       e.preventDefault()
       e.stopPropagation()
       console.log('Send button clicked via event listener')
-      sendMessage()
+      window.chatbotSendMessage()
     })
-  } else {
-    console.error('chatbotSend button not found!')
   }
   
   if (chatbotInput) {
@@ -647,90 +715,19 @@ function initChatbot() {
       if (e.key === 'Enter') {
         e.preventDefault()
         console.log('Enter key detected')
-        sendMessage()
+        window.chatbotSendMessage()
       }
     })
-  } else {
-    console.error('chatbotInput element not found!')
   }
 
-  // Quick questions
+  // Quick questions backup
   quickQuestions.forEach(btn => {
     btn.addEventListener('click', () => {
       const question = btn.getAttribute('data-question')
       const questionText = btn.textContent
-      addMessage(questionText, 'user')
-      
-      setTimeout(() => {
-        const response = getQuickResponse(question)
-        addMessage(response, 'bot')
-      }, 500)
+      window.handleQuickQuestion(question, questionText)
     })
   })
-
-  function addMessage(text, type) {
-    console.log('addMessage called:', { text, type, messagesExists: !!chatbotMessages })
-    
-    if (!chatbotMessages) {
-      console.error('chatbotMessages element not found!')
-      return
-    }
-    
-    const messageDiv = document.createElement('div')
-    messageDiv.className = `chatbot-message ${type}-message`
-    
-    const avatar = document.createElement('div')
-    avatar.className = 'message-avatar'
-    avatar.textContent = type === 'bot' ? '🤖' : '👤'
-    
-    const content = document.createElement('div')
-    content.className = 'message-content'
-    const p = document.createElement('p')
-    p.textContent = text
-    p.style.whiteSpace = 'pre-line'
-    content.appendChild(p)
-    
-    messageDiv.appendChild(avatar)
-    messageDiv.appendChild(content)
-    chatbotMessages.appendChild(messageDiv)
-    
-    console.log('Message added to DOM')
-    
-    // Scroll to bottom
-    chatbotMessages.scrollTop = chatbotMessages.scrollHeight
-  }
-
-  function getBotResponse(message) {
-    // Get current language from localStorage or translations.js
-    const lang = (typeof window.currentLanguage !== 'undefined' ? window.currentLanguage : null) || 
-                 localStorage.getItem('selectedLanguage') || 'en'
-    console.log('Getting bot response in language:', lang)
-    
-    const lowerMessage = message.toLowerCase()
-    
-    // Check for keywords
-    if (lowerMessage.includes('scheme') || lowerMessage.includes('योजना')) {
-      return chatbotResponses.schemes[lang] || chatbotResponses.schemes.en
-    }
-    if (lowerMessage.includes('eligible') || lowerMessage.includes('योग्य')) {
-      return chatbotResponses.eligibility[lang] || chatbotResponses.eligibility.en
-    }
-    if (lowerMessage.includes('apply') || lowerMessage.includes('आवेदन')) {
-      return chatbotResponses.apply[lang] || chatbotResponses.apply.en
-    }
-    if (lowerMessage.includes('help') || lowerMessage.includes('मदद')) {
-      return chatbotResponses.help[lang] || chatbotResponses.help.en
-    }
-    
-    return chatbotResponses.default[lang] || chatbotResponses.default.en
-  }
-
-  function getQuickResponse(question) {
-    // Get current language from localStorage or translations.js
-    const lang = (typeof window.currentLanguage !== 'undefined' ? window.currentLanguage : null) || 
-                 localStorage.getItem('selectedLanguage') || 'en'
-    return chatbotResponses[question]?.[lang] || chatbotResponses[question]?.en || chatbotResponses.default[lang]
-  }
   
   console.log('✅ Chatbot initialized successfully!')
 }

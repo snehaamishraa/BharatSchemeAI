@@ -270,7 +270,7 @@
           <p class="chatbot-status" data-i18n="chatbot_status">Online • Here to help</p>
         </div>
       </div>
-      <button id="chatbot-close" class="chatbot-close">✕</button>
+      <button id="chatbot-close" class="chatbot-close" onclick="document.getElementById('chatbot-container').classList.remove('active')">✕</button>
     </div>
     
     <div id="chatbot-messages" class="chatbot-messages">
@@ -297,9 +297,9 @@
     </div>
     
     <div class="chatbot-quick-questions">
-      <button class="quick-question" data-question="schemes" data-i18n="quick_schemes">What schemes are available?</button>
-      <button class="quick-question" data-question="eligibility" data-i18n="quick_eligibility">How do I check eligibility?</button>
-      <button class="quick-question" data-question="apply" data-i18n="quick_apply">How to apply?</button>
+      <button class="quick-question" data-question="schemes" data-i18n="quick_schemes" onclick="window.handleQuickQuestion && window.handleQuickQuestion('schemes', this.textContent)">What schemes are available?</button>
+      <button class="quick-question" data-question="eligibility" data-i18n="quick_eligibility" onclick="window.handleQuickQuestion && window.handleQuickQuestion('eligibility', this.textContent)">How do I check eligibility?</button>
+      <button class="quick-question" data-question="apply" data-i18n="quick_apply" onclick="window.handleQuickQuestion && window.handleQuickQuestion('apply', this.textContent)">How to apply?</button>
     </div>
   </div>
 
