@@ -10,6 +10,7 @@ const translations = {
     'bharatscheme': 'BharatScheme',
     'tagline': 'Discover Government Schemes Tailored for Your Benefits',
     'auth_subtitle': 'Official Portal for Government Schemes',
+    'select_language': 'Select Language / भाषा चुनें:',
     'tab_login': 'Login',
     'tab_register': 'Register',
     'email': 'Email',
@@ -18,6 +19,10 @@ const translations = {
     'full_name': 'Full Name',
     'btn_login': 'Login',
     'btn_register': 'Register',
+    'btn_logout': 'Logout',
+    'audio_on': '🔊 Audio On',
+    'audio_off': '🔇 Audio Off',
+    'select_state': 'Select State',
     
     // App Page
     'your_details': '📋 Your Details',
@@ -61,6 +66,7 @@ const translations = {
     'bharatscheme': 'भारत स्कीम',
     'tagline': 'आपके लिए सरकारी योजनाएं खोजें',
     'auth_subtitle': 'सरकारी योजनाओं के लिए आधिकारिक पोर्टल',
+    'select_language': 'भाषा चुनें / Select Language:',
     'tab_login': 'लॉगिन',
     'tab_register': 'पंजीकरण',
     'email': 'ईमेल',
@@ -69,6 +75,10 @@ const translations = {
     'full_name': 'पूरा नाम',
     'btn_login': 'लॉगिन',
     'btn_register': 'पंजीकरण',
+    'btn_logout': 'लॉगआउट',
+    'audio_on': '🔊 ऑडियो चालू',
+    'audio_off': '🔇 ऑडियो बंद',
+    'select_state': 'राज्य चुनें',
     
     'your_details': '📋 आपका विवरण',
     'state': 'राज्य',

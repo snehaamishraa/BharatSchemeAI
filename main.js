@@ -250,6 +250,7 @@ tabLogin.addEventListener('click', () => {
   loginForm.style.display = 'block'
   registerForm.style.display = 'none'
   authMessage.textContent = ''
+  updatePageTranslations()
 })
 
 tabRegister.addEventListener('click', () => {
@@ -258,6 +259,7 @@ tabRegister.addEventListener('click', () => {
   registerForm.style.display = 'block'
   loginForm.style.display = 'none'
   authMessage.textContent = ''
+  updatePageTranslations()
 })
 
 // Get users from localStorage
@@ -389,6 +391,9 @@ function showAppPage() {
     const { name, email } = JSON.parse(user)
     userName.textContent = `👤 ${name}`
     loadProfileData()
+    
+    // Call translation update for app page
+    updatePageTranslations()
     
     // Check if profile is saved, if yes show schemes
     const saved = localStorage.getItem('userProfile')

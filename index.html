@@ -134,8 +134,8 @@
           <option value="gu">🇮🇳 ગુજરાતી</option>
           <option value="bn">🇮🇳 বাংলা</option>
         </select>
-        <button id="audio-toggle-btn" class="btn-audio-toggle" title="Toggle Audio">🔊 Audio On</button>
-        <button id="logout-btn" class="btn-logout">Logout</button>
+        <button id="audio-toggle-btn" class="btn-audio-toggle" title="Toggle Audio" data-i18n="audio_on">🔊 Audio On</button>
+        <button id="logout-btn" class="btn-logout" data-i18n="btn_logout">Logout</button>
       </div>
     </header>
 
@@ -143,12 +143,12 @@
     <main class="app-main">
       <!-- Profile Section -->
       <section class="section profile-section">
-        <h2 class="section-title">📋 Your Details</h2>
+        <h2 class="section-title" data-i18n="your_details">📋 Your Details</h2>
         <form id="profile-form" class="form">
           <div class="form-group">
-            <label for="state">State</label>
+            <label for="state" data-i18n="state">State</label>
             <select id="state" required>
-              <option value="">Select state</option>
+              <option value="" data-i18n="select_state">Select state</option>
               <!-- Union Territories -->
               <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
               <option value="Chandigarh">Chandigarh</option>
