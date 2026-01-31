@@ -1,19 +1,24 @@
 // Simple Login/Register System (No Clerk)
 
-const authContainer = document.getElementById('auth-container')
-const appContainer = document.getElementById('app-container')
-const tabLogin = document.getElementById('tab-login')
-const tabRegister = document.getElementById('tab-register')
-const loginForm = document.getElementById('login-form')
-const registerForm = document.getElementById('register-form')
-const logoutBtn = document.getElementById('logout-btn')
-const profileForm = document.getElementById('profile-form')
-const authMessage = document.getElementById('auth-message')
-const userName = document.getElementById('user-name')
-const resultsList = document.getElementById('results-list')
-const resultsSection = document.getElementById('results-section')
-const nationalAnthem = document.getElementById('national-anthem')
-const audioToggleBtn = document.getElementById('audio-toggle-btn')
+let authContainer, appContainer, tabLogin, tabRegister, loginForm, registerForm, logoutBtn, profileForm, authMessage, userName, resultsList, resultsSection, nationalAnthem, audioToggleBtn
+
+// Initialize DOM elements
+function initializeDOMElements() {
+  authContainer = document.getElementById('auth-container')
+  appContainer = document.getElementById('app-container')
+  tabLogin = document.getElementById('tab-login')
+  tabRegister = document.getElementById('tab-register')
+  loginForm = document.getElementById('login-form')
+  registerForm = document.getElementById('register-form')
+  logoutBtn = document.getElementById('logout-btn')
+  profileForm = document.getElementById('profile-form')
+  authMessage = document.getElementById('auth-message')
+  userName = document.getElementById('user-name')
+  resultsList = document.getElementById('results-list')
+  resultsSection = document.getElementById('results-section')
+  nationalAnthem = document.getElementById('national-anthem')
+  audioToggleBtn = document.getElementById('audio-toggle-btn')
+}
 
 let allSchemes = []
 let audioEnabled = true
@@ -70,14 +75,16 @@ function playNationalAnthem() {
 // Load schemes from JSON
 async function loadSchemes() {
   try {
-    const response = await fetch('schemes.json')
+    const response = await fetch('/schemes.json')
     const data = await response.json()
     allSchemes = data.schemes || []
     console.log('Loaded schemes:', allSchemes.length)
     filterAndDisplaySchemes()
   } catch (error) {
     console.error('Error loading schemes:', error)
-    resultsList.innerHTML = '<p>Error loading schemes</p>'
+    if (resultsList) {
+      resultsList.innerHTML = '<p>Error loading schemes</p>'
+    }
   }
 }
 
@@ -247,23 +254,24 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 
 // Tab switching
-tabLogin.addEventListener('click', () => {
-  tabLogin.classList.add('active')
-  tabRegister.classList.remove('active')
-  loginForm.style.display = 'block'
-  registerForm.style.display = 'none'
-  authMessage.textContent = ''
-  updatePageTranslations()
-})
+function setupEventListeners() {
+  tabLogin.addEventListener('click', () => {
+    tabLogin.classList.add('active')
+    tabRegister.classList.remove('active')
+    loginForm.style.display = 'block'
+    registerForm.style.display = 'none'
+    authMessage.textContent = ''
+    updatePageTranslations()
+  })
 
-tabRegister.addEventListener('click', () => {
-  tabRegister.classList.add('active')
-  tabLogin.classList.remove('active')
-  registerForm.style.display = 'block'
-  loginForm.style.display = 'none'
-  authMessage.textContent = ''
-  updatePageTranslations()
-})
+  tabRegister.addEventListener('click', () => {
+    tabRegister.classList.add('active')
+    tabLogin.classList.remove('active')
+    registerForm.style.display = 'block'
+    loginForm.style.display = 'none'
+    authMessage.textContent = ''
+    updatePageTranslations()
+  })
 
 // Get users from localStorage
 function getUsers() {
@@ -292,88 +300,114 @@ function clearCurrentUser() {
 }
 
 // Login Form
-loginForm.addEventListener('submit', (e) => {
-  e.preventDefault()
-  const email = document.getElementById('login-email').value
-  const password = document.getElementById('login-password').value
+  loginForm.addEventListener('submit', (e) => {
+    e.preventDefault()
+    const email = document.getElementById('login-email').value
+    const password = document.getElementById('login-password').value
 
-  const users = getUsers()
-  const user = users.find(u => u.email === email && u.password === password)
+    const users = getUsers()
+    const user = users.find(u => u.email === email && u.password === password)
 
-  if (user) {
-    setCurrentUser(email, user.name)
+    if (user) {
+      setCurrentUser(email, user.name)
+      playNationalAnthem()
+      showAppPage()
+      loginForm.reset()
+    } else {
+      authMessage.textContent = '❌ Invalid email or password'
+      authMessage.style.color = '#ff6b6b'
+    }
+  })
+
+  // Register Form
+  registerForm.addEventListener('submit', (e) => {
+    e.preventDefault()
+    const name = document.getElementById('register-name').value
+    const email = document.getElementById('register-email').value
+    const password = document.getElementById('register-password').value
+    const confirm = document.getElementById('register-confirm').value
+
+    if (password !== confirm) {
+      authMessage.textContent = '❌ Passwords do not match'
+      authMessage.style.color = '#ff6b6b'
+      return
+    }
+
+    const users = getUsers()
+    const existingUser = users.find(u => u.email === email)
+
+    if (existingUser) {
+      authMessage.textContent = '❌ Email already registered'
+      authMessage.style.color = '#ff6b6b'
+      return
+    }
+
+    users.push({ name, email, password })
+    saveUsers(users)
+    authMessage.textContent = '✅ Registration successful! Please login.'
+    authMessage.style.color = '#4ecdc4'
     playNationalAnthem()
-    showAppPage()
-    loginForm.reset()
-  } else {
-    authMessage.textContent = '❌ Invalid email or password'
-    authMessage.style.color = '#ff6b6b'
-  }
-})
 
-// Register Form
-registerForm.addEventListener('submit', (e) => {
-  e.preventDefault()
-  const name = document.getElementById('register-name').value
-  const email = document.getElementById('register-email').value
-  const password = document.getElementById('register-password').value
-  const confirm = document.getElementById('register-confirm').value
+    setTimeout(() => {
+      tabLogin.click()
+      registerForm.reset()
+    }, 1500)
+  })
 
-  if (password !== confirm) {
-    authMessage.textContent = '❌ Passwords do not match'
-    authMessage.style.color = '#ff6b6b'
-    return
-  }
+  // Audio Toggle Button
+  audioToggleBtn.addEventListener('click', () => {
+    if (audioEnabled) {
+      // Turn off audio
+      if (nationalAnthem) {
+        nationalAnthem.pause()
+      }
+      audioEnabled = false
+      audioToggleBtn.textContent = '🔇 Audio Off'
+      audioToggleBtn.classList.add('muted')
+    } else {
+      // Turn on audio
+      audioEnabled = true
+      audioToggleBtn.textContent = '🔊 Audio On'
+      audioToggleBtn.classList.remove('muted')
+    }
+  })
 
-  const users = getUsers()
-  const existingUser = users.find(u => u.email === email)
-
-  if (existingUser) {
-    authMessage.textContent = '❌ Email already registered'
-    authMessage.style.color = '#ff6b6b'
-    return
-  }
-
-  users.push({ name, email, password })
-  saveUsers(users)
-  authMessage.textContent = '✅ Registration successful! Please login.'
-  authMessage.style.color = '#4ecdc4'
-  playNationalAnthem()
-
-  setTimeout(() => {
-    tabLogin.click()
-    registerForm.reset()
-  }, 1500)
-})
-
-// Audio Toggle Button
-audioToggleBtn.addEventListener('click', () => {
-  if (audioEnabled) {
-    // Turn off audio
+  // Logout
+  logoutBtn.addEventListener('click', () => {
+    clearCurrentUser()
+    showAuthPage()
+    // Stop anthem if playing
     if (nationalAnthem) {
       nationalAnthem.pause()
+      nationalAnthem.currentTime = 0
     }
-    audioEnabled = false
-    audioToggleBtn.textContent = '🔇 Audio Off'
-    audioToggleBtn.classList.add('muted')
-  } else {
-    // Turn on audio
-    audioEnabled = true
-    audioToggleBtn.textContent = '🔊 Audio On'
-    audioToggleBtn.classList.remove('muted')
-  }
-})
+  })
 
-// Logout
-logoutBtn.addEventListener('click', () => {
-  clearCurrentUser()
-  showAuthPage()
-  // Stop anthem if playing
-  if (nationalAnthem) {
-    nationalAnthem.pause()
-    nationalAnthem.currentTime = 0
-  }
-})
+  // Profile form submit
+  profileForm.addEventListener('submit', (e) => {
+    e.preventDefault()
+    const profile = {
+      state: document.getElementById('state').value,
+      age: document.getElementById('age').value,
+      occupation: document.getElementById('occupation').value,
+      gender: document.getElementById('gender').value
+    }
+    localStorage.setItem('userProfile', JSON.stringify(profile))
+    alert('✅ Profile saved! Showing schemes for you...')
+    
+    // Show schemes after profile is saved
+    resultsSection.style.display = 'block'
+    loadSchemes()  // Load schemes from JSON, then filter
+  })
+
+  // Enable audio on any user interaction
+  document.addEventListener('click', () => {
+    if (nationalAnthem && nationalAnthem.paused && nationalAnthem.currentTime === 0) {
+      // Try to play if it was blocked
+      nationalAnthem.play().catch(() => {})
+    }
+  })
+}
 
 // Show Auth Page
 function showAuthPage() {
@@ -421,23 +455,6 @@ function loadProfileData() {
   }
 }
 
-// Profile form submit
-profileForm.addEventListener('submit', (e) => {
-  e.preventDefault()
-  const profile = {
-    state: document.getElementById('state').value,
-    age: document.getElementById('age').value,
-    occupation: document.getElementById('occupation').value,
-    gender: document.getElementById('gender').value
-  }
-  localStorage.setItem('userProfile', JSON.stringify(profile))
-  alert('✅ Profile saved! Showing schemes for you...')
-  
-  // Show schemes after profile is saved
-  resultsSection.style.display = 'block'
-  loadSchemes()  // Load schemes from JSON, then filter
-})
-
 // Check if user is already logged in
 function checkLogin() {
   const user = getCurrentUser()
@@ -448,14 +465,6 @@ function checkLogin() {
   }
 }
 
-// Enable audio on any user interaction
-document.addEventListener('click', () => {
-  if (nationalAnthem && nationalAnthem.paused && nationalAnthem.currentTime === 0) {
-    // Try to play if it was blocked
-    nationalAnthem.play().catch(() => {})
-  }
-})
-
 // Refresh schemes display (called when language changes)
 window.refreshSchemesDisplay = function() {
   if (resultsSection && resultsSection.style.display !== 'none' && allSchemes.length > 0) {
@@ -464,7 +473,11 @@ window.refreshSchemesDisplay = function() {
 }
 
 // Initialize on page load
-checkLogin()
+document.addEventListener('DOMContentLoaded', () => {
+  initializeDOMElements()
+  setupEventListeners()
+  checkLogin()
+})
 
 
 
