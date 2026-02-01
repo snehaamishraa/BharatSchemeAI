@@ -279,7 +279,7 @@ body::after {
   font-size: 22px;
   font-weight: 700;
   color: var(--gov-green);
-  font-family: 'Noto Sans Devanagari', sans-serif;
+  font-family: 'Times New Roman', Times, serif;
   margin: 0;
   letter-spacing: 0.8px;
 }
@@ -834,7 +834,7 @@ body.dark-mode .user-name {
   letter-spacing: 0.5px;
   box-shadow: 0 2px 8px rgba(255, 153, 51, 0.2);
   margin-right: 10px;
-  font-family: 'Noto Sans Devanagari', 'Inter', sans-serif;
+  font-family: 'Times New Roman', Times, serif;
 }
 
 .language-selector:hover {
