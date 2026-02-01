@@ -7,7 +7,7 @@ const translations = {
     'ministry_text': 'Ministry of Government Affairs',
     'bharatscheme': 'BharatScheme.AI',
     'tagline': 'Discover Government Schemes Tailored for Your Benefits',
-    'auth_subtitle': 'Informational portal for government schemes (not an official government website)',
+    'auth_subtitle': 'Your guide to explore government schemes',
     'official_portal': '🏛️ Official Government Portal',
     
     // Language & Auth
