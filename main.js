@@ -425,7 +425,11 @@ function clearCurrentUser() {
     localStorage.setItem('userProfile', JSON.stringify(profile))
     alert('✅ Profile saved! Showing schemes for you...')
     
-    // Show schemes after profile is saved
+    // Hide profile section and show only schemes on next "page"
+    const profileSection = document.querySelector('.profile-section')
+    if (profileSection) {
+      profileSection.style.display = 'none'
+    }
     if (resultsSection) {
       resultsSection.style.display = 'block'
     }
@@ -464,17 +468,27 @@ function showAppPage() {
     // Call translation update for app page
     updatePageTranslations()
     
-    // Always show schemes section after login
-    resultsSection.style.display = 'block'
-    
-    // Load all schemes by default (no filtering until profile is saved)
+    // Check if profile is saved
     const saved = localStorage.getItem('userProfile')
+    const profileSection = document.querySelector('.profile-section')
+    
     if (saved) {
-      // If profile exists, filter schemes by criteria
+      // Profile exists - show schemes only
+      if (profileSection) {
+        profileSection.style.display = 'none'
+      }
+      if (resultsSection) {
+        resultsSection.style.display = 'block'
+      }
       loadSchemes()
     } else {
-      // Show all schemes if no profile saved yet
-      displaySchemes(allSchemes)
+      // No profile yet - show profile form
+      if (profileSection) {
+        profileSection.style.display = 'block'
+      }
+      if (resultsSection) {
+        resultsSection.style.display = 'none'
+      }
     }
   }
 }
