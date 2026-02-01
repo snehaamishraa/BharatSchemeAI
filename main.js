@@ -904,6 +904,29 @@ window.goToSchemes = function() {
   loadSchemes()
 }
 
+// Back to dashboard from schemes
+window.backToDashboard = function() {
+  const dashboardSection = document.getElementById('dashboard-section')
+  if (dashboardSection) {
+    dashboardSection.style.display = 'block'
+  }
+  if (resultsSection) {
+    resultsSection.style.display = 'none'
+  }
+}
+
+// Back to profile from dashboard
+window.backToProfile = function() {
+  const profileSection = document.querySelector('.profile-section')
+  const dashboardSection = document.getElementById('dashboard-section')
+  if (profileSection) {
+    profileSection.style.display = 'block'
+  }
+  if (dashboardSection) {
+    dashboardSection.style.display = 'none'
+  }
+}
+
 
 
 

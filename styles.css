@@ -955,6 +955,36 @@ body.dark-mode .section-title {
   box-shadow: 0 4px 8px rgba(255, 153, 51, 0.15);
 }
 
+.btn-secondary {
+  background: var(--card-bg);
+  border: 2px solid var(--border-color);
+  color: var(--text-primary);
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+  border-color: var(--gov-saffron);
+  color: var(--gov-saffron);
+  background: rgba(255, 153, 51, 0.05);
+}
+
+body.dark-mode .btn-secondary {
+  background: var(--bg-tertiary);
+  border-color: var(--border-color);
+  color: var(--text-color);
+}
+
+body.dark-mode .btn-secondary:hover {
+  border-color: var(--gov-saffron);
+  color: var(--gov-saffron);
+  background: rgba(255, 153, 51, 0.1);
+}
+
 .btn-block {
   width: 100%;
   background: linear-gradient(135deg, var(--gov-saffron) 0%, #ff8a00 100%);

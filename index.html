@@ -271,7 +271,10 @@
 
       <!-- Dashboard Section -->
       <section class="section dashboard-section" id="dashboard-section" style="display: none;">
-        <h2 class="section-title" data-i18n="your_profile">👤 Your Profile Summary</h2>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+          <h2 class="section-title" data-i18n="your_profile">👤 Your Profile Summary</h2>
+          <button class="btn btn-secondary" onclick="backToProfile()" style="padding: 8px 16px; font-size: 14px;">← Back</button>
+        </div>
         
         <!-- Profile Cards Grid -->
         <div class="profile-cards-grid">
@@ -320,7 +323,10 @@
 
       <!-- Results Section -->
       <section class="section results-section" id="results-section" style="display: none;">
-        <h2 class="section-title" data-i18n="available_schemes">📊 Available Schemes for You</h2>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+          <h2 class="section-title" data-i18n="available_schemes">📊 Available Schemes for You</h2>
+          <button class="btn btn-secondary" onclick="backToDashboard()" style="padding: 8px 16px; font-size: 14px;">← Back</button>
+        </div>
         <p style="color: #b0b5c1; margin-bottom: 20px; font-size: 14px;">Click on any scheme to see full details</p>
         
         <!-- Category Tabs -->
