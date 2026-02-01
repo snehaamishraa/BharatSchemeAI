@@ -761,7 +761,6 @@ const stateTranslations = {
     'Uttar Pradesh': 'उत्तर प्रदेश',
     'Uttarakhand': 'उत्तराखंड',
     'West Bengal': 'पश्चिम बंगाल',
-    // Union Territories
     'Andaman and Nicobar Islands': 'अंडमान और निकोबार द्वीप समूह',
     'Chandigarh': 'चंडीगढ़',
     'Dadra and Nagar Haveli and Daman and Diu': 'दादरा और नगर हवेली और दमन और दीव',
@@ -771,6 +770,121 @@ const stateTranslations = {
     'Ladakh': 'लद्दाख',
     'Jammu and Kashmir': 'जम्मू और कश्मीर',
     'Select State': 'राज्य चुनें'
+  },
+  'ta': {
+    'Andhra Pradesh': 'ஆந்திரப் பிரதேசம்',
+    'Arunachal Pradesh': 'அருணாச்சல பிரதேசம்',
+    'Assam': 'அசாம்',
+    'Bihar': 'பீகார்',
+    'Chhattisgarh': 'சத்தீஸ்கர்',
+    'Goa': 'கோவா',
+    'Gujarat': 'குஜராத்',
+    'Haryana': 'ஹரியானா',
+    'Himachal Pradesh': 'இமாசலப் பிரதேசம்',
+    'Jharkhand': 'ஜார்கண்ட்',
+    'Karnataka': 'கர்நாடகா',
+    'Kerala': 'கேரளா',
+    'Madhya Pradesh': 'மத்தியப் பிரதேசம்',
+    'Maharashtra': 'மகாராஷ்டிரா',
+    'Manipur': 'மணிப்பூர்',
+    'Meghalaya': 'மேகாலயா',
+    'Mizoram': 'மிசோரம்',
+    'Nagaland': 'நாகாலாந்து',
+    'Odisha': 'ஒடிசா',
+    'Punjab': 'பஞ்சாப்',
+    'Rajasthan': 'ராஜஸ்தான்',
+    'Sikkim': 'சிக்கிம்',
+    'Tamil Nadu': 'தமிழ்நாடு',
+    'Telangana': 'தெலுங்கானா',
+    'Tripura': 'திரிபுரா',
+    'Uttar Pradesh': 'உத்தரப் பிரதேசம்',
+    'Uttarakhand': 'உத்தரகண்ட்',
+    'West Bengal': 'மேற்கு வங்காளம்',
+    'Delhi': 'டெல்லி',
+    'Puducherry': 'புதுச்சேரி',
+    'Select State': 'மாநிலத்தைத் தேர்ந்தெடுக்கவும்'
+  },
+  'te': {
+    'Andhra Pradesh': 'ఆంధ్ర ప్రదేశ్',
+    'Arunachal Pradesh': 'అరుణాచల్ ప్రదేశ్',
+    'Assam': 'అస్సాం',
+    'Bihar': 'బీహార్',
+    'Chhattisgarh': 'ఛత్తీస్‌గఢ్',
+    'Goa': 'గోవా',
+    'Gujarat': 'గుజరాత్',
+    'Haryana': 'హర్యానా',
+    'Himachal Pradesh': 'హిమాచల్ ప్రదేశ్',
+    'Jharkhand': 'జార్ఖండ్',
+    'Karnataka': 'కర్ణాటక',
+    'Kerala': 'కేరళ',
+    'Madhya Pradesh': 'మధ్య ప్రదేశ్',
+    'Maharashtra': 'మహారాష్ట్ర',
+    'Manipur': 'మణిపూర్',
+    'Meghalaya': 'మేఘాలయ',
+    'Mizoram': 'మిజోరం',
+    'Nagaland': 'నాగాలాండ్',
+    'Odisha': 'ఒడిశా',
+    'Punjab': 'పంజాబ్',
+    'Rajasthan': 'రాజస్థాన్',
+    'Sikkim': 'సిక్కిం',
+    'Tamil Nadu': 'తమిళనాడు',
+    'Telangana': 'తెలంగాణ',
+    'Tripura': 'త్రిపుర',
+    'Uttar Pradesh': 'ఉత్తర ప్రదేశ్',
+    'Uttarakhand': 'ఉత్తరాఖండ్',
+    'West Bengal': 'పశ్చిమ బెంగాల్',
+    'Delhi': 'ఢిల్లీ',
+    'Select State': 'రాష్ట్రాన్ని ఎంచుకోండి'
+  },
+  'kn': {
+    'Andhra Pradesh': 'ಆಂಧ್ರ ಪ್ರದೇಶ',
+    'Karnataka': 'ಕರ್ನಾಟಕ',
+    'Kerala': 'ಕೇರಳ',
+    'Tamil Nadu': 'ತಮಿಳುನಾಡು',
+    'Telangana': 'ತೆಲಂಗಾಣ',
+    'Maharashtra': 'ಮಹಾರಾಷ್ಟ್ರ',
+    'Goa': 'ಗೋವಾ',
+    'Gujarat': 'ಗುಜರಾತ್',
+    'Delhi': 'ದೆಹಲಿ',
+    'Select State': 'ರಾಜ್ಯವನ್ನು ಆಯ್ಕೆಮಾಡಿ'
+  },
+  'ml': {
+    'Andhra Pradesh': 'ആന്ധ്രാപ്രദേശ്',
+    'Karnataka': 'കർണാടക',
+    'Kerala': 'കേരളം',
+    'Tamil Nadu': 'തമിഴ്‌നാട്',
+    'Telangana': 'തെലങ്കാന',
+    'Maharashtra': 'മഹാരാഷ്ട്ര',
+    'Delhi': 'ഡൽഹി',
+    'Select State': 'സംസ്ഥാനം തിരഞ്ഞെടുക്കുക'
+  },
+  'mr': {
+    'Andhra Pradesh': 'आंध्र प्रदेश',
+    'Maharashtra': 'महाराष्ट्र',
+    'Karnataka': 'कर्नाटक',
+    'Gujarat': 'गुजरात',
+    'Goa': 'गोवा',
+    'Madhya Pradesh': 'मध्य प्रदेश',
+    'Delhi': 'दिल्ली',
+    'Select State': 'राज्य निवडा'
+  },
+  'gu': {
+    'Gujarat': 'ગુજરાત',
+    'Maharashtra': 'મહારાષ્ટ્ર',
+    'Rajasthan': 'રાજસ્થાન',
+    'Madhya Pradesh': 'મધ્ય પ્રદેશ',
+    'Delhi': 'દિલ્હી',
+    'Select State': 'રાજ્ય પસંદ કરો'
+  },
+  'bn': {
+    'West Bengal': 'পশ্চিমবঙ্গ',
+    'Assam': 'আসাম',
+    'Bihar': 'বিহার',
+    'Odisha': 'ওড়িশা',
+    'Jharkhand': 'ঝাড়খণ্ড',
+    'Tripura': 'ত্রিপুরা',
+    'Delhi': 'দিল্লি',
+    'Select State': 'রাজ্য নির্বাচন করুন'
   }
 }
 
@@ -783,6 +897,62 @@ const categoryTranslations = {
     'education': 'शिक्षा',
     'women': 'महिला',
     'General': 'सामान्य'
+  },
+  'ta': {
+    'farmer': 'விவசாயி',
+    'pension': 'ஓய்வூதியம்',
+    'health': 'சுகாதாரம்',
+    'education': 'கல்வி',
+    'women': 'பெண்கள்',
+    'General': 'பொதுவான'
+  },
+  'te': {
+    'farmer': 'రైతు',
+    'pension': 'పెన్షన్',
+    'health': 'ఆరోగ్యం',
+    'education': 'విద్య',
+    'women': 'మహిళలు',
+    'General': 'సాధారణ'
+  },
+  'kn': {
+    'farmer': 'ರೈತ',
+    'pension': 'ಪಿಂಚಣಿ',
+    'health': 'ಆರೋಗ್ಯ',
+    'education': 'ಶಿಕ್ಷಣ',
+    'women': 'ಮಹಿಳೆಯರು',
+    'General': 'ಸಾಮಾನ್ಯ'
+  },
+  'ml': {
+    'farmer': 'കർഷകൻ',
+    'pension': 'പെൻഷൻ',
+    'health': 'ആരോഗ്യം',
+    'education': 'വിദ്യാഭ്യാസം',
+    'women': 'സ്ത്രീകൾ',
+    'General': 'പൊതുവായ'
+  },
+  'mr': {
+    'farmer': 'शेतकरी',
+    'pension': 'निवृत्तीवेतन',
+    'health': 'आरोग्य',
+    'education': 'शिक्षण',
+    'women': 'महिला',
+    'General': 'सामान्य'
+  },
+  'gu': {
+    'farmer': 'ખેડૂત',
+    'pension': 'પેન્શન',
+    'health': 'આરોગ્ય',
+    'education': 'શિક્ષણ',
+    'women': 'મહિલા',
+    'General': 'સામાન્ય'
+  },
+  'bn': {
+    'farmer': 'কৃষক',
+    'pension': 'পেনশন',
+    'health': 'স্বাস্থ্য',
+    'education': 'শিক্ষা',
+    'women': 'মহিলা',
+    'General': 'সাধারণ'
   }
 }
 
@@ -797,6 +967,51 @@ const schemeNameTranslations = {
     'Pradhan Mantri Awas Yojana': 'प्रधानमंत्री आवास योजना',
     'Sukanya Samriddhi Yojana': 'सुकन्या समृद्धि योजना',
     'Pradhan Mantri Mudra Yojana': 'प्रधानमंत्री मुद्रा योजना'
+  },
+  'ta': {
+    'PM-Kisan Samman Nidhi': 'பிரதமர் கிசான் சம்மான் நிதி',
+    'Atal Pension Yojana': 'அடல் ஓய்வூதிய திட்டம்',
+    'Ayushman Bharat Pradhan Mantri Jan Arogya Yojana': 'ஆயுஷ்மான் பாரத் பிரதமர் ஜன் ஆரோக்ய திட்டம்',
+    'PM Vidya Lakshmi': 'பிரதமர் வித்யா லக்ஷ்மி',
+    'Sukanya Samriddhi Yojana': 'சுகன்யா சம்ரித்தி திட்டம்',
+    'Pradhan Mantri Mudra Yojana': 'பிரதமர் முத்ரா திட்டம்'
+  },
+  'te': {
+    'PM-Kisan Samman Nidhi': 'ప్రధాన మంత్రి కిసాన్ సమ్మాన్ నిధి',
+    'Atal Pension Yojana': 'అటల్ పెన్షన్ యోజన',
+    'Ayushman Bharat Pradhan Mantri Jan Arogya Yojana': 'ఆయుష్మాన్ భారత్ ప్రధాన మంత్రి జన్ ఆరోగ్య యోజన',
+    'PM Vidya Lakshmi': 'ప్రధాన మంత్రి విద్యా లక్ష్మి',
+    'Sukanya Samriddhi Yojana': 'సుకన్య సమృద్ధి యోజన'
+  },
+  'kn': {
+    'PM-Kisan Samman Nidhi': 'ಪ್ರಧಾನ ಮಂತ್ರಿ ಕಿಸಾನ್ ಸಮ್ಮಾನ್ ನಿಧಿ',
+    'Atal Pension Yojana': 'ಅಟಲ್ ಪಿಂಚಣಿ ಯೋಜನೆ',
+    'Ayushman Bharat Pradhan Mantri Jan Arogya Yojana': 'ಆಯುಷ್ಮಾನ್ ಭಾರತ್ ಪ್ರಧಾನ ಮಂತ್ರಿ ಜನ್ ಆರೋಗ್ಯ ಯೋಜನೆ',
+    'Sukanya Samriddhi Yojana': 'ಸುಕನ್ಯಾ ಸಮೃದ್ಧಿ ಯೋಜನೆ'
+  },
+  'ml': {
+    'PM-Kisan Samman Nidhi': 'പ്രധാനമന്ത്രി കിസാൻ സമ്മാൻ നിധി',
+    'Atal Pension Yojana': 'അടൽ പെൻഷൻ യോജന',
+    'Ayushman Bharat Pradhan Mantri Jan Arogya Yojana': 'ആയുഷ്മാൻ ഭാരത് പ്രധാനമന്ത്രി ജൻ ആരോഗ്യ യോജന',
+    'Sukanya Samriddhi Yojana': 'സുകന്യ സമൃദ്ധി യോജന'
+  },
+  'mr': {
+    'PM-Kisan Samman Nidhi': 'पंतप्रधान किसान सन्मान निधी',
+    'Atal Pension Yojana': 'अटल पेन्शन योजना',
+    'Ayushman Bharat Pradhan Mantri Jan Arogya Yojana': 'आयुष्मान भारत पंतप्रधान जन आरोग्य योजना',
+    'Sukanya Samriddhi Yojana': 'सुकन्या समृद्धी योजना'
+  },
+  'gu': {
+    'PM-Kisan Samman Nidhi': 'પ્રધાનમંત્રી કિસાન સન્માન નિધિ',
+    'Atal Pension Yojana': 'અટલ પેન્શન યોજના',
+    'Ayushman Bharat Pradhan Mantri Jan Arogya Yojana': 'આયુષ્માન ભારત પ્રધાનમંત્રી જન આરોગ્ય યોજના',
+    'Sukanya Samriddhi Yojana': 'સુકન્યા સમૃદ્ધિ યોજના'
+  },
+  'bn': {
+    'PM-Kisan Samman Nidhi': 'প্রধানমন্ত্রী কিষাণ সম্মান নিধি',
+    'Atal Pension Yojana': 'অটল পেনশন যোজনা',
+    'Ayushman Bharat Pradhan Mantri Jan Arogya Yojana': 'আয়ুষ্মান ভারত প্রধানমন্ত্রী জন আরোগ্য যোজনা',
+    'Sukanya Samriddhi Yojana': 'সুকন্যা সমৃদ্ধি যোজনা'
   }
 }
 

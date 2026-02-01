@@ -214,8 +214,19 @@ function displayCategoryTabs(schemes) {
   const categories = [...new Set(schemes.map(s => s.category))].sort()
   const currentLang = typeof window.getCurrentLanguage === 'function' ? window.getCurrentLanguage() : 'en'
   
-  // Create "All" tab
-  const allText = currentLang === 'hi' ? 'सभी' : 'All'
+  // Create "All" tab with translation
+  const allTextMap = {
+    'en': 'All',
+    'hi': 'सभी',
+    'ta': 'அனைத்தும்',
+    'te': 'అన్నీ',
+    'kn': 'ಎಲ್ಲಾ',
+    'ml': 'എല്ലാം',
+    'mr': 'सर्व',
+    'gu': 'બધા',
+    'bn': 'সব'
+  }
+  const allText = allTextMap[currentLang] || 'All'
   let tabsHTML = `<button class="category-tab active" onclick="filterByCategory(null, event)">${allText} (${schemes.length})</button>`
   
   // Add category tabs with count
