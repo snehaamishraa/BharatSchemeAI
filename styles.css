@@ -1058,6 +1058,51 @@ body.dark-mode .scheme-card:hover {
   line-height: 1.5;
 }
 
+/* Category Tabs */
+.category-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.category-tab {
+  padding: 10px 16px;
+  border: 2px solid var(--border-color);
+  background: var(--card-bg);
+  color: var(--text-primary);
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 13px;
+  text-transform: capitalize;
+  transition: all 0.3s ease;
+}
+
+.category-tab:hover {
+  border-color: var(--gov-saffron);
+  color: var(--gov-saffron);
+}
+
+.category-tab.active {
+  background: var(--gov-saffron);
+  color: white;
+  border-color: var(--gov-saffron);
+  box-shadow: 0 2px 8px rgba(255, 153, 51, 0.3);
+}
+
+body.dark-mode .category-tab {
+  background: var(--bg-tertiary);
+  color: var(--text-color);
+  border-color: var(--border-color);
+}
+
+body.dark-mode .category-tab.active {
+  background: var(--gov-saffron);
+  color: #000;
+  border-color: var(--gov-saffron);
+}
+
 .scheme-category {
   display: inline-block;
   background: linear-gradient(135deg, rgba(255, 153, 51, 0.1) 0%, rgba(19, 136, 8, 0.1) 100%);

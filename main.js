@@ -175,6 +175,75 @@ function displaySchemes(schemes) {
     return
   }
 
+  // Display category tabs
+  displayCategoryTabs(schemes)
+
+  const readMoreText = typeof t === 'function' ? t('read_more') : 'Read More →'
+  
+  resultsList.innerHTML = schemes.map(scheme => `
+    <div class="scheme-card" onclick="viewScheme('${scheme.id}')">
+      <div class="scheme-name">${scheme.name}</div>
+      <div class="scheme-desc">${scheme.description}</div>
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 12px;">
+        <span class="scheme-category">${scheme.category || 'General'}</span>
+        <span style="color: #ff9933; font-weight: 600; cursor: pointer; font-size: 14px;">${readMoreText}</span>
+      </div>
+    </div>
+  `).join('')
+}
+
+// Display category tabs
+function displayCategoryTabs(schemes) {
+  const categoryTabs = document.getElementById('category-tabs')
+  if (!categoryTabs) return
+  
+  // Get unique categories
+  const categories = [...new Set(schemes.map(s => s.category))].sort()
+  
+  // Create "All" tab
+  let tabsHTML = `<button class="category-tab active" onclick="filterByCategory(null, event)">All (${schemes.length})</button>`
+  
+  // Add category tabs with count
+  categories.forEach(category => {
+    const count = schemes.filter(s => s.category === category).length
+    tabsHTML += `<button class="category-tab" onclick="filterByCategory('${category}', event)">${category} (${count})</button>`
+  })
+  
+  categoryTabs.innerHTML = tabsHTML
+}
+
+// Filter schemes by category
+window.filterByCategory = function(category, event) {
+  event.preventDefault()
+  
+  // Update active tab
+  document.querySelectorAll('.category-tab').forEach(tab => {
+    tab.classList.remove('active')
+  })
+  event.target.classList.add('active')
+  
+  // Filter and display
+  if (category === null) {
+    displayFilteredResults(allSchemes)
+  } else {
+    const filtered = allSchemes.filter(s => s.category === category)
+    displayFilteredResults(filtered)
+  }
+}
+
+// Display filtered results (only schemes list, not tabs)
+function displayFilteredResults(schemes) {
+  if (!resultsList) {
+    resultsList = document.getElementById('results-list')
+  }
+  
+  if (!resultsList) return
+  
+  if (!schemes || schemes.length === 0) {
+    resultsList.innerHTML = `<p style="color: #b0b5c1;">No schemes in this category</p>`
+    return
+  }
+
   const readMoreText = typeof t === 'function' ? t('read_more') : 'Read More →'
   
   resultsList.innerHTML = schemes.map(scheme => `
