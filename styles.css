@@ -2536,7 +2536,7 @@ body.dark-mode .tricolor-orb {
   transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Mobile Responsive */
+/* Mobile Responsive - Performance Optimization */
 @media (max-width: 768px) {
   .theme-toggle {
     top: 70px;
@@ -2549,7 +2549,45 @@ body.dark-mode .tricolor-orb {
     font-size: 20px;
   }
   
-  .floating-shape {
-    filter: blur(40px);
+  /* DISABLE ALL HEAVY ANIMATIONS ON MOBILE */
+  .auth-animated-bg,
+  .gradient-wave,
+  .floating-shape,
+  .shape-glow,
+  .grid-pattern,
+  .sparkles,
+  .tricolor-orb {
+    display: none !important;
+  }
+  
+  /* Disable all animations and transforms on mobile */
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+  
+  /* Keep only essential hover effects */
+  button:hover,
+  a:hover {
+    transition: background-color 0.15s ease !important;
+  }
+  
+  /* Simple static background for mobile */
+  .auth-page {
+    background: var(--bg-secondary) !important;
+  }
+  
+  .auth-animated-bg::before,
+  .auth-animated-bg::after {
+    display: none !important;
+  }
+}
+
+/* Respect system preference for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }
