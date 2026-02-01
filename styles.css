@@ -412,21 +412,23 @@ body::after {
 }
 
 .tagline-text {
-  font-size: 16px;
+  font-size: 17px;
   color: var(--text-secondary);
   font-weight: 500;
-  line-height: 1.6;
-  margin-bottom: 6px;
-  letter-spacing: 0.3px;
+  line-height: 1.7;
+  margin-bottom: 8px;
+  letter-spacing: 0.5px;
+  font-family: 'Times New Roman', Times, serif;
 }
 
 .auth-subtitle {
-  font-size: 13px;
+  font-size: 14px;
   color: var(--gov-green);
-  margin-top: 10px;
+  margin-top: 12px;
   font-weight: 600;
   text-shadow: none;
-  letter-spacing: 0.3px;
+  letter-spacing: 0.5px;
+  font-family: 'Times New Roman', Times, serif;
 }
 
 /* ===== AUTH TABS ===== */
@@ -439,18 +441,19 @@ body::after {
 
 .tab-btn {
   flex: 1;
-  padding: 14px 12px;
+  padding: 16px 14px;
   background: none;
   border: none;
   cursor: pointer;
-  font-size: 15px;
-  font-weight: 700;
+  font-size: 16px;
+  font-weight: 600;
   color: var(--text-light);
   border-bottom: 3px solid transparent;
   transition: all 0.3s ease;
   margin-bottom: -2px;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.8px;
+  font-family: 'Times New Roman', Times, serif;
 }
 
 .tab-btn.active {
@@ -468,20 +471,21 @@ body::after {
   background: rgba(255, 153, 51, 0.08);
   border: 2px solid var(--gov-saffron);
   border-radius: 8px;
-  padding: 16px;
-  margin-bottom: 25px;
+  padding: 18px;
+  margin-bottom: 28px;
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
   flex-wrap: wrap;
 }
 
 .auth-language-selector label {
   font-weight: 600;
   color: var(--text-primary);
-  font-size: 14px;
+  font-size: 15px;
   margin: 0;
   white-space: nowrap;
+  font-family: 'Times New Roman', Times, serif;
 }
 
 .language-selector-auth {
@@ -496,7 +500,7 @@ body::after {
   transition: all 0.3s ease;
   letter-spacing: 0.5px;
   box-shadow: 0 2px 8px rgba(255, 153, 51, 0.2);
-  font-family: 'Noto Sans Devanagari', 'Inter', sans-serif;
+  font-family: 'Times New Roman', Times, serif;
   flex: 1;
   min-width: 200px;
 }
@@ -510,6 +514,14 @@ body::after {
 .language-selector-auth:focus {
   outline: none;
   box-shadow: 0 0 0 3px rgba(255, 153, 51, 0.2);
+}
+
+#auth-message {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 15px;
+  margin-bottom: 16px;
+  letter-spacing: 0.3px;
+  line-height: 1.6;
 }
 
 .language-selector-auth option {
@@ -939,16 +951,17 @@ body.dark-mode .section-title {
 .btn-primary {
   background: linear-gradient(135deg, var(--gov-saffron) 0%, #ff8a00 100%);
   color: white;
-  padding: 12px 28px;
+  padding: 14px 30px;
   border: none;
   border-radius: 6px;
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: none;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.8px;
+  font-family: 'Times New Roman', Times, serif;
 }
 
 .btn-primary:hover {
@@ -972,6 +985,8 @@ body.dark-mode .section-title {
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
+  font-family: 'Times New Roman', Times, serif;
+  letter-spacing: 0.5px;
 }
 
 .btn-secondary:hover {
