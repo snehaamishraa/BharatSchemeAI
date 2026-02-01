@@ -269,6 +269,55 @@
         </form>
       </section>
 
+      <!-- Dashboard Section -->
+      <section class="section dashboard-section" id="dashboard-section" style="display: none;">
+        <h2 class="section-title" data-i18n="your_profile">👤 Your Profile Summary</h2>
+        
+        <!-- Profile Cards Grid -->
+        <div class="profile-cards-grid">
+          <div class="profile-card">
+            <div class="profile-card-icon">📍</div>
+            <div class="profile-card-label">State</div>
+            <div class="profile-card-value" id="dashboard-state">-</div>
+          </div>
+          
+          <div class="profile-card">
+            <div class="profile-card-icon">🎂</div>
+            <div class="profile-card-label">Age</div>
+            <div class="profile-card-value" id="dashboard-age">-</div>
+          </div>
+          
+          <div class="profile-card">
+            <div class="profile-card-icon">💼</div>
+            <div class="profile-card-label">Occupation</div>
+            <div class="profile-card-value" id="dashboard-occupation">-</div>
+          </div>
+          
+          <div class="profile-card">
+            <div class="profile-card-icon">👥</div>
+            <div class="profile-card-label">Gender</div>
+            <div class="profile-card-value" id="dashboard-gender">-</div>
+          </div>
+        </div>
+        
+        <!-- Schemes Stats -->
+        <div class="schemes-stats">
+          <div class="stat-box">
+            <div class="stat-number" id="total-schemes">0</div>
+            <div class="stat-label">Total Schemes Available</div>
+          </div>
+          
+          <div class="stat-box">
+            <div class="stat-number" id="matched-schemes">0</div>
+            <div class="stat-label">Schemes Matched For You</div>
+          </div>
+        </div>
+        
+        <div style="margin-top: 30px;">
+          <button class="btn btn-primary" onclick="goToSchemes()">Browse Schemes →</button>
+        </div>
+      </section>
+
       <!-- Results Section -->
       <section class="section results-section" id="results-section" style="display: none;">
         <h2 class="section-title" data-i18n="available_schemes">📊 Available Schemes for You</h2>

@@ -480,7 +480,7 @@ function clearCurrentUser() {
   profileForm.addEventListener('submit', (e) => {
     e.preventDefault()
     
-    // Make sure resultsSection is initialized
+    // Make sure sections are initialized
     if (!resultsSection) {
       resultsSection = document.getElementById('results-section')
     }
@@ -492,17 +492,21 @@ function clearCurrentUser() {
       gender: document.getElementById('gender').value
     }
     localStorage.setItem('userProfile', JSON.stringify(profile))
-    alert('✅ Profile saved! Showing schemes for you...')
+    alert('✅ Profile saved! Showing your dashboard...')
     
-    // Hide profile section and show only schemes on next "page"
+    // Hide profile section and show dashboard
     const profileSection = document.querySelector('.profile-section')
+    const dashboardSection = document.getElementById('dashboard-section')
     if (profileSection) {
       profileSection.style.display = 'none'
     }
-    if (resultsSection) {
-      resultsSection.style.display = 'block'
+    if (dashboardSection) {
+      dashboardSection.style.display = 'block'
+      populateDashboard()
     }
-    loadSchemes()  // Load schemes from JSON, then filter
+    if (resultsSection) {
+      resultsSection.style.display = 'none'
+    }
   })
 
   // Enable audio on any user interaction
@@ -834,6 +838,71 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }, 100)
 })
+
+// Populate dashboard with user profile info
+function populateDashboard() {
+  const saved = localStorage.getItem('userProfile')
+  if (!saved) return
+  
+  const profile = JSON.parse(saved)
+  
+  // Update profile cards
+  document.getElementById('dashboard-state').textContent = profile.state || '-'
+  document.getElementById('dashboard-age').textContent = profile.age || '-'
+  document.getElementById('dashboard-occupation').textContent = profile.occupation || '-'
+  document.getElementById('dashboard-gender').textContent = profile.gender || '-'
+  
+  // Calculate matched schemes
+  if (allSchemes.length === 0) {
+    loadSchemes()
+  } else {
+    updateSchemeStats(profile)
+  }
+}
+
+// Update scheme statistics
+function updateSchemeStats(profile) {
+  const userAge = parseInt(profile.age)
+  const userOccupation = profile.occupation
+  
+  const matchedSchemes = allSchemes.filter(scheme => {
+    if (!scheme.criteria) return true
+    
+    const criteria = scheme.criteria
+    
+    // Check age
+    if (criteria.minAge !== null && criteria.minAge !== undefined && userAge < criteria.minAge) {
+      return false
+    }
+    if (criteria.maxAge !== null && criteria.maxAge !== undefined && userAge > criteria.maxAge) {
+      return false
+    }
+    
+    // Check occupation
+    if (criteria.occupations && criteria.occupations.length > 0) {
+      if (!criteria.occupations.includes(userOccupation)) {
+        return false
+      }
+    }
+    
+    return true
+  })
+  
+  document.getElementById('total-schemes').textContent = allSchemes.length
+  document.getElementById('matched-schemes').textContent = matchedSchemes.length
+}
+
+// Navigate to schemes view
+window.goToSchemes = function() {
+  const dashboardSection = document.getElementById('dashboard-section')
+  if (dashboardSection) {
+    dashboardSection.style.display = 'none'
+  }
+  if (resultsSection) {
+    resultsSection.style.display = 'block'
+  }
+  loadSchemes()
+}
 
 
 
