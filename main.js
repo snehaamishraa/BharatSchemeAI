@@ -186,17 +186,23 @@ function displaySchemes(schemes) {
   displayCategoryTabs(profileFilteredSchemes.length > 0 ? profileFilteredSchemes : schemes)
 
   const readMoreText = typeof t === 'function' ? t('read_more') : 'Read More →'
+  const currentLang = typeof window.getCurrentLanguage === 'function' ? window.getCurrentLanguage() : 'en'
   
-  resultsList.innerHTML = schemes.map(scheme => `
-    <div class="scheme-card" onclick="viewScheme('${scheme.id}')">
-      <div class="scheme-name">${scheme.name}</div>
-      <div class="scheme-desc">${scheme.description}</div>
-      <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 12px;">
-        <span class="scheme-category">${scheme.category || 'General'}</span>
-        <span style="color: #ff9933; font-weight: 600; cursor: pointer; font-size: 14px;">${readMoreText}</span>
+  resultsList.innerHTML = schemes.map(scheme => {
+    const translatedName = typeof window.translateSchemeName === 'function' ? window.translateSchemeName(scheme.name, currentLang) : scheme.name
+    const translatedCategory = typeof window.translateCategory === 'function' ? window.translateCategory(scheme.category || 'General', currentLang) : (scheme.category || 'General')
+    
+    return `
+      <div class="scheme-card" onclick="viewScheme('${scheme.id}')">
+        <div class="scheme-name">${translatedName}</div>
+        <div class="scheme-desc">${scheme.description}</div>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 12px;">
+          <span class="scheme-category">${translatedCategory}</span>
+          <span style="color: #ff9933; font-weight: 600; cursor: pointer; font-size: 14px;">${readMoreText}</span>
+        </div>
       </div>
-    </div>
-  `).join('')
+    `
+  }).join('')
 }
 
 // Display category tabs
@@ -206,14 +212,17 @@ function displayCategoryTabs(schemes) {
   
   // Get unique categories
   const categories = [...new Set(schemes.map(s => s.category))].sort()
+  const currentLang = typeof window.getCurrentLanguage === 'function' ? window.getCurrentLanguage() : 'en'
   
   // Create "All" tab
-  let tabsHTML = `<button class="category-tab active" onclick="filterByCategory(null, event)">All (${schemes.length})</button>`
+  const allText = currentLang === 'hi' ? 'सभी' : 'All'
+  let tabsHTML = `<button class="category-tab active" onclick="filterByCategory(null, event)">${allText} (${schemes.length})</button>`
   
   // Add category tabs with count
   categories.forEach(category => {
     const count = schemes.filter(s => s.category === category).length
-    tabsHTML += `<button class="category-tab" onclick="filterByCategory('${category}', event)">${category} (${count})</button>`
+    const translatedCategory = typeof window.translateCategory === 'function' ? window.translateCategory(category, currentLang) : category
+    tabsHTML += `<button class="category-tab" onclick="filterByCategory('${category}', event)">${translatedCategory} (${count})</button>`
   })
   
   categoryTabs.innerHTML = tabsHTML
@@ -255,23 +264,32 @@ function displayFilteredResults(schemes) {
   }
 
   const readMoreText = typeof t === 'function' ? t('read_more') : 'Read More →'
+  const currentLang = typeof window.getCurrentLanguage === 'function' ? window.getCurrentLanguage() : 'en'
   
-  resultsList.innerHTML = schemes.map(scheme => `
-    <div class="scheme-card" onclick="viewScheme('${scheme.id}')">
-      <div class="scheme-name">${scheme.name}</div>
-      <div class="scheme-desc">${scheme.description}</div>
-      <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 12px;">
-        <span class="scheme-category">${scheme.category || 'General'}</span>
-        <span style="color: #ff9933; font-weight: 600; cursor: pointer; font-size: 14px;">${readMoreText}</span>
+  resultsList.innerHTML = schemes.map(scheme => {
+    const translatedName = typeof window.translateSchemeName === 'function' ? window.translateSchemeName(scheme.name, currentLang) : scheme.name
+    const translatedCategory = typeof window.translateCategory === 'function' ? window.translateCategory(scheme.category || 'General', currentLang) : (scheme.category || 'General')
+    
+    return `
+      <div class="scheme-card" onclick="viewScheme('${scheme.id}')">
+        <div class="scheme-name">${translatedName}</div>
+        <div class="scheme-desc">${scheme.description}</div>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 12px;">
+          <span class="scheme-category">${translatedCategory}</span>
+          <span style="color: #ff9933; font-weight: 600; cursor: pointer; font-size: 14px;">${readMoreText}</span>
+        </div>
       </div>
-    </div>
-  `).join('')
+    `
+  }).join('')
 }
 
 // View scheme details in modal
 window.viewScheme = function(schemeId) {
   const scheme = allSchemes.find(s => s.id === schemeId)
   if (scheme) {
+    const currentLang = typeof window.getCurrentLanguage === 'function' ? window.getCurrentLanguage() : 'en'
+    const translatedName = typeof window.translateSchemeName === 'function' ? window.translateSchemeName(scheme.name, currentLang) : scheme.name
+    
     const howToApplyHTML = (scheme.howToApply || []).map((step, index) => 
       `<li style="margin-bottom: 12px; line-height: 1.6;"><strong>Step ${index + 1}:</strong> ${step}</li>`
     ).join('')
@@ -288,7 +306,7 @@ window.viewScheme = function(schemeId) {
 
     const detailContent = `
       <div style="max-height: 80vh; overflow-y: auto;">
-        <h2 style="color: #ff9933; margin-top: 0; font-size: 24px; border-bottom: 3px solid #ff9933; padding-bottom: 12px;">${scheme.name}</h2>
+        <h2 style="color: #ff9933; margin-top: 0; font-size: 24px; border-bottom: 3px solid #ff9933; padding-bottom: 12px;">${translatedName}</h2>
         
         <div style="background: #fffbf0; border-left: 4px solid var(--gov-saffron); padding: 12px; border-radius: 4px; margin-bottom: 20px;">
           <p style="margin: 0; color: #333; font-size: 15px; line-height: 1.6;">${scheme.description}</p>

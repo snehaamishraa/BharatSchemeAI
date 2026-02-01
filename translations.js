@@ -724,10 +724,112 @@ function updatePageTranslations() {
     htmlElement.setAttribute('dir', 'ltr')
     document.body.style.direction = 'ltr'
   }
+  
+  // Update state dropdown when language changes
+  updateStateDropdown()
+}
+
+// State name translations
+const stateTranslations = {
+  'hi': {
+    'Andhra Pradesh': 'आंध्र प्रदेश',
+    'Arunachal Pradesh': 'अरुणाचल प्रदेश',
+    'Assam': 'असम',
+    'Bihar': 'बिहार',
+    'Chhattisgarh': 'छत्तीसगढ़',
+    'Goa': 'गोवा',
+    'Gujarat': 'गुजरात',
+    'Haryana': 'हरियाणा',
+    'Himachal Pradesh': 'हिमाचल प्रदेश',
+    'Jharkhand': 'झारखंड',
+    'Karnataka': 'कर्नाटक',
+    'Kerala': 'केरल',
+    'Madhya Pradesh': 'मध्य प्रदेश',
+    'Maharashtra': 'महाराष्ट्र',
+    'Manipur': 'मणिपुर',
+    'Meghalaya': 'मेघालय',
+    'Mizoram': 'मिजोरम',
+    'Nagaland': 'नागालैंड',
+    'Odisha': 'ओडिशा',
+    'Punjab': 'पंजाब',
+    'Rajasthan': 'राजस्थान',
+    'Sikkim': 'सिक्किम',
+    'Tamil Nadu': 'तमिलनाडु',
+    'Telangana': 'तेलंगाना',
+    'Tripura': 'त्रिपुरा',
+    'Uttar Pradesh': 'उत्तर प्रदेश',
+    'Uttarakhand': 'उत्तराखंड',
+    'West Bengal': 'पश्चिम बंगाल',
+    'Delhi': 'दिल्ली',
+    'Puducherry': 'पुदुचेरी',
+    'Select State': 'राज्य चुनें'
+  }
+}
+
+// Category translations
+const categoryTranslations = {
+  'hi': {
+    'farmer': 'किसान',
+    'pension': 'पेंशन',
+    'health': 'स्वास्थ्य',
+    'education': 'शिक्षा',
+    'women': 'महिला',
+    'General': 'सामान्य'
+  }
+}
+
+// Scheme name translations (common schemes)
+const schemeNameTranslations = {
+  'hi': {
+    'PM-Kisan Samman Nidhi': 'पीएम-किसान सम्मान निधि',
+    'Atal Pension Yojana': 'अटल पेंशन योजना',
+    'Ayushman Bharat Pradhan Mantri Jan Arogya Yojana': 'आयुष्मान भारत प्रधानमंत्री जन आरोग्य योजना',
+    'PM Vidya Lakshmi': 'पीएम विद्या लक्ष्मी',
+    'National Pension System (NPS)': 'राष्ट्रीय पेंशन प्रणाली (एनपीएस)',
+    'Pradhan Mantri Awas Yojana': 'प्रधानमंत्री आवास योजना',
+    'Sukanya Samriddhi Yojana': 'सुकन्या समृद्धि योजना',
+    'Pradhan Mantri Mudra Yojana': 'प्रधानमंत्री मुद्रा योजना'
+  }
+}
+
+// Translate state name
+function translateState(stateName, lang) {
+  if (lang === 'en' || !stateTranslations[lang]) return stateName
+  return stateTranslations[lang][stateName] || stateName
+}
+
+// Translate category name
+function translateCategory(category, lang) {
+  if (lang === 'en' || !categoryTranslations[lang]) return category
+  return categoryTranslations[lang][category] || category
+}
+
+// Translate scheme name
+function translateSchemeName(schemeName, lang) {
+  if (lang === 'en' || !schemeNameTranslations[lang]) return schemeName
+  return schemeNameTranslations[lang][schemeName] || schemeName
 }
 
 // Expose to global scope
 window.updatePageTranslations = updatePageTranslations
+window.translateState = translateState
+window.translateCategory = translateCategory
+window.translateSchemeName = translateSchemeName
+window.getCurrentLanguage = () => currentLanguage
+
+// Update state dropdown options when language changes
+function updateStateDropdown() {
+  const stateDropdown = document.getElementById('state')
+  if (!stateDropdown) return
+  
+  const options = stateDropdown.querySelectorAll('option')
+  options.forEach(option => {
+    const originalValue = option.value
+    if (originalValue) {
+      option.textContent = translateState(originalValue, currentLanguage)
+    }
+  })
+}
 
 // Load saved language on page load
 document.addEventListener('DOMContentLoaded', () => {
@@ -736,4 +838,5 @@ document.addEventListener('DOMContentLoaded', () => {
     currentLanguage = saved
   }
   updatePageTranslations()
+  updateStateDropdown()
 })
