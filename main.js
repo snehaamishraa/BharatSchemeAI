@@ -102,12 +102,16 @@ async function loadSchemes() {
   }
 }
 
+// Store filtered schemes based on user profile globally
+let profileFilteredSchemes = []
+
 // Filter schemes based on user profile
 function filterAndDisplaySchemes() {
   const saved = localStorage.getItem('userProfile')
   
   if (!saved || allSchemes.length === 0) {
     console.log('No saved profile or schemes. Showing all.')
+    profileFilteredSchemes = allSchemes
     displaySchemes(allSchemes)
     return
   }
@@ -153,8 +157,11 @@ function filterAndDisplaySchemes() {
     return true
   })
 
+  // Store the profile-filtered schemes for category filtering
+  profileFilteredSchemes = filteredSchemes.length > 0 ? filteredSchemes : allSchemes
+  
   console.log(`Filtered: ${filteredSchemes.length} out of ${allSchemes.length} schemes match`)
-  displaySchemes(filteredSchemes.length > 0 ? filteredSchemes : allSchemes)
+  displaySchemes(profileFilteredSchemes)
 }
 
 // Display schemes
@@ -175,8 +182,8 @@ function displaySchemes(schemes) {
     return
   }
 
-  // Display category tabs
-  displayCategoryTabs(schemes)
+  // Display category tabs using profile-filtered schemes
+  displayCategoryTabs(profileFilteredSchemes.length > 0 ? profileFilteredSchemes : schemes)
 
   const readMoreText = typeof t === 'function' ? t('read_more') : 'Read More →'
   
@@ -222,11 +229,14 @@ window.filterByCategory = function(category, event) {
   })
   event.target.classList.add('active')
   
+  // Use profile-filtered schemes as the base for category filtering
+  const baseSchemes = profileFilteredSchemes.length > 0 ? profileFilteredSchemes : allSchemes
+  
   // Filter and display
   if (category === null) {
-    displayFilteredResults(allSchemes)
+    displayFilteredResults(baseSchemes)
   } else {
-    const filtered = allSchemes.filter(s => s.category === category)
+    const filtered = baseSchemes.filter(s => s.category === category)
     displayFilteredResults(filtered)
   }
 }
