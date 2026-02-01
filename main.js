@@ -464,13 +464,17 @@ function showAppPage() {
     // Call translation update for app page
     updatePageTranslations()
     
-    // Check if profile is saved, if yes show schemes
+    // Always show schemes section after login
+    resultsSection.style.display = 'block'
+    
+    // Load all schemes by default (no filtering until profile is saved)
     const saved = localStorage.getItem('userProfile')
     if (saved) {
-      resultsSection.style.display = 'block'
+      // If profile exists, filter schemes by criteria
       loadSchemes()
     } else {
-      resultsSection.style.display = 'none'
+      // Show all schemes if no profile saved yet
+      displaySchemes(allSchemes)
     }
   }
 }
