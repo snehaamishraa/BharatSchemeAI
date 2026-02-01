@@ -71,10 +71,10 @@ body {
 }
 
 body {
-  font-family: 'Inter', 'Noto Sans Devanagari', system-ui, sans-serif;
+  font-family: 'Times New Roman', Times, serif;
   background: var(--bg-primary);
   color: var(--text-color);
-  line-height: 1.6;
+  line-height: 1.8;
   position: relative;
   overflow-x: hidden;
   transition: background 0.3s ease, color 0.3s ease;
@@ -83,6 +83,7 @@ body {
   align-items: flex-start;
   min-height: 100vh;
   padding: 0;
+  letter-spacing: 0.3px;
 }
 
 /* Main Container Frame - Centers entire website */
@@ -394,18 +395,20 @@ body::after {
 }
 
 .auth-header h1 {
-  font-size: 32px;
-  font-weight: 700;
+  font-size: 36px;
+  font-weight: 600;
   color: var(--gov-saffron);
-  margin-bottom: 8px;
+  margin-bottom: 10px;
   text-shadow: none;
-  letter-spacing: 0.5px;
+  letter-spacing: 1px;
+  font-family: 'Times New Roman', Times, serif;
 }
 
 .auth-header p {
-  font-size: 15px;
+  font-size: 16px;
   color: var(--text-secondary);
-  line-height: 1.5;
+  line-height: 1.7;
+  font-family: 'Times New Roman', Times, serif;
 }
 
 .tagline-text {
@@ -525,28 +528,30 @@ body::after {
 .form-group {
   display: flex;
   flex-direction: column;
-  margin-bottom: 4px;
+  margin-bottom: 6px;
 }
 
 .form-group label {
   font-weight: 600;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
   color: var(--text-primary);
-  font-size: 14px;
+  font-size: 15px;
   text-transform: capitalize;
-  letter-spacing: 0.3px;
+  letter-spacing: 0.5px;
+  font-family: 'Times New Roman', Times, serif;
 }
 
 .form-group input,
 .form-group select {
-  padding: 12px 14px;
-  border: 2px solid #e0e0e0;
+  padding: 14px 16px;
+  border: 2px solid #d0d0d0;
   border-radius: 6px;
-  font-size: 15px;
-  font-family: inherit;
-  background: #f9f9f9;
+  font-size: 16px;
+  font-family: 'Times New Roman', Times, serif;
+  background: #fafafa;
   color: var(--text-primary);
   transition: all 0.3s ease;
+  line-height: 1.6;
 }
 
 body.dark-mode .form-group input,
@@ -888,13 +893,15 @@ body.dark-mode .app-main::before {
 }
 
 .section-title {
-  font-size: 22px;
-  font-weight: 700;
+  font-size: 26px;
+  font-weight: 600;
   color: var(--gov-saffron);
-  margin-bottom: 24px;
+  margin-bottom: 28px;
   text-shadow: none;
   position: relative;
-  padding-bottom: 12px;
+  padding-bottom: 14px;
+  letter-spacing: 1px;
+  font-family: 'Times New Roman', Times, serif;
 }
 
 body.dark-mode .section-title {
@@ -1072,21 +1079,24 @@ body.dark-mode .scheme-card:hover {
 }
 
 .scheme-name {
-  font-size: 18px;
-  font-weight: 700;
+  font-size: 19px;
+  font-weight: 600;
   color: var(--text-primary);
-  margin-bottom: 10px;
+  margin-bottom: 12px;
   margin-left: 8px;
   text-shadow: none;
+  font-family: 'Times New Roman', Times, serif;
+  letter-spacing: 0.3px;
 }
 
 .scheme-desc {
-  font-size: 14px;
+  font-size: 15px;
   color: var(--text-secondary);
   margin-bottom: 12px;
   margin-left: 8px;
-  line-height: 1.5;
-}
+  line-height: 1.7;
+  font-family: 'Times New Roman', Times, serif;
+}}
 
 /* Category Tabs */
 .category-tabs {
