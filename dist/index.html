@@ -7,8 +7,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;600;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <script type="module" crossorigin src="/assets/index-BqtYWcVe.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/index-B0HyD2jT.css">
+  <script type="module" crossorigin src="/assets/index-BHaOzv-r.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-LkfZsCe2.css">
 </head>
 <body>
   <!-- National Anthem Audio -->
@@ -87,7 +87,6 @@
         <span class="logo-icon">🇮🇳</span>
         <h1 data-i18n="bharatscheme">BharatScheme.AI</h1>
         <p class="tagline-text" data-i18n="tagline">Discover Government Schemes Tailored for Your Benefits</p>
-        <p class="auth-subtitle" data-i18n="auth_subtitle">Official Portal for Government Schemes</p>
       </div>
 
       <!-- Language Selector in Auth Page -->
@@ -270,10 +269,69 @@
         </form>
       </section>
 
+      <!-- Dashboard Section -->
+      <section class="section dashboard-section" id="dashboard-section" style="display: none;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+          <h2 class="section-title" data-i18n="your_profile" style="text-transform: uppercase;">YOUR PROFILE</h2>
+          <button class="btn btn-secondary" onclick="backToProfile()" style="padding: 8px 16px; font-size: 14px;">← Back</button>
+        </div>
+        
+        <!-- Profile Cards Grid -->
+        <div class="profile-cards-grid">
+          <div class="profile-card">
+            <div class="profile-card-icon">📍</div>
+            <div class="profile-card-label">State</div>
+            <div class="profile-card-value" id="dashboard-state">-</div>
+          </div>
+          
+          <div class="profile-card">
+            <div class="profile-card-icon">🎂</div>
+            <div class="profile-card-label">Age</div>
+            <div class="profile-card-value" id="dashboard-age">-</div>
+          </div>
+          
+          <div class="profile-card">
+            <div class="profile-card-icon">💼</div>
+            <div class="profile-card-label">Occupation</div>
+            <div class="profile-card-value" id="dashboard-occupation">-</div>
+          </div>
+          
+          <div class="profile-card">
+            <div class="profile-card-icon">👥</div>
+            <div class="profile-card-label">Gender</div>
+            <div class="profile-card-value" id="dashboard-gender">-</div>
+          </div>
+        </div>
+        
+        <!-- Schemes Stats -->
+        <div class="schemes-stats">
+          <div class="stat-box">
+            <div class="stat-number" id="total-schemes">0</div>
+            <div class="stat-label">Total Schemes Available</div>
+          </div>
+          
+          <div class="stat-box">
+            <div class="stat-number" id="matched-schemes">0</div>
+            <div class="stat-label">Schemes Matched For You</div>
+          </div>
+        </div>
+        
+        <div style="margin-top: 30px;">
+          <button class="btn btn-primary" onclick="goToSchemes()">Browse Schemes →</button>
+        </div>
+      </section>
+
       <!-- Results Section -->
       <section class="section results-section" id="results-section" style="display: none;">
-        <h2 class="section-title" data-i18n="available_schemes">📊 Available Schemes for You</h2>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+          <h2 class="section-title" data-i18n="available_schemes">📊 Available Schemes for You</h2>
+          <button class="btn btn-secondary" onclick="backToDashboard()" style="padding: 8px 16px; font-size: 14px;">← Back</button>
+        </div>
         <p style="color: #b0b5c1; margin-bottom: 20px; font-size: 14px;">Click on any scheme to see full details</p>
+        
+        <!-- Category Tabs -->
+        <div class="category-tabs" id="category-tabs" style="margin-bottom: 20px; display: flex; flex-wrap: wrap; gap: 10px;"></div>
+        
         <div id="results-list" class="results-list"></div>
       </section>
 
@@ -283,14 +341,14 @@
           <div class="footer-section">
             <h3 data-i18n="feedback">💬 Feedback</h3>
             <p data-i18n="help_improve">Help us improve! Share your feedback at:</p>
-            <p><a href="mailto:feedback@bharatscheme.in">feedback@bharatscheme.in</a></p>
+            <p><a href="mailto:example@email.com">example@email.com</a></p>
             <p style="font-size: 12px; color: #00f3ff; margin-top: 10px;" data-i18n="suggestions_help">Your suggestions help us serve you better</p>
           </div>
           <div class="footer-section">
             <h3 data-i18n="contact_us">📞 Contact Us</h3>
-            <p><span data-i18n="email_contact">Email: </span><a href="mailto:support@bharatscheme.in">support@bharatscheme.in</a></p>
-            <p><span data-i18n="phone_contact">Phone: </span>+91-1800-SCHEME</p>
-            <p><span data-i18n="address_contact">Address: </span>Ministry of Government Affairs, New Delhi</p>
+            <p><span data-i18n="email_contact">Email: </span><a href="mailto:example@email.com">example@email.com</a></p>
+            <p><span data-i18n="phone_contact">Phone: </span>+91-XXXX-XXXXXX</p>
+            <p><span data-i18n="address_contact">Address: </span>Example Address, City</p>
           </div>
           <div class="footer-section">
             <h3 data-i18n="about">ℹ️ About</h3>

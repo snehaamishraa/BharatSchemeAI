@@ -732,6 +732,7 @@ function updatePageTranslations() {
 // State name translations
 const stateTranslations = {
   'hi': {
+    // States
     'Andhra Pradesh': 'आंध्र प्रदेश',
     'Arunachal Pradesh': 'अरुणाचल प्रदेश',
     'Assam': 'असम',
@@ -760,8 +761,15 @@ const stateTranslations = {
     'Uttar Pradesh': 'उत्तर प्रदेश',
     'Uttarakhand': 'उत्तराखंड',
     'West Bengal': 'पश्चिम बंगाल',
+    // Union Territories
+    'Andaman and Nicobar Islands': 'अंडमान और निकोबार द्वीप समूह',
+    'Chandigarh': 'चंडीगढ़',
+    'Dadra and Nagar Haveli and Daman and Diu': 'दादरा और नगर हवेली और दमन और दीव',
+    'Lakshadweep': 'लक्षद्वीप',
     'Delhi': 'दिल्ली',
     'Puducherry': 'पुदुचेरी',
+    'Ladakh': 'लद्दाख',
+    'Jammu and Kashmir': 'जम्मू और कश्मीर',
     'Select State': 'राज्य चुनें'
   }
 }

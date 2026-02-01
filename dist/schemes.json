@@ -183,6 +183,466 @@
         "maxAnnualIncome": null,
         "states": []
       }
+    },
+    {
+      "id": "pmay-urban",
+      "name": "Pradhan Mantri Awas Yojana (Urban)",
+      "category": "housing",
+      "description": "Housing scheme for urban poor. Get financial assistance to buy or build a pucca house.",
+      "eligibility": "You must not own a pucca house in your name or family member's name anywhere in India. Economically Weaker Section (EWS), Low Income Group (LIG), Middle Income Group (MIG).",
+      "benefits": "Subsidy on home loan interest up to Rs 2.67 lakh. Credit-linked subsidy for buying or constructing house.",
+      "requiredDocuments": ["Aadhaar card", "Income certificate", "Bank account details", "Property documents", "Passport size photo"],
+      "howToApply": [
+        "Visit the PMAY-Urban website and register.",
+        "Fill the application form with personal and income details.",
+        "Apply through your bank for home loan under PMAY.",
+        "Submit required documents. Interest subsidy will be credited after approval."
+      ],
+      "officialLink": "https://pmaymis.gov.in",
+      "criteria": {
+        "occupations": [],
+        "minAge": 18,
+        "maxAge": null,
+        "maxAnnualIncome": 1800000,
+        "states": []
+      }
+    },
+    {
+      "id": "pmay-rural",
+      "name": "Pradhan Mantri Awas Yojana (Gramin)",
+      "category": "housing",
+      "description": "Housing scheme for rural poor. Get financial assistance of Rs 1.20 lakh (plain areas) or Rs 1.30 lakh (hilly areas) to build pucca house.",
+      "eligibility": "You must be a rural resident without a pucca house. Your name should be in the SECC 2011 list. Priority to SC/ST, women, and differently-abled.",
+      "benefits": "Rs 1.20 to 1.30 lakh financial assistance in instalments. Toilet, electricity, LPG connection also provided.",
+      "requiredDocuments": ["Aadhaar card", "BPL card or SECC certificate", "Bank account details", "Passport size photo"],
+      "howToApply": [
+        "Your name should be in the SECC list. Check with your Gram Panchayat.",
+        "Fill the application form at Gram Panchayat office.",
+        "Submit Aadhaar, bank details, and BPL/SECC proof.",
+        "After approval, you will receive money in instalments as you build the house."
+      ],
+      "officialLink": "https://pmayg.nic.in",
+      "criteria": {
+        "occupations": ["Farmer", "Unemployed"],
+        "minAge": 18,
+        "maxAge": null,
+        "maxAnnualIncome": 150000,
+        "states": []
+      }
+    },
+    {
+      "id": "beti-bachao",
+      "name": "Beti Bachao Beti Padhao",
+      "category": "women",
+      "description": "National programme to address declining Child Sex Ratio and promote girl child education and welfare.",
+      "eligibility": "Girl child born in India. Parents should open Sukanya Samriddhi Account for girl child under 10 years.",
+      "benefits": "High interest on savings (around 8%). Tax benefits. Maturity amount for girl's education or marriage after 21 years.",
+      "requiredDocuments": ["Birth certificate of girl child", "Aadhaar of parents", "Address proof", "Passport size photos"],
+      "howToApply": [
+        "Open Sukanya Samriddhi Account at post office or authorized bank.",
+        "Deposit minimum Rs 250 per year (maximum Rs 1.5 lakh per year).",
+        "Account matures when girl turns 21 years.",
+        "Partial withdrawal allowed after girl turns 18 for education."
+      ],
+      "officialLink": "https://wcd.nic.in/bbbp-schemes",
+      "criteria": {
+        "occupations": [],
+        "minAge": 0,
+        "maxAge": 10,
+        "maxAnnualIncome": null,
+        "states": []
+      }
+    },
+    {
+      "id": "mudra-yojana",
+      "name": "Pradhan Mantri MUDRA Yojana",
+      "category": "business",
+      "description": "Loans to micro and small businesses without collateral. Three categories: Shishu (up to Rs 50,000), Kishore (Rs 50,000 to Rs 5 lakh), Tarun (Rs 5 to Rs 10 lakh).",
+      "eligibility": "Any Indian citizen with a business plan. Non-corporate, non-farm small/micro enterprises. First-time entrepreneurs or existing businesses.",
+      "benefits": "Low-interest loan without collateral. Easy processing. Helps start or expand small business.",
+      "requiredDocuments": ["Aadhaar card", "PAN card", "Business plan", "Address proof", "Bank statements", "Passport size photo"],
+      "howToApply": [
+        "Prepare a business plan and cost estimate.",
+        "Approach any bank or NBFC offering MUDRA loans.",
+        "Fill the loan application form. Submit business plan and documents.",
+        "Bank will assess and approve. Loan will be disbursed in your account."
+      ],
+      "officialLink": "https://www.mudra.org.in",
+      "criteria": {
+        "occupations": ["Unemployed", "Business Owner"],
+        "minAge": 18,
+        "maxAge": null,
+        "maxAnnualIncome": null,
+        "states": []
+      }
+    },
+    {
+      "id": "stand-up-india",
+      "name": "Stand-Up India Scheme",
+      "category": "business",
+      "description": "Bank loans between Rs 10 lakh and Rs 1 crore to SC/ST and women entrepreneurs for greenfield enterprises.",
+      "eligibility": "SC/ST and/or women entrepreneur above 18 years. For setting up a new enterprise in manufacturing, services or trading sector.",
+      "benefits": "Loan between Rs 10 lakh to Rs 1 crore. Margin money requirement only 15-25%. Composite loan including working capital.",
+      "requiredDocuments": ["Aadhaar card", "PAN card", "Caste certificate (for SC/ST)", "Business plan", "Address proof", "Bank statements"],
+      "howToApply": [
+        "Register on Stand-Up India portal.",
+        "Prepare detailed project report and business plan.",
+        "Apply to your nearest bank branch or through portal.",
+        "Submit documents and attend bank meetings. Loan will be sanctioned after approval."
+      ],
+      "officialLink": "https://www.standupmitra.in",
+      "criteria": {
+        "occupations": ["Business Owner", "Unemployed"],
+        "minAge": 18,
+        "maxAge": null,
+        "maxAnnualIncome": null,
+        "states": []
+      }
+    },
+    {
+      "id": "jan-dhan-yojana",
+      "name": "Pradhan Mantri Jan Dhan Yojana",
+      "category": "banking",
+      "description": "Financial inclusion program. Open zero-balance bank account with RuPay debit card and insurance benefits.",
+      "eligibility": "Any Indian citizen aged 10 years or above. No minimum balance required.",
+      "benefits": "Zero-balance savings account. RuPay debit card. Accidental insurance cover of Rs 1 lakh. Overdraft facility up to Rs 10,000 (for eligible accounts).",
+      "requiredDocuments": ["Aadhaar card", "Voter ID or Driving License or Passport (alternative)", "Passport size photo"],
+      "howToApply": [
+        "Visit any bank branch (public or private).",
+        "Fill the account opening form.",
+        "Submit Aadhaar and one address proof. Provide passport size photo.",
+        "Account will be opened immediately. RuPay card will be issued within few days."
+      ],
+      "officialLink": "https://pmjdy.gov.in",
+      "criteria": {
+        "occupations": [],
+        "minAge": 10,
+        "maxAge": null,
+        "maxAnnualIncome": null,
+        "states": []
+      }
+    },
+    {
+      "id": "pm-suraksha-bima",
+      "name": "Pradhan Mantri Suraksha Bima Yojana",
+      "category": "insurance",
+      "description": "Accidental death and disability insurance. Premium only Rs 20 per year. Cover of Rs 2 lakh for accidental death.",
+      "eligibility": "Indian citizen aged 18 to 70 years. Must have a bank account. Auto-debit consent required.",
+      "benefits": "Rs 2 lakh for accidental death or full disability. Rs 1 lakh for partial disability. Premium only Rs 20 per year.",
+      "requiredDocuments": ["Aadhaar card", "Bank account details", "Consent form for auto-debit"],
+      "howToApply": [
+        "Visit your bank where you have savings account.",
+        "Fill the PMSBY application form and consent form.",
+        "Submit Aadhaar copy. Give auto-debit consent.",
+        "Premium Rs 20 will be deducted annually. Insurance cover starts immediately."
+      ],
+      "officialLink": "https://www.jansuraksha.gov.in",
+      "criteria": {
+        "occupations": [],
+        "minAge": 18,
+        "maxAge": 70,
+        "maxAnnualIncome": null,
+        "states": []
+      }
+    },
+    {
+      "id": "pm-jeevan-jyoti",
+      "name": "Pradhan Mantri Jeevan Jyoti Bima Yojana",
+      "category": "insurance",
+      "description": "Life insurance scheme. Premium Rs 436 per year. Cover of Rs 2 lakh in case of death due to any reason.",
+      "eligibility": "Indian citizen aged 18 to 50 years. Must have a bank account. Auto-debit consent required.",
+      "benefits": "Rs 2 lakh life cover for death due to any reason. Premium only Rs 436 per year. Can continue till age 55.",
+      "requiredDocuments": ["Aadhaar card", "Bank account details", "Consent form for auto-debit", "Nominee details"],
+      "howToApply": [
+        "Visit your bank where you have savings account.",
+        "Fill the PMJJBY application form and consent form.",
+        "Submit Aadhaar copy and nominee details. Give auto-debit consent.",
+        "Premium Rs 436 will be deducted annually. Insurance cover starts immediately."
+      ],
+      "officialLink": "https://www.jansuraksha.gov.in",
+      "criteria": {
+        "occupations": [],
+        "minAge": 18,
+        "maxAge": 50,
+        "maxAnnualIncome": null,
+        "states": []
+      }
+    },
+    {
+      "id": "svamitva-yojana",
+      "name": "SVAMITVA Yojana",
+      "category": "property",
+      "description": "Scheme to map rural land using drones and provide property cards to rural households.",
+      "eligibility": "Rural resident with residential property in Abadi area. Property should be in village areas.",
+      "benefits": "Property card with legal recognition. Can use as financial asset for loans. Clear property rights. Reduces disputes.",
+      "requiredDocuments": ["Aadhaar card", "Address proof", "Any existing land documents"],
+      "howToApply": [
+        "Scheme is implemented by state governments. Check if your village is covered.",
+        "Contact your Gram Panchayat or revenue department.",
+        "When survey team visits, cooperate in measurement and verification.",
+        "Property card will be issued after survey and verification."
+      ],
+      "officialLink": "https://svamitva.nic.in",
+      "criteria": {
+        "occupations": ["Farmer"],
+        "minAge": 18,
+        "maxAge": null,
+        "maxAnnualIncome": null,
+        "states": []
+      }
+    },
+    {
+      "id": "pm-kaushal-vikas",
+      "name": "Pradhan Mantri Kaushal Vikas Yojana",
+      "category": "skill",
+      "description": "Skill development and training program. Free training in various trades and skills. Certificate recognized by industry.",
+      "eligibility": "Indian citizen, mostly youth who are unemployed or school/college dropouts. No age bar but focus on 15-45 years age group.",
+      "benefits": "Free skill training. Monetary reward on certification. Placement assistance. Government-recognized certificate.",
+      "requiredDocuments": ["Aadhaar card", "Educational certificates", "Bank account details", "Passport size photo"],
+      "howToApply": [
+        "Visit PMKVY portal or nearest Skill Development Centre.",
+        "Choose your preferred skill course (600+ courses available).",
+        "Register online or at the centre. Submit documents.",
+        "Attend training. Pass assessment. Get certificate and placement support."
+      ],
+      "officialLink": "https://www.pmkvyofficial.org",
+      "criteria": {
+        "occupations": ["Unemployed", "Student"],
+        "minAge": 15,
+        "maxAge": 45,
+        "maxAnnualIncome": null,
+        "states": []
+      }
+    },
+    {
+      "id": "startup-india",
+      "name": "Startup India Scheme",
+      "category": "business",
+      "description": "Support for startups including tax benefits, funding support, easier compliance, and IPR fast-tracking.",
+      "eligibility": "Company incorporated as Private Limited, Partnership or LLP. Up to 10 years from incorporation. Turnover up to Rs 100 crore. Working on innovation/technology.",
+      "benefits": "Income tax exemption for 3 years. Self-certification under labour laws. IPR fast-track. Access to funding. Networking opportunities.",
+      "requiredDocuments": ["Certificate of Incorporation", "Brief about innovation", "PAN of company", "Website/pitch deck"],
+      "howToApply": [
+        "Visit Startup India portal and register.",
+        "Fill the recognition application. Describe your innovation.",
+        "Upload company documents and pitch deck.",
+        "Get recognition certificate. Apply for various benefits and schemes."
+      ],
+      "officialLink": "https://www.startupindia.gov.in",
+      "criteria": {
+        "occupations": ["Business Owner"],
+        "minAge": 18,
+        "maxAge": null,
+        "maxAnnualIncome": null,
+        "states": []
+      }
+    },
+    {
+      "id": "national-scholarship",
+      "name": "National Scholarship Portal",
+      "category": "education",
+      "description": "One-stop portal for all scholarships. Pre-matric, post-matric, merit-based scholarships for students from various backgrounds.",
+      "eligibility": "Varies by scheme. Generally for SC/ST/OBC/Minority students, meritorious students, students with disabilities. Income limits apply for many schemes.",
+      "benefits": "Financial assistance for education. Covers tuition, books, and living expenses. Amount varies by scheme (Rs 3,000 to Rs 1,20,000).",
+      "requiredDocuments": ["Aadhaar card", "Caste certificate (if applicable)", "Income certificate", "Mark sheets", "Bank account details", "Admission proof"],
+      "howToApply": [
+        "Visit National Scholarship Portal (scholarships.gov.in).",
+        "Register with your details. Login and fill application.",
+        "Choose relevant scholarships. Upload documents.",
+        "Submit application before deadline. Track status on portal."
+      ],
+      "officialLink": "https://scholarships.gov.in",
+      "criteria": {
+        "occupations": ["Student"],
+        "minAge": 10,
+        "maxAge": 35,
+        "maxAnnualIncome": 800000,
+        "states": []
+      }
+    },
+    {
+      "id": "pm-fasal-bima",
+      "name": "Pradhan Mantri Fasal Bima Yojana",
+      "category": "farmer",
+      "description": "Crop insurance scheme for farmers. Protection against crop loss due to natural calamities, pests, diseases.",
+      "eligibility": "All farmers (owner or tenant). Mandatory for farmers with crop loan. Voluntary for others. Must have land documents or crop sharing agreement.",
+      "benefits": "Up to 90% premium paid by government. Quick settlement of claims. Cover for pre-sowing to post-harvest losses. Technology-based assessment.",
+      "requiredDocuments": ["Aadhaar card", "Land records or crop sharing document", "Bank account details", "Sowing proof", "Passport size photo"],
+      "howToApply": [
+        "Apply within 7 days of sowing through your bank, CSC, or agriculture office.",
+        "Fill crop insurance form. Provide land and crop details.",
+        "Pay nominal farmer premium (2% for Kharif, 1.5% for Rabi).",
+        "In case of crop loss, inform insurance company within 72 hours. Survey will be done and claim settled."
+      ],
+      "officialLink": "https://pmfby.gov.in",
+      "criteria": {
+        "occupations": ["Farmer"],
+        "minAge": 18,
+        "maxAge": null,
+        "maxAnnualIncome": null,
+        "states": []
+      }
+    },
+    {
+      "id": "senior-citizen-savings",
+      "name": "Senior Citizens Savings Scheme",
+      "category": "pension",
+      "description": "Government-backed savings scheme for senior citizens. High interest rate (around 8%). Quarterly interest payout.",
+      "eligibility": "Indian citizen aged 60 years or above. Retired civilian employees (55-60 years) or retired defense personnel (50 years onwards) also eligible.",
+      "benefits": "High interest rate (8% or above). Tax benefit under Section 80C up to Rs 1.5 lakh. Quarterly interest payout. Deposit up to Rs 30 lakh.",
+      "requiredDocuments": ["Aadhaar card", "PAN card", "Age proof", "Address proof", "Passport size photos", "Retirement proof (if applicable)"],
+      "howToApply": [
+        "Visit nearest post office or authorized bank.",
+        "Fill SCSS account opening form.",
+        "Submit KYC documents and proof of age. Deposit amount (Rs 1,000 to Rs 30 lakh).",
+        "Account will be opened. Interest will be credited quarterly to your account."
+      ],
+      "officialLink": "https://www.indiapost.gov.in",
+      "criteria": {
+        "occupations": ["Senior Citizen"],
+        "minAge": 60,
+        "maxAge": null,
+        "maxAnnualIncome": null,
+        "states": []
+      }
+    },
+    {
+      "id": "e-nam",
+      "name": "National Agriculture Market (e-NAM)",
+      "category": "farmer",
+      "description": "Online trading platform for agricultural commodities. Farmers can sell directly to buyers across India and get better prices.",
+      "eligibility": "Any farmer or trader. Must register on e-NAM portal. Need to visit integrated mandi for trading.",
+      "benefits": "Transparent price discovery. Direct access to more buyers. Reduced transaction costs. Online payment. Better prices for produce.",
+      "requiredDocuments": ["Aadhaar card", "Bank account details", "Land records or farmer identity", "Mobile number"],
+      "howToApply": [
+        "Visit nearest e-NAM integrated mandi.",
+        "Register with your Aadhaar and bank details.",
+        "Get e-NAM card or registration number.",
+        "Bring your produce to mandi. Trade online through e-NAM platform and receive payment in bank."
+      ],
+      "officialLink": "https://www.enam.gov.in",
+      "criteria": {
+        "occupations": ["Farmer"],
+        "minAge": 18,
+        "maxAge": null,
+        "maxAnnualIncome": null,
+        "states": []
+      }
+    },
+    {
+      "id": "pm-shram-yogi",
+      "name": "Pradhan Mantri Shram Yogi Maandhan",
+      "category": "pension",
+      "description": "Pension scheme for unorganized workers earning up to Rs 15,000 per month. Get Rs 3,000 monthly pension after 60 years.",
+      "eligibility": "Age 18-40 years. Unorganized worker with monthly income up to Rs 15,000. Not covered under EPF/ESIC/NPS. Not an income taxpayer.",
+      "benefits": "Rs 3,000 guaranteed monthly pension after 60 years. Family pension benefit. Low monthly contribution (Rs 55 to Rs 200 based on age).",
+      "requiredDocuments": ["Aadhaar card", "Bank account with IFSC", "Mobile number"],
+      "howToApply": [
+        "Visit nearest CSC with Aadhaar and bank details.",
+        "Fill enrollment form. Provide occupation and income details.",
+        "Make first contribution payment.",
+        "Auto-debit will be set up for monthly contribution. Pension starts at age 60."
+      ],
+      "officialLink": "https://maandhan.in",
+      "criteria": {
+        "occupations": ["Unemployed"],
+        "minAge": 18,
+        "maxAge": 40,
+        "maxAnnualIncome": 180000,
+        "states": []
+      }
+    },
+    {
+      "id": "rashtriya-vayoshri",
+      "name": "Rashtriya Vayoshri Yojana",
+      "category": "senior",
+      "description": "Free distribution of assistive living devices to senior citizens from BPL families. Aids and appliances for physical disability.",
+      "eligibility": "Senior citizens (60+ years) from BPL category. Suffering from age-related disabilities (low vision, hearing impairment, loss of teeth, locomotor disability).",
+      "benefits": "Free assistive devices like walking sticks, wheelchairs, hearing aids, dentures, spectacles, etc. No cost to beneficiary.",
+      "requiredDocuments": ["Aadhaar card", "Age proof", "BPL card", "Disability certificate or medical certificate"],
+      "howToApply": [
+        "Visit your nearby Ayushman Bharat Health and Wellness Centre or PHC.",
+        "Get assessed by medical professional for assistive device requirement.",
+        "Fill application form. Submit BPL card and medical assessment.",
+        "Devices will be provided at organized camps. Follow-up services also available."
+      ],
+      "officialLink": "https://www.alimco.in/rashtriya-vayoshri-yojana",
+      "criteria": {
+        "occupations": ["Senior Citizen"],
+        "minAge": 60,
+        "maxAge": null,
+        "maxAnnualIncome": 100000,
+        "states": []
+      }
+    },
+    {
+      "id": "namo-shetkari",
+      "name": "Namo Shetkari Mahasanman Nidhi Yojana",
+      "category": "farmer",
+      "description": "Maharashtra state scheme giving Rs 6,000 per year to farmers in addition to PM-KISAN (total Rs 12,000 per year).",
+      "eligibility": "Must be a farmer in Maharashtra. Already registered under PM-KISAN scheme. All categories of farmers eligible.",
+      "benefits": "Rs 6,000 per year (Rs 2,000 per installment, 3 installments). Direct bank transfer. Additional to PM-KISAN benefit.",
+      "requiredDocuments": ["Aadhaar card", "PM-KISAN registration number", "Land records", "Bank account details"],
+      "howToApply": [
+        "If already in PM-KISAN, you will be automatically enrolled.",
+        "Visit Aaple Sarkar portal or nearest Seva Kendra.",
+        "Verify your PM-KISAN registration and bank details.",
+        "Amount will be credited to your bank account in three installments."
+      ],
+      "officialLink": "https://mahakisan.gov.in",
+      "criteria": {
+        "occupations": ["Farmer"],
+        "minAge": 18,
+        "maxAge": null,
+        "maxAnnualIncome": null,
+        "states": ["Maharashtra"]
+      }
+    },
+    {
+      "id": "digital-india",
+      "name": "Digital India Programme",
+      "category": "digital",
+      "description": "Initiative to make government services available electronically. Improve digital infrastructure and digital literacy across India.",
+      "eligibility": "All Indian citizens can benefit from various Digital India initiatives like DigiLocker, e-Sign, UMANG app, MyGov portal, etc.",
+      "benefits": "Digital documents in DigiLocker. Online government services. Free Wi-Fi in public places. Digital literacy training. E-governance benefits.",
+      "requiredDocuments": ["Aadhaar card", "Mobile number", "Email ID"],
+      "howToApply": [
+        "Download relevant apps (DigiLocker, UMANG, etc.) from Play Store.",
+        "Register using your Aadhaar and mobile number.",
+        "Access various government services digitally.",
+        "For digital literacy training, contact nearest CSC or PMG-DISHA centre."
+      ],
+      "officialLink": "https://www.digitalindia.gov.in",
+      "criteria": {
+        "occupations": [],
+        "minAge": 10,
+        "maxAge": null,
+        "maxAnnualIncome": null,
+        "states": []
+      }
+    },
+    {
+      "id": "poshan-abhiyaan",
+      "name": "POSHAN Abhiyaan (National Nutrition Mission)",
+      "category": "health",
+      "description": "Programme to improve nutritional outcomes for children, pregnant women and lactating mothers. Focus on reducing malnutrition.",
+      "eligibility": "Pregnant women, lactating mothers, children under 6 years. Free services at Anganwadi centres.",
+      "benefits": "Supplementary nutrition. Growth monitoring. Nutrition counselling. Immunization. Pre-school education.",
+      "requiredDocuments": ["Aadhaar card", "Mother-Child Protection card", "Address proof"],
+      "howToApply": [
+        "Visit your nearest Anganwadi centre.",
+        "Register pregnant women or children under 6 years.",
+        "Regular check-ups and nutrition supplements will be provided.",
+        "Track growth and get health advice from Anganwadi worker."
+      ],
+      "officialLink": "https://poshanabhiyaan.gov.in",
+      "criteria": {
+        "occupations": [],
+        "minAge": 0,
+        "maxAge": 6,
+        "maxAnnualIncome": null,
+        "states": []
+      }
     }
   ]
 }

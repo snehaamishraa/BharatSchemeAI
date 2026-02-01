@@ -530,7 +530,14 @@ function clearCurrentUser() {
     }
     if (dashboardSection) {
       dashboardSection.style.display = 'block'
-      populateDashboard()
+      // Load schemes first, then populate dashboard
+      if (allSchemes.length === 0) {
+        loadSchemes().then(() => {
+          populateDashboard()
+        })
+      } else {
+        populateDashboard()
+      }
     }
     if (resultsSection) {
       resultsSection.style.display = 'none'
@@ -873,17 +880,27 @@ function populateDashboard() {
   if (!saved) return
   
   const profile = JSON.parse(saved)
+  const currentLang = typeof window.getCurrentLanguage === 'function' ? window.getCurrentLanguage() : 'en'
   
-  // Update profile cards
-  document.getElementById('dashboard-state').textContent = profile.state || '-'
+  // Update profile cards with translations
+  const translatedState = typeof window.translateState === 'function' ? window.translateState(profile.state, currentLang) : profile.state
+  const translatedOccupation = typeof t === 'function' ? t(profile.occupation.toLowerCase().replace(' ', '_')) : profile.occupation
+  const translatedGender = typeof t === 'function' ? t(profile.gender.toLowerCase().replace(' ', '_').replace('-', '_')) : profile.gender
+  
+  document.getElementById('dashboard-state').textContent = translatedState || '-'
   document.getElementById('dashboard-age').textContent = profile.age || '-'
-  document.getElementById('dashboard-occupation').textContent = profile.occupation || '-'
-  document.getElementById('dashboard-gender').textContent = profile.gender || '-'
+  document.getElementById('dashboard-occupation').textContent = translatedOccupation || profile.occupation || '-'
+  document.getElementById('dashboard-gender').textContent = translatedGender || profile.gender || '-'
   
-  // Calculate matched schemes
+  // Calculate matched schemes - ensure schemes are loaded first
   if (allSchemes.length === 0) {
-    loadSchemes()
+    console.log('Loading schemes for dashboard...')
+    loadSchemes().then(() => {
+      console.log('Schemes loaded, updating stats...')
+      updateSchemeStats(profile)
+    })
   } else {
+    console.log('Schemes already loaded, updating stats...')
     updateSchemeStats(profile)
   }
 }
@@ -892,6 +909,8 @@ function populateDashboard() {
 function updateSchemeStats(profile) {
   const userAge = parseInt(profile.age)
   const userOccupation = profile.occupation
+  
+  console.log('Updating scheme stats for:', { age: userAge, occupation: userOccupation, totalSchemes: allSchemes.length })
   
   const matchedSchemes = allSchemes.filter(scheme => {
     if (!scheme.criteria) return true
@@ -916,8 +935,22 @@ function updateSchemeStats(profile) {
     return true
   })
   
-  document.getElementById('total-schemes').textContent = allSchemes.length
-  document.getElementById('matched-schemes').textContent = matchedSchemes.length
+  const totalElement = document.getElementById('total-schemes')
+  const matchedElement = document.getElementById('matched-schemes')
+  
+  if (totalElement) {
+    totalElement.textContent = allSchemes.length
+    console.log('Updated total-schemes to:', allSchemes.length)
+  } else {
+    console.error('total-schemes element not found!')
+  }
+  
+  if (matchedElement) {
+    matchedElement.textContent = matchedSchemes.length
+    console.log('Updated matched-schemes to:', matchedSchemes.length)
+  } else {
+    console.error('matched-schemes element not found!')
+  }
 }
 
 // Navigate to schemes view
