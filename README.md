@@ -75,6 +75,3 @@ translations.js
 
 - Optimized for Vercel. A `vercel.json` is included.
 
-## License
-
-MIT
