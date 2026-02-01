@@ -47,6 +47,7 @@ const translations = {
     
     // App Page
     'your_details': '📋 Your Details',
+    'your_profile': 'Your Profile',
     'available_schemes': '🎯 Available Schemes',
     'no_schemes': 'No schemes found',
     
