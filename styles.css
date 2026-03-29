@@ -3595,3 +3595,455 @@ body.dark-mode .footer-section a:hover {
     background-position: 0% 50%;
   }
 }
+
+/* ============================================
+   Luxo-Inspired Theme Overrides
+   ============================================ */
+
+body.dark-mode {
+  --lux-bg: #06070d;
+  --lux-bg-2: #0c1020;
+  --lux-surface: rgba(12, 16, 32, 0.68);
+  --lux-surface-strong: rgba(16, 22, 44, 0.86);
+  --lux-border: rgba(255, 255, 255, 0.12);
+  --lux-text: #f2f6ff;
+  --lux-muted: #a8b0c5;
+  --lux-primary: #8f6dff;
+  --lux-secondary: #29d9ff;
+  --lux-accent: #7fffd4;
+}
+
+body.dark-mode {
+  font-family: 'Manrope', 'Noto Sans Devanagari', sans-serif;
+  background:
+    radial-gradient(1300px 620px at 85% -10%, rgba(143, 109, 255, 0.3), transparent 58%),
+    radial-gradient(900px 420px at 10% 0%, rgba(41, 217, 255, 0.2), transparent 50%),
+    linear-gradient(180deg, var(--lux-bg), var(--lux-bg-2));
+  color: var(--lux-text);
+}
+
+body.dark-mode .main-container-frame::before {
+  border-color: var(--lux-border);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.04),
+    0 30px 120px rgba(0, 0, 0, 0.45);
+}
+
+body.dark-mode .gov-header {
+  padding: 18px 24px 6px;
+}
+
+body.dark-mode .gov-header-content {
+  max-width: 1280px;
+  border-radius: 18px;
+  border: 1px solid var(--lux-border);
+  background: rgba(10, 14, 30, 0.62);
+  backdrop-filter: blur(16px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.24);
+}
+
+body.dark-mode .gov-logo-left,
+body.dark-mode .gov-logo-right {
+  display: none;
+}
+
+body.dark-mode .gov-text-center {
+  text-align: left;
+  padding-left: 8px;
+}
+
+body.dark-mode .gov-text-hindi {
+  font-family: 'Sora', 'Noto Sans Devanagari', sans-serif;
+  color: var(--lux-text);
+  font-size: 18px;
+  text-shadow: none;
+}
+
+body.dark-mode .gov-text-english {
+  font-family: 'Sora', sans-serif;
+  color: var(--lux-muted);
+  letter-spacing: 0.12em;
+  font-size: 12px;
+}
+
+body.dark-mode .ministry-text {
+  color: var(--lux-secondary);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+body.dark-mode .theme-toggle {
+  background: linear-gradient(140deg, rgba(143, 109, 255, 0.25), rgba(41, 217, 255, 0.2));
+  border: 1px solid var(--lux-border);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.26);
+}
+
+body.dark-mode .auth-page {
+  padding-top: 40px;
+}
+
+body.dark-mode .auth-animated-bg,
+body.dark-mode .gradient-wave,
+body.dark-mode .floating-shape,
+body.dark-mode .grid-pattern,
+body.dark-mode .sparkles,
+body.dark-mode .tricolor-orb {
+  opacity: 0.28;
+}
+
+body.dark-mode .auth-box {
+  max-width: 560px;
+  border-radius: 24px;
+  border: 1px solid var(--lux-border);
+  background: var(--lux-surface);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 20px 60px rgba(0, 0, 0, 0.4);
+}
+
+body.dark-mode .auth-header .logo-icon {
+  display: none;
+}
+
+body.dark-mode .auth-header h1 {
+  font-family: 'Sora', 'Noto Sans Devanagari', sans-serif;
+  font-weight: 700;
+  font-size: clamp(34px, 5vw, 56px);
+  letter-spacing: -0.03em;
+  color: var(--lux-text);
+}
+
+body.dark-mode .auth-header .tagline-text {
+  color: var(--lux-muted);
+  max-width: 430px;
+  margin: 10px auto 0;
+}
+
+body.dark-mode .auth-language-selector,
+body.dark-mode .form-group input,
+body.dark-mode .form-group select,
+body.dark-mode .language-selector-auth,
+body.dark-mode .language-selector,
+body.dark-mode .category-tab,
+body.dark-mode .btn-secondary,
+body.dark-mode .chatbot-input {
+  border: 1px solid var(--lux-border);
+  background: rgba(9, 13, 28, 0.74);
+  color: var(--lux-text);
+}
+
+body.dark-mode .form-group input:focus,
+body.dark-mode .form-group select:focus {
+  border-color: rgba(143, 109, 255, 0.62);
+  box-shadow:
+    0 0 0 4px rgba(143, 109, 255, 0.18),
+    0 8px 24px rgba(17, 22, 44, 0.45);
+}
+
+body.dark-mode .btn-primary,
+body.dark-mode .btn-block,
+body.dark-mode .btn-logout,
+body.dark-mode .btn-audio-toggle,
+body.dark-mode .category-tab.active,
+body.dark-mode .chatbot-header,
+body.dark-mode .user-message .message-content,
+body.dark-mode .stat-box {
+  background: linear-gradient(130deg, #7261ff 0%, #4f8dff 48%, #35d4ff 100%);
+  border: 0;
+  color: #f8fbff;
+  box-shadow: 0 14px 30px rgba(54, 83, 188, 0.35);
+}
+
+body.dark-mode .btn-primary:hover,
+body.dark-mode .btn-block:hover,
+body.dark-mode .btn-logout:hover,
+body.dark-mode .btn-audio-toggle:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 36px rgba(54, 83, 188, 0.45);
+}
+
+body.dark-mode .app-header {
+  max-width: 1280px;
+  border-radius: 20px;
+  border: 1px solid var(--lux-border);
+  background: rgba(9, 12, 26, 0.7);
+  backdrop-filter: blur(14px);
+}
+
+body.dark-mode .header-title h1,
+body.dark-mode .section-title,
+body.dark-mode .scheme-name {
+  font-family: 'Sora', 'Noto Sans Devanagari', sans-serif;
+  letter-spacing: -0.02em;
+  color: var(--lux-text);
+  text-shadow: none;
+}
+
+body.dark-mode .header-title p,
+body.dark-mode .user-name,
+body.dark-mode .tagline-text,
+body.dark-mode .scheme-desc,
+body.dark-mode .profile-card-label,
+body.dark-mode .footer-section p,
+body.dark-mode .footer-section a,
+body.dark-mode .gov-disclaimer p {
+  color: var(--lux-muted);
+  text-shadow: none;
+}
+
+body.dark-mode .section-title::after,
+body.dark-mode .footer-section::before,
+body.dark-mode .scheme-card::before {
+  background: linear-gradient(90deg, var(--lux-primary), var(--lux-secondary));
+  box-shadow: none;
+}
+
+body.dark-mode .app-main {
+  max-width: 1280px;
+}
+
+body.dark-mode .section,
+body.dark-mode .footer-section,
+body.dark-mode .gov-disclaimer,
+body.dark-mode .scheme-modal-content,
+body.dark-mode .chatbot-container {
+  background: var(--lux-surface);
+  border: 1px solid var(--lux-border);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    0 20px 50px rgba(0, 0, 0, 0.32);
+}
+
+body.dark-mode .scheme-card,
+body.dark-mode .profile-card {
+  background: var(--lux-surface-strong);
+  border: 1px solid var(--lux-border);
+}
+
+body.dark-mode .scheme-card:hover,
+body.dark-mode .profile-card:hover {
+  border-color: rgba(143, 109, 255, 0.48);
+  box-shadow: 0 20px 34px rgba(11, 14, 30, 0.45);
+}
+
+body.dark-mode .scheme-category {
+  background: rgba(127, 255, 212, 0.14);
+  border: 1px solid rgba(127, 255, 212, 0.4);
+  color: #bcffe8;
+}
+
+body.dark-mode .chatbot-toggle {
+  border-radius: 18px !important;
+  width: 64px !important;
+  height: 64px !important;
+  background: linear-gradient(130deg, #7261ff, #35d4ff) !important;
+  box-shadow: 0 16px 30px rgba(54, 83, 188, 0.45) !important;
+}
+
+body.dark-mode .chatbot-input-container {
+  background: rgba(8, 12, 24, 0.84);
+  border-top: 1px solid var(--lux-border);
+}
+
+body.dark-mode .message-content {
+  background: rgba(10, 16, 34, 0.88);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--lux-text);
+}
+
+body.dark-mode .footer-section a:hover {
+  color: var(--lux-secondary);
+  border-bottom-color: rgba(41, 217, 255, 0.44);
+}
+
+@media (max-width: 768px) {
+  body.dark-mode .gov-text-center {
+    text-align: center;
+    padding-left: 0;
+  }
+
+  body.dark-mode .gov-logo-left,
+  body.dark-mode .gov-logo-right {
+    display: none;
+  }
+
+  body.dark-mode .auth-box {
+    border-radius: 18px;
+  }
+
+  body.dark-mode .app-header,
+  body.dark-mode .section,
+  body.dark-mode .footer-section,
+  body.dark-mode .gov-disclaimer {
+    border-radius: 14px;
+  }
+}
+
+/* ============================================
+   Luxo Refinement Pass (Hero + Motion + Rhythm)
+   ============================================ */
+
+body.dark-mode .auth-page {
+  min-height: calc(100vh - 120px);
+  display: grid;
+  place-items: center;
+  padding: clamp(32px, 8vh, 88px) 20px;
+}
+
+body.dark-mode .auth-box {
+  position: relative;
+  width: min(92vw, 640px);
+  padding: clamp(28px, 4.8vw, 56px);
+}
+
+body.dark-mode .auth-box::after {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  z-index: -1;
+  border-radius: 26px;
+  background: linear-gradient(135deg, rgba(143, 109, 255, 0.45), rgba(53, 212, 255, 0.4), rgba(127, 255, 212, 0.2));
+  filter: blur(26px);
+  opacity: 0.52;
+}
+
+body.dark-mode .auth-header {
+  margin-bottom: 34px;
+}
+
+body.dark-mode .auth-header h1 {
+  line-height: 0.98;
+  margin-bottom: 10px;
+}
+
+body.dark-mode .auth-header .tagline-text {
+  font-size: clamp(13px, 1.65vw, 16px);
+  line-height: 1.7;
+}
+
+body.dark-mode .auth-tabs {
+  margin-bottom: 28px;
+}
+
+body.dark-mode .tab-btn {
+  font-weight: 600;
+}
+
+body.dark-mode .tab-btn.active {
+  color: #ffffff;
+  text-shadow: 0 0 10px rgba(53, 212, 255, 0.35);
+}
+
+body.dark-mode .app-main {
+  padding-top: clamp(28px, 5vh, 60px);
+  padding-bottom: clamp(40px, 8vh, 96px);
+}
+
+body.dark-mode .section {
+  margin-bottom: clamp(18px, 2.8vh, 34px);
+}
+
+body.dark-mode .section-title {
+  margin-bottom: clamp(18px, 2vh, 30px);
+}
+
+body.dark-mode .profile-cards-grid,
+body.dark-mode .schemes-stats {
+  gap: clamp(12px, 1.8vw, 20px);
+}
+
+body.dark-mode .results-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(12px, 1.4vw, 18px);
+}
+
+body.dark-mode .scheme-card {
+  min-height: 150px;
+}
+
+body.dark-mode .scheme-card,
+body.dark-mode .profile-card,
+body.dark-mode .btn,
+body.dark-mode .tab-btn,
+body.dark-mode .category-tab,
+body.dark-mode .theme-toggle,
+body.dark-mode .chatbot-toggle {
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+              border-color 0.35s ease,
+              background 0.35s ease;
+}
+
+body.dark-mode .btn-primary,
+body.dark-mode .btn-block,
+body.dark-mode .btn-logout,
+body.dark-mode .btn-audio-toggle {
+  letter-spacing: 0.01em;
+}
+
+body.dark-mode .gov-header-content,
+body.dark-mode .auth-box,
+body.dark-mode .app-header,
+body.dark-mode .section,
+body.dark-mode .chatbot-container {
+  animation: luxoFadeRise 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+body.dark-mode .section:nth-of-type(2) {
+  animation-delay: 0.08s;
+}
+
+body.dark-mode .section:nth-of-type(3) {
+  animation-delay: 0.14s;
+}
+
+body.dark-mode .section:nth-of-type(4) {
+  animation-delay: 0.2s;
+}
+
+@keyframes luxoFadeRise {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (max-width: 1024px) {
+  body.dark-mode .results-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  body.dark-mode .auth-header h1 {
+    line-height: 1.04;
+  }
+
+  body.dark-mode .auth-box::after {
+    opacity: 0.35;
+    filter: blur(20px);
+  }
+}
+
+/* Typography polish */
+body.dark-mode .section-title {
+  font-weight: 700;
+}
+
+body.dark-mode .profile-card-label,
+body.dark-mode .stat-label,
+body.dark-mode .scheme-category {
+  letter-spacing: 0.04em;
+}
+
+body.dark-mode .scheme-desc,
+body.dark-mode .chatbot-status,
+body.dark-mode .tagline-text {
+  line-height: 1.72;
+}

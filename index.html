@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="styles.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body class="dark-mode">
   <script type="module" src="translations.js"></script>
@@ -165,7 +165,7 @@
         <span class="logo-icon">🇮🇳</span>
         <div class="header-title">
           <h1>BharatScheme.AI</h1>
-          <p class="tagline-text">Discover Government Schemes Tailored for Your Benefits</p>
+          <p class="tagline-text">Discover the right government benefits, curated for you</p>
         </div>
       </div>
       <div class="header-right">
@@ -272,7 +272,7 @@
       <!-- Dashboard Section -->
       <section class="section dashboard-section" id="dashboard-section" style="display: none;">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-          <h2 class="section-title" data-i18n="your_profile" style="text-transform: uppercase;">YOUR PROFILE</h2>
+          <h2 class="section-title" data-i18n="your_profile" style="text-transform: uppercase;">YOUR PROFILE OVERVIEW</h2>
           <button class="btn btn-secondary" onclick="backToProfile()" style="padding: 8px 16px; font-size: 14px;">← Back</button>
         </div>
         
@@ -280,7 +280,7 @@
         <div class="profile-cards-grid">
           <div class="profile-card">
             <div class="profile-card-icon">📍</div>
-            <div class="profile-card-label">State</div>
+            <div class="profile-card-label">Location</div>
             <div class="profile-card-value" id="dashboard-state">-</div>
           </div>
           
@@ -292,7 +292,7 @@
           
           <div class="profile-card">
             <div class="profile-card-icon">💼</div>
-            <div class="profile-card-label">Occupation</div>
+            <div class="profile-card-label">Profession</div>
             <div class="profile-card-value" id="dashboard-occupation">-</div>
           </div>
           
@@ -307,17 +307,17 @@
         <div class="schemes-stats">
           <div class="stat-box">
             <div class="stat-number" id="total-schemes">0</div>
-            <div class="stat-label">Total Schemes Available</div>
+            <div class="stat-label">Total Programs Available</div>
           </div>
           
           <div class="stat-box">
             <div class="stat-number" id="matched-schemes">0</div>
-            <div class="stat-label">Schemes Matched For You</div>
+            <div class="stat-label">Programs Matched For You</div>
           </div>
         </div>
         
         <div style="margin-top: 30px;">
-          <button class="btn btn-primary" onclick="goToSchemes()">Browse Schemes →</button>
+          <button class="btn btn-primary" onclick="goToSchemes()">Explore Programs →</button>
         </div>
       </section>
 
@@ -327,7 +327,7 @@
           <h2 class="section-title" data-i18n="available_schemes">📊 Available Schemes for You</h2>
           <button class="btn btn-secondary" onclick="backToDashboard()" style="padding: 8px 16px; font-size: 14px;">← Back</button>
         </div>
-        <p style="color: #b0b5c1; margin-bottom: 20px; font-size: 14px;">Click on any scheme to see full details</p>
+        <p style="color: #b0b5c1; margin-bottom: 20px; font-size: 14px;">Select any program to view full eligibility and application details</p>
         
         <!-- Category Tabs -->
         <div class="category-tabs" id="category-tabs" style="margin-bottom: 20px; display: flex; flex-wrap: wrap; gap: 10px;"></div>
@@ -360,7 +360,7 @@
 
       <!-- Government Disclaimer -->
       <div class="gov-disclaimer">
-        <p><strong>Government Schemes Information Portal</strong> – BharatScheme.AI helps you discover and learn about government schemes and their eligibility criteria</p>
+        <p><strong>Government Benefits Information Portal</strong> – BharatScheme.AI helps you discover and understand relevant government programs and eligibility criteria</p>
       </div>
     </main>
   </div>
@@ -371,8 +371,8 @@
       <div class="chatbot-header-content">
         <div class="chatbot-avatar">🤖</div>
         <div>
-          <h4 data-i18n="chatbot_title">BharatScheme.AI Assistant</h4>
-          <p class="chatbot-status" data-i18n="chatbot_status">Online • Here to help</p>
+          <h4 data-i18n="chatbot_title">BharatScheme Concierge</h4>
+            <p class="chatbot-status" data-i18n="chatbot_status">Online • Ready to assist</p>
         </div>
       </div>
       <button id="chatbot-close" class="chatbot-close" onclick="document.getElementById('chatbot-container').classList.remove('active')">✕</button>
@@ -382,7 +382,7 @@
       <div class="chatbot-message bot-message">
         <div class="message-avatar">🤖</div>
         <div class="message-content">
-          <p data-i18n="chatbot_welcome">Namaste! 🙏 I'm here to help you find government schemes. How can I assist you today?</p>
+          <p data-i18n="chatbot_welcome">Namaste! I can help you discover schemes, check eligibility, and guide your next steps.</p>
         </div>
       </div>
     </div>
@@ -402,9 +402,9 @@
     </div>
     
     <div class="chatbot-quick-questions">
-      <button class="quick-question" data-question="schemes" data-i18n="quick_schemes" onclick="answerQuickQuestion('schemes')">What schemes are available?</button>
-      <button class="quick-question" data-question="eligibility" data-i18n="quick_eligibility" onclick="answerQuickQuestion('eligibility')">How do I check eligibility?</button>
-      <button class="quick-question" data-question="apply" data-i18n="quick_apply" onclick="answerQuickQuestion('apply')">How to apply?</button>
+      <button class="quick-question" data-question="schemes" data-i18n="quick_schemes" onclick="answerQuickQuestion('schemes')">Show me recommended schemes</button>
+      <button class="quick-question" data-question="eligibility" data-i18n="quick_eligibility" onclick="answerQuickQuestion('eligibility')">Check my eligibility</button>
+      <button class="quick-question" data-question="apply" data-i18n="quick_apply" onclick="answerQuickQuestion('apply')">How do I apply?</button>
     </div>
   </div>
 

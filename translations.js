@@ -6,7 +6,7 @@ const translations = {
     'gov_text_english': 'GOVERNMENT OF INDIA',
     'ministry_text': 'Ministry of Government Affairs',
     'bharatscheme': 'BharatScheme.AI',
-    'tagline': 'Discover Government Schemes Tailored for Your Benefits',
+    'tagline': 'Discover the right government benefits, curated for you',
     'official_portal': '🏛️ Official Government Portal',
     
     // Language & Auth
@@ -40,19 +40,19 @@ const translations = {
     // Buttons
     'btn_login': 'Login',
     'btn_register': 'Register',
-    'btn_save': 'Save Details',
+    'btn_save': 'Save & Continue',
     'btn_logout': 'Logout',
     'audio_on': '🔊 Audio On',
     'audio_off': '🔇 Audio Off',
     
     // App Page
-    'your_details': '📋 Your Details',
-    'your_profile': 'YOUR PROFILE',
-    'available_schemes': '🎯 Available Schemes',
+    'your_details': '📋 Your Profile Details',
+    'your_profile': 'YOUR PROFILE OVERVIEW',
+    'available_schemes': '🎯 Recommended Schemes',
     'no_schemes': 'No schemes found',
     
     // Scheme Details
-    'read_more': 'Read More →',
+    'read_more': 'View Details →',
     'eligibility': '✅ Who is Eligible?',
     'benefits': '💰 Benefits',
     'documents': '📋 Required Documents',
@@ -64,22 +64,22 @@ const translations = {
     'feedback': '💬 Feedback',
     'contact_us': '📞 Contact Us',
     'about': 'ℹ️ About',
-    'help_improve': 'Help us improve! Share your feedback at:',
+    'help_improve': 'Help us improve your experience. Share feedback at:',
     'email_contact': 'Email: ',
     'phone_contact': 'Phone: ',
     'address_contact': 'Address: ',
-    'about_text': 'BharatScheme.AI helps you discover government schemes you\'re eligible for',
+    'about_text': 'BharatScheme.AI helps you discover government programs matched to your profile',
     'copyright': '© 2026 BharatScheme.AI. All rights reserved.',
-    'suggestions_help': 'Your suggestions help us serve you better',
+    'suggestions_help': 'Your suggestions help us build a better service',
     
     // Chatbot
-    'chatbot_title': 'BharatScheme.AI Assistant',
-    'chatbot_status': 'Online • Here to help',
-    'chatbot_welcome': 'Namaste! 🙏 I\'m here to help you find government schemes. How can I assist you today?',
+    'chatbot_title': 'BharatScheme Concierge',
+    'chatbot_status': 'Online • Ready to assist',
+    'chatbot_welcome': 'Namaste! I can help you discover schemes, check eligibility, and guide your next steps.',
     'chatbot_input_placeholder': 'Type your question...',
-    'quick_schemes': 'What schemes are available?',
-    'quick_eligibility': 'How do I check eligibility?',
-    'quick_apply': 'How to apply?'
+    'quick_schemes': 'Show me recommended schemes',
+    'quick_eligibility': 'Check my eligibility',
+    'quick_apply': 'How do I apply?'
   },
 
   'hi': {
