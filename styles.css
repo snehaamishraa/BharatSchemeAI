@@ -4047,3 +4047,200 @@ body.dark-mode .chatbot-status,
 body.dark-mode .tagline-text {
   line-height: 1.72;
 }
+
+/* ============================================
+   Master Polish Layer
+   ============================================ */
+
+body.dark-mode .main-container-frame {
+  max-width: 1360px;
+}
+
+body.dark-mode .gov-header-content,
+body.dark-mode .app-header,
+body.dark-mode .app-main,
+body.dark-mode .gov-disclaimer,
+body.dark-mode .footer-content {
+  width: min(100%, 1240px);
+}
+
+body.dark-mode .gov-header-content,
+body.dark-mode .app-header {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+body.dark-mode .auth-box,
+body.dark-mode .section,
+body.dark-mode .scheme-card,
+body.dark-mode .profile-card,
+body.dark-mode .footer-section,
+body.dark-mode .scheme-modal-content,
+body.dark-mode .chatbot-container {
+  border-radius: 20px;
+}
+
+body.dark-mode .auth-language-selector,
+body.dark-mode .form-group input,
+body.dark-mode .form-group select,
+body.dark-mode .language-selector-auth,
+body.dark-mode .language-selector,
+body.dark-mode .category-tab,
+body.dark-mode .btn-secondary,
+body.dark-mode .chatbot-input,
+body.dark-mode .quick-question {
+  border-radius: 14px;
+}
+
+body.dark-mode .btn,
+body.dark-mode .btn-primary,
+body.dark-mode .btn-secondary,
+body.dark-mode .btn-block,
+body.dark-mode .btn-audio-toggle,
+body.dark-mode .btn-logout {
+  min-height: 44px;
+  font-weight: 700;
+}
+
+body.dark-mode .profile-section .form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px 16px;
+}
+
+body.dark-mode .profile-section .form .form-group {
+  margin-bottom: 0;
+}
+
+body.dark-mode .profile-section .form .btn {
+  grid-column: 1 / -1;
+  justify-self: start;
+  min-width: 220px;
+}
+
+body.dark-mode .dashboard-section > div[style*='margin-bottom: 20px'],
+body.dark-mode .results-section > div[style*='margin-bottom: 20px'] {
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+body.dark-mode .profile-card {
+  padding: 22px;
+}
+
+body.dark-mode .profile-card-icon {
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+
+body.dark-mode .profile-card-value {
+  font-size: 22px;
+}
+
+body.dark-mode .stat-box {
+  padding: 24px;
+}
+
+body.dark-mode .stat-number {
+  font-size: clamp(30px, 4vw, 44px);
+}
+
+body.dark-mode .results-list {
+  align-items: stretch;
+}
+
+body.dark-mode .scheme-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+body.dark-mode .scheme-name {
+  font-size: clamp(17px, 1.8vw, 22px);
+  margin-bottom: 8px;
+}
+
+body.dark-mode .scheme-desc {
+  font-size: 14px;
+}
+
+body.dark-mode .category-tabs {
+  gap: 8px;
+}
+
+body.dark-mode .category-tab {
+  padding: 10px 14px;
+}
+
+body.dark-mode .footer-content {
+  margin-left: auto;
+  margin-right: auto;
+  gap: 16px;
+}
+
+body.dark-mode .footer-section {
+  padding: 20px;
+}
+
+body.dark-mode .gov-disclaimer {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+body.dark-mode .chatbot-container {
+  overflow: hidden;
+}
+
+body.dark-mode .chatbot-messages {
+  padding: 14px;
+  gap: 10px;
+}
+
+body.dark-mode .quick-question {
+  border: 1px solid var(--lux-border);
+  background: rgba(11, 16, 34, 0.82);
+  color: var(--lux-text);
+  transition: border-color 0.25s ease, transform 0.25s ease;
+}
+
+body.dark-mode .quick-question:hover {
+  transform: translateY(-1px);
+  border-color: rgba(143, 109, 255, 0.55);
+}
+
+@media (max-width: 960px) {
+  body.dark-mode .profile-section .form {
+    grid-template-columns: 1fr;
+  }
+
+  body.dark-mode .profile-section .form .btn {
+    width: 100%;
+    justify-self: stretch;
+  }
+
+  body.dark-mode .footer-content {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  body.dark-mode .auth-box,
+  body.dark-mode .section,
+  body.dark-mode .scheme-card,
+  body.dark-mode .profile-card,
+  body.dark-mode .footer-section,
+  body.dark-mode .gov-disclaimer,
+  body.dark-mode .scheme-modal-content {
+    border-radius: 14px;
+  }
+
+  body.dark-mode .app-main {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  body.dark-mode .chatbot-container {
+    border-radius: 14px !important;
+  }
+}
