@@ -4244,3 +4244,103 @@ body.dark-mode .quick-question:hover {
     border-radius: 14px !important;
   }
 }
+
+/* ============================================
+   Force Visible Redesign (Luxe V2)
+   ============================================ */
+
+body.luxe-v2.dark-mode {
+  background:
+    radial-gradient(1200px 620px at 90% -10%, rgba(255, 0, 153, 0.24), transparent 60%),
+    radial-gradient(900px 520px at -5% 10%, rgba(0, 214, 255, 0.2), transparent 56%),
+    linear-gradient(180deg, #04040a 0%, #090b19 52%, #060811 100%) !important;
+}
+
+body.luxe-v2.dark-mode .gov-header-content,
+body.luxe-v2.dark-mode .app-header,
+body.luxe-v2.dark-mode .auth-box,
+body.luxe-v2.dark-mode .section,
+body.luxe-v2.dark-mode .footer-section,
+body.luxe-v2.dark-mode .gov-disclaimer,
+body.luxe-v2.dark-mode .scheme-card,
+body.luxe-v2.dark-mode .profile-card,
+body.luxe-v2.dark-mode .scheme-modal-content,
+body.luxe-v2.dark-mode .chatbot-container {
+  background: linear-gradient(160deg, rgba(16, 20, 40, 0.9), rgba(12, 16, 30, 0.82)) !important;
+  border: 1px solid rgba(110, 129, 255, 0.36) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 20px 48px rgba(0, 0, 0, 0.45),
+    0 0 40px rgba(110, 129, 255, 0.14) !important;
+}
+
+body.luxe-v2.dark-mode .auth-header h1,
+body.luxe-v2.dark-mode .header-title h1,
+body.luxe-v2.dark-mode .section-title {
+  color: #ffffff !important;
+  text-shadow:
+    0 0 14px rgba(127, 156, 255, 0.45),
+    0 0 22px rgba(0, 214, 255, 0.18) !important;
+}
+
+body.luxe-v2.dark-mode .auth-header .tagline-text,
+body.luxe-v2.dark-mode .header-title p,
+body.luxe-v2.dark-mode .scheme-desc,
+body.luxe-v2.dark-mode .profile-card-label,
+body.luxe-v2.dark-mode .footer-section p,
+body.luxe-v2.dark-mode .footer-section a,
+body.luxe-v2.dark-mode .gov-disclaimer p {
+  color: #b6c0df !important;
+}
+
+body.luxe-v2.dark-mode .btn-primary,
+body.luxe-v2.dark-mode .btn-block,
+body.luxe-v2.dark-mode .btn-logout,
+body.luxe-v2.dark-mode .btn-audio-toggle,
+body.luxe-v2.dark-mode .category-tab.active,
+body.luxe-v2.dark-mode .chatbot-header,
+body.luxe-v2.dark-mode .chatbot-toggle,
+body.luxe-v2.dark-mode .user-message .message-content,
+body.luxe-v2.dark-mode .stat-box {
+  background: linear-gradient(135deg, #7f5cff 0%, #4f7bff 45%, #00d6ff 100%) !important;
+  border: 0 !important;
+  color: #f8fbff !important;
+  box-shadow: 0 16px 38px rgba(79, 123, 255, 0.45) !important;
+}
+
+body.luxe-v2.dark-mode .form-group input,
+body.luxe-v2.dark-mode .form-group select,
+body.luxe-v2.dark-mode .language-selector,
+body.luxe-v2.dark-mode .language-selector-auth,
+body.luxe-v2.dark-mode .category-tab,
+body.luxe-v2.dark-mode .btn-secondary,
+body.luxe-v2.dark-mode .chatbot-input,
+body.luxe-v2.dark-mode .quick-question {
+  background: rgba(9, 13, 26, 0.84) !important;
+  color: #eaf0ff !important;
+  border: 1px solid rgba(110, 129, 255, 0.34) !important;
+}
+
+body.luxe-v2.dark-mode .section-title::after,
+body.luxe-v2.dark-mode .scheme-card::before,
+body.luxe-v2.dark-mode .footer-section::before {
+  background: linear-gradient(90deg, #7f5cff, #00d6ff) !important;
+  box-shadow: 0 0 12px rgba(0, 214, 255, 0.35) !important;
+}
+
+body.luxe-v2.dark-mode .results-list {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+body.luxe-v2.dark-mode .scheme-card:hover,
+body.luxe-v2.dark-mode .profile-card:hover {
+  transform: translateY(-4px) !important;
+  border-color: rgba(0, 214, 255, 0.5) !important;
+}
+
+@media (max-width: 980px) {
+  body.luxe-v2.dark-mode .results-list {
+    grid-template-columns: 1fr;
+  }
+}
