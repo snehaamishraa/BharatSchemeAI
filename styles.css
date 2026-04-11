@@ -4473,6 +4473,7 @@ body:not(.dark-mode) .auth-page {
 body:not(.dark-mode) .auth-animated-bg {
   overflow: hidden;
   border-radius: 28px;
+  opacity: 0.6;
 }
 
 body:not(.dark-mode) .auth-box {
@@ -4635,6 +4636,15 @@ body:not(.dark-mode) .section {
   animation: sectionReveal 0.7s ease both;
 }
 
+body:not(.dark-mode) .auth-animated-bg,
+body:not(.dark-mode) .gradient-wave,
+body:not(.dark-mode) .floating-shape,
+body:not(.dark-mode) .grid-pattern,
+body:not(.dark-mode) .sparkles,
+body:not(.dark-mode) .tricolor-orb {
+  opacity: 0.12;
+}
+
 body:not(.dark-mode) .section:nth-of-type(2) { animation-delay: 0.08s; }
 body:not(.dark-mode) .section:nth-of-type(3) { animation-delay: 0.14s; }
 
@@ -4704,6 +4714,21 @@ body:not(.dark-mode) .category-tab {
 body:not(.dark-mode) .category-tab.active {
   background: #1d2638;
   border-color: #1d2638;
+}
+
+body:not(.dark-mode) .results-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+body:not(.dark-mode) .scheme-card {
+  min-height: 150px;
+}
+
+body:not(.dark-mode) .footer-content {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
 }
 
 body:not(.dark-mode) .stat-box {
@@ -4795,5 +4820,10 @@ body:not(.dark-mode) ::-webkit-scrollbar-thumb:hover {
   body:not(.dark-mode) .chatbot-toggle {
     right: 12px !important;
     bottom: 14px !important;
+  }
+
+  body:not(.dark-mode) .results-list,
+  body:not(.dark-mode) .footer-content {
+    grid-template-columns: 1fr;
   }
 }
