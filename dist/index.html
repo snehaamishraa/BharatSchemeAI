@@ -6,11 +6,11 @@
   <title>BharatScheme.AI – Government Scheme Finder</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;600;700&display=swap" rel="stylesheet">
-  <script type="module" crossorigin src="/assets/index-sD9OF5E0.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/index-BOpHoZ4O.css">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Sora:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;600;700&display=swap" rel="stylesheet">
+  <script type="module" crossorigin src="/assets/index-C8KSP-2P.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-BvauIaRk.css">
 </head>
-<body class="dark-mode luxe-v2">
+<body class="luxe-v2">
   <!-- National Anthem Audio -->
   <audio id="national-anthem" preload="auto">
     <source src="vande-matram-violin-background-music-268744.mp3" type="audio/mpeg">
@@ -36,8 +36,8 @@
     </div>
     
     <!-- Dark Mode Toggle -->
-    <button id="theme-toggle" class="theme-toggle" onclick="toggleTheme()" title="Dark Mode Locked">
-      <span class="theme-icon">☀️</span>
+    <button id="theme-toggle" class="theme-toggle" onclick="toggleTheme()" title="Switch to dark mode">
+      <span class="theme-icon">🌙</span>
     </button>
   </div>
 
@@ -457,23 +457,26 @@
     }
     
     // Dark/Light Mode Toggle
-    function toggleTheme() {
+    function setTheme(isDark) {
       const body = document.body;
       const themeIcon = document.querySelector('.theme-icon');
+      const themeToggle = document.getElementById('theme-toggle');
 
-      // Keep dark mode always enabled.
-      body.classList.add('dark-mode');
-      if (themeIcon) themeIcon.textContent = '☀️';
-      localStorage.setItem('theme', 'dark');
+      body.classList.toggle('dark-mode', isDark);
+      if (themeIcon) themeIcon.textContent = isDark ? '☀️' : '🌙';
+      if (themeToggle) themeToggle.title = isDark ? 'Switch to light mode' : 'Switch to dark mode';
+
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    }
+
+    function toggleTheme() {
+      setTheme(!document.body.classList.contains('dark-mode'));
     }
     
     // Load saved theme on page load
     document.addEventListener('DOMContentLoaded', () => {
-      const themeIcon = document.querySelector('.theme-icon');
-
-      document.body.classList.add('dark-mode');
-      localStorage.setItem('theme', 'dark');
-      if (themeIcon) themeIcon.textContent = '☀️';
+      const savedTheme = localStorage.getItem('theme');
+      setTheme(savedTheme === 'dark');
     });
     
     function answerQuickQuestion(question) {
