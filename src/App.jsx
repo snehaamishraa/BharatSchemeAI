@@ -64,8 +64,8 @@ const COPY = {
     footerProduct: 'Product',
     footerResources: 'Resources',
     footerCompany: 'Company',
-    loginTitle: 'Sign in to continue',
-    loginCopy: 'Demo authentication surface. Connect Clerk/OAuth/custom auth anytime.',
+    loginTitle: 'Login or sign up to continue',
+    loginCopy: 'Demo authentication surface. Sign in or create an account, then continue to schemes.',
     loginName: 'Full name',
     loginEmail: 'Email',
     loginPassword: 'Password',
@@ -104,8 +104,8 @@ const COPY = {
     footerProduct: 'प्रोडक्ट',
     footerResources: 'रिसोर्स',
     footerCompany: 'कंपनी',
-    loginTitle: 'जारी रखने के लिए साइन इन करें',
-    loginCopy: 'डेमो authentication surface. आवश्यकता अनुसार auth provider जोड़ें।',
+    loginTitle: 'जारी रखने के लिए लॉगिन या साइन अप करें',
+    loginCopy: 'डेमो authentication surface. पहले sign in या account बनाइए, फिर schemes देखें।',
     loginName: 'पूरा नाम',
     loginEmail: 'ईमेल',
     loginPassword: 'पासवर्ड',
@@ -284,14 +284,18 @@ function ChatBubble({ message }) {
   )
 }
 
-function FooterColumn({ title, items }) {
+function FooterColumn({ title, items, onExploreSchemes }) {
   return (
     <div>
       <p className="text-sm font-semibold text-slate-900 dark:text-white">{title}</p>
       <ul className="mt-4 space-y-3 text-sm text-slate-600 dark:text-slate-300">
         {items.map((item) => (
           <li key={item.label}>
-            {item.external ? (
+            {item.href === '/schemes' ? (
+              <button type="button" onClick={onExploreSchemes} className="transition hover:text-brand-600 dark:hover:text-white">
+                {item.label}
+              </button>
+            ) : item.external ? (
               <a href={item.href} target="_blank" rel="noreferrer" className="transition hover:text-brand-600 dark:hover:text-white">
                 {item.label}
               </a>
@@ -307,7 +311,18 @@ function FooterColumn({ title, items }) {
   )
 }
 
-function AppShell({ children, copy, language, setLanguage, theme, setTheme, signedInName, mobileOpen, setMobileOpen }) {
+function AppShell({
+  children,
+  copy,
+  language,
+  setLanguage,
+  theme,
+  setTheme,
+  signedInName,
+  mobileOpen,
+  setMobileOpen,
+  onExploreSchemes
+}) {
   const location = useLocation()
 
   useEffect(() => {
@@ -343,17 +358,32 @@ function AppShell({ children, copy, language, setLanguage, theme, setTheme, sign
           </div>
 
           <nav className="hidden items-center gap-8 lg:flex">
-            {NAV_ITEMS.map((item) => (
-              <NavLink
-                key={item.to}
-                to={item.to}
-                className={({ isActive }) =>
-                  cn('text-sm font-medium transition', isActive ? 'text-brand-600 dark:text-brand-300' : 'text-slate-600 hover:text-brand-600 dark:text-slate-300 dark:hover:text-brand-300')
-                }
-              >
-                {copy[item.key]}
-              </NavLink>
-            ))}
+            {NAV_ITEMS.map((item) => {
+              if (item.to === '/schemes') {
+                return (
+                  <button
+                    key={item.to}
+                    type="button"
+                    onClick={onExploreSchemes}
+                    className="text-sm font-medium text-slate-600 transition hover:text-brand-600 dark:text-slate-300 dark:hover:text-brand-300"
+                  >
+                    {copy[item.key]}
+                  </button>
+                )
+              }
+
+              return (
+                <NavLink
+                  key={item.to}
+                  to={item.to}
+                  className={({ isActive }) =>
+                    cn('text-sm font-medium transition', isActive ? 'text-brand-600 dark:text-brand-300' : 'text-slate-600 hover:text-brand-600 dark:text-slate-300 dark:hover:text-brand-300')
+                  }
+                >
+                  {copy[item.key]}
+                </NavLink>
+              )
+            })}
           </nav>
 
           <div className="flex items-center gap-2 sm:gap-3">
@@ -412,17 +442,32 @@ function AppShell({ children, copy, language, setLanguage, theme, setTheme, sign
               className="border-t border-white/60 bg-white/95 px-4 py-4 shadow-soft backdrop-blur-xl dark:border-white/10 dark:bg-slate-950/95 lg:hidden"
             >
               <div className="mx-auto flex max-w-7xl flex-col gap-3">
-                {NAV_ITEMS.map((item) => (
-                  <NavLink
-                    key={item.to}
-                    to={item.to}
-                    className={({ isActive }) =>
-                      cn('rounded-2xl px-4 py-3 text-sm font-medium transition', isActive ? 'bg-brand-50 text-brand-600 dark:bg-brand-500/20 dark:text-brand-300' : 'text-slate-700 hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-white/5')
-                    }
-                  >
-                    {copy[item.key]}
-                  </NavLink>
-                ))}
+                {NAV_ITEMS.map((item) => {
+                  if (item.to === '/schemes') {
+                    return (
+                      <button
+                        key={item.to}
+                        type="button"
+                        onClick={onExploreSchemes}
+                        className="rounded-2xl px-4 py-3 text-left text-sm font-medium text-slate-700 transition hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-white/5"
+                      >
+                        {copy[item.key]}
+                      </button>
+                    )
+                  }
+
+                  return (
+                    <NavLink
+                      key={item.to}
+                      to={item.to}
+                      className={({ isActive }) =>
+                        cn('rounded-2xl px-4 py-3 text-sm font-medium transition', isActive ? 'bg-brand-50 text-brand-600 dark:bg-brand-500/20 dark:text-brand-300' : 'text-slate-700 hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-white/5')
+                      }
+                    >
+                      {copy[item.key]}
+                    </NavLink>
+                  )
+                })}
                 <Link to="/login" className="rounded-2xl border border-slate-200 px-4 py-3 text-sm font-medium text-slate-700 dark:border-white/10 dark:text-slate-200">
                   {copy.login}
                 </Link>
@@ -475,6 +520,7 @@ function AppShell({ children, copy, language, setLanguage, theme, setTheme, sign
               { label: copy.navAssistant, href: '/assistant' },
               { label: copy.tryAi, href: '/assistant' }
             ]}
+            onExploreSchemes={onExploreSchemes}
           />
           <FooterColumn
             title={copy.footerResources}
@@ -484,6 +530,7 @@ function AppShell({ children, copy, language, setLanguage, theme, setTheme, sign
               { label: 'Accessibility', href: '/about' },
               { label: 'Privacy', href: '/about' }
             ]}
+            onExploreSchemes={onExploreSchemes}
           />
           <FooterColumn
             title={copy.footerCompany}
@@ -492,6 +539,7 @@ function AppShell({ children, copy, language, setLanguage, theme, setTheme, sign
               { label: 'Contact', href: 'mailto:hello@bharatscheme.ai', external: true },
               { label: 'Support', href: '/assistant' }
             ]}
+            onExploreSchemes={onExploreSchemes}
           />
         </div>
       </footer>
@@ -499,7 +547,7 @@ function AppShell({ children, copy, language, setLanguage, theme, setTheme, sign
   )
 }
 
-function HomePage({ copy }) {
+function HomePage({ copy, onExploreSchemes }) {
   return (
     <>
       <section className="grid items-center gap-12 lg:grid-cols-[1.1fr_0.9fr]">
@@ -512,10 +560,14 @@ function HomePage({ copy }) {
           <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-600 dark:text-slate-300">{copy.heroCopy}</p>
 
           <div className="mt-8 flex flex-wrap gap-3">
-            <Link to="/schemes" className="inline-flex items-center gap-2 rounded-full bg-brand-600 px-6 py-3.5 text-sm font-semibold text-white shadow-glow transition hover:bg-brand-700">
+            <button
+              type="button"
+              onClick={onExploreSchemes}
+              className="inline-flex items-center gap-2 rounded-full bg-brand-600 px-6 py-3.5 text-sm font-semibold text-white shadow-glow transition hover:bg-brand-700"
+            >
               {copy.explore}
               <ArrowRight className="h-4 w-4" />
-            </Link>
+            </button>
             <Link to="/assistant" className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-6 py-3.5 text-sm font-semibold text-slate-700 transition hover:border-brand-200 hover:text-brand-600 dark:border-white/10 dark:bg-white/5 dark:text-slate-200">
               {copy.startChat}
               <MessageCircleMore className="h-4 w-4" />
@@ -529,9 +581,13 @@ function HomePage({ copy }) {
             <p className="text-xs font-semibold uppercase tracking-[0.28em] text-slate-500 dark:text-slate-400">AI recommendation console</p>
             <h2 className="mt-2 text-2xl font-semibold text-slate-900 dark:text-slate-50">Navigate pages for each module</h2>
             <div className="mt-5 grid gap-3 sm:grid-cols-2">
-              <Link to="/schemes" className="rounded-[1.25rem] border border-slate-200 bg-white p-4 text-sm font-semibold text-slate-900 transition hover:border-brand-200 hover:text-brand-600 dark:border-white/10 dark:bg-white/5 dark:text-slate-100">
+              <button
+                type="button"
+                onClick={onExploreSchemes}
+                className="rounded-[1.25rem] border border-slate-200 bg-white p-4 text-sm font-semibold text-slate-900 transition hover:border-brand-200 hover:text-brand-600 dark:border-white/10 dark:bg-white/5 dark:text-slate-100"
+              >
                 Explore Schemes
-              </Link>
+              </button>
               <Link to="/assistant" className="rounded-[1.25rem] border border-slate-200 bg-white p-4 text-sm font-semibold text-slate-900 transition hover:border-brand-200 hover:text-brand-600 dark:border-white/10 dark:bg-white/5 dark:text-slate-100">
                 Open AI Assistant
               </Link>
@@ -999,6 +1055,7 @@ function App() {
   const [selectedScheme, setSelectedScheme] = useState(null)
   const [mobileOpen, setMobileOpen] = useState(false)
   const [signedInName, setSignedInName] = useState('Guest')
+  const [postLoginRedirect, setPostLoginRedirect] = useState('/schemes')
   const [loginForm, setLoginForm] = useState({ name: '', email: '', password: '' })
   const [messages, setMessages] = useState([
     {
@@ -1051,6 +1108,14 @@ function App() {
     if (!messages.length) return
     chatEndRef.current?.scrollIntoView({ behavior: 'smooth', block: 'end' })
   }, [messages, thinking])
+
+  useEffect(() => {
+    if (signedInName !== 'Guest') return
+    if (location.pathname !== '/schemes') return
+
+    setPostLoginRedirect('/schemes')
+    navigate('/login', { replace: true })
+  }, [location.pathname, navigate, signedInName])
 
   useEffect(() => {
     const body = document.body
@@ -1129,6 +1194,21 @@ function App() {
       navigate('/assistant')
       return
     }
+    if (signedInName === 'Guest') {
+      setPostLoginRedirect('/schemes')
+      navigate('/login')
+      return
+    }
+    navigate('/schemes')
+  }
+
+  const openSchemes = () => {
+    if (signedInName === 'Guest') {
+      setPostLoginRedirect('/schemes')
+      navigate('/login')
+      return
+    }
+
     navigate('/schemes')
   }
 
@@ -1137,7 +1217,7 @@ function App() {
     const fallbackName = loginForm.name.trim() || loginForm.email.split('@')[0] || 'Guest'
     setSignedInName(fallbackName)
     setLoginForm({ name: '', email: '', password: '' })
-    navigate('/')
+    navigate(postLoginRedirect || '/', { replace: true })
   }
 
   return (
@@ -1150,6 +1230,7 @@ function App() {
       signedInName={signedInName}
       mobileOpen={mobileOpen}
       setMobileOpen={setMobileOpen}
+      onExploreSchemes={openSchemes}
     >
       <AnimatePresence mode="wait">
         <motion.div
@@ -1160,29 +1241,33 @@ function App() {
           transition={{ duration: 0.28, ease: 'easeOut' }}
         >
           <Routes location={location}>
-            <Route path="/" element={<HomePage copy={copy} />} />
+            <Route path="/" element={<HomePage copy={copy} onExploreSchemes={openSchemes} />} />
             <Route
               path="/schemes"
               element={
-                <SchemesPage
-                  copy={copy}
-                  mode={mode}
-                  setMode={setMode}
-                  query={query}
-                  setQuery={setQuery}
-                  activeChip={activeChip}
-                  setActiveChip={setActiveChip}
-                  suggestions={suggestions}
-                  handleSearchAction={handleSearchAction}
-                  loadingSchemes={loadingSchemes}
-                  visibleSchemes={visibleSchemes}
-                  onOpen={setSelectedScheme}
-                  clearSearch={() => {
-                    setQuery('')
-                    setMode('search')
-                    setActiveChip('')
-                  }}
-                />
+                signedInName === 'Guest' ? (
+                  <Navigate to="/login" replace />
+                ) : (
+                  <SchemesPage
+                    copy={copy}
+                    mode={mode}
+                    setMode={setMode}
+                    query={query}
+                    setQuery={setQuery}
+                    activeChip={activeChip}
+                    setActiveChip={setActiveChip}
+                    suggestions={suggestions}
+                    handleSearchAction={handleSearchAction}
+                    loadingSchemes={loadingSchemes}
+                    visibleSchemes={visibleSchemes}
+                    onOpen={setSelectedScheme}
+                    clearSearch={() => {
+                      setQuery('')
+                      setMode('search')
+                      setActiveChip('')
+                    }}
+                  />
+                )
               }
             />
             <Route
