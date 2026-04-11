@@ -1,6 +1,6 @@
 // Simple Login/Register System (No Clerk)
 
-let authContainer, appContainer, tabLogin, tabRegister, loginForm, registerForm, logoutBtn, profileForm, authMessage, userName, resultsList, resultsSection, nationalAnthem, audioToggleBtn
+let authContainer, appContainer, tabLogin, tabRegister, loginForm, registerForm, logoutBtn, profileForm, authMessage, userName, resultsList, resultsSection
 
 // Initialize DOM elements
 function initializeDOMElements() {
@@ -16,61 +16,9 @@ function initializeDOMElements() {
   userName = document.getElementById('user-name')
   resultsList = document.getElementById('results-list')
   resultsSection = document.getElementById('results-section')
-  nationalAnthem = document.getElementById('national-anthem')
-  audioToggleBtn = document.getElementById('audio-toggle-btn')
 }
 
 let allSchemes = []
-let audioEnabled = true
-
-// Play National Anthem
-function playNationalAnthem() {
-  if (!audioEnabled) {
-    console.log('🔇 Audio is disabled')
-    return
-  }
-
-  console.log('🎵 playNationalAnthem called')
-  console.log('Audio element:', nationalAnthem)
-  console.log('Audio src:', nationalAnthem ? nationalAnthem.src : 'no element')
-  
-  if (!nationalAnthem) {
-    console.log('❌ Audio element not found!')
-    return
-  }
-  
-  // Check if audio can load
-  nationalAnthem.load()
-  
-  nationalAnthem.addEventListener('canplaythrough', () => {
-    console.log('✅ Audio loaded successfully')
-  })
-  
-  nationalAnthem.addEventListener('error', (e) => {
-    console.log('❌ Audio error:', e)
-  })
-  
-  nationalAnthem.volume = 1
-  nationalAnthem.currentTime = 0
-  
-  // Try to play
-  nationalAnthem.play()
-    .then(() => {
-      console.log('✅✅ Jana Gana Mana is Playing!')
-    })
-    .catch(err => {
-      console.log('❌ Play blocked:', err.message)
-      console.log('Try clicking on the page first')
-      
-      // Add click handler to enable audio
-      document.body.addEventListener('click', function enableAudio() {
-        nationalAnthem.play()
-          .then(() => console.log('✅ Playing after click'))
-          .catch(e => console.log('Still blocked:', e))
-        document.body.removeEventListener('click', enableAudio)
-      }, { once: true })
-    })
-}
 
 // Load schemes from JSON
 async function loadSchemes() {
@@ -442,7 +390,6 @@ function clearCurrentUser() {
 
     if (user) {
       setCurrentUser(email, user.name)
-      playNationalAnthem()
       showAppPage()
       loginForm.reset()
     } else {
@@ -478,41 +425,16 @@ function clearCurrentUser() {
     saveUsers(users)
     authMessage.textContent = '✅ Registration successful! Please login.'
     authMessage.style.color = '#4ecdc4'
-    playNationalAnthem()
-
     setTimeout(() => {
       tabLogin.click()
       registerForm.reset()
     }, 1500)
   })
 
-  // Audio Toggle Button
-  audioToggleBtn.addEventListener('click', () => {
-    if (audioEnabled) {
-      // Turn off audio
-      if (nationalAnthem) {
-        nationalAnthem.pause()
-      }
-      audioEnabled = false
-      audioToggleBtn.textContent = '🔇 Audio Off'
-      audioToggleBtn.classList.add('muted')
-    } else {
-      // Turn on audio
-      audioEnabled = true
-      audioToggleBtn.textContent = '🔊 Audio On'
-      audioToggleBtn.classList.remove('muted')
-    }
-  })
-
   // Logout
   logoutBtn.addEventListener('click', () => {
     clearCurrentUser()
     showAuthPage()
-    // Stop anthem if playing
-    if (nationalAnthem) {
-      nationalAnthem.pause()
-      nationalAnthem.currentTime = 0
-    }
   })
 
   // Profile form submit
@@ -555,13 +477,6 @@ function clearCurrentUser() {
     }
   })
 
-  // Enable audio on any user interaction
-  document.addEventListener('click', () => {
-    if (nationalAnthem && nationalAnthem.paused && nationalAnthem.currentTime === 0) {
-      // Try to play if it was blocked
-      nationalAnthem.play().catch(() => {})
-    }
-  })
 }
 
 // Show Auth Page

@@ -22,7 +22,7 @@
   --text-secondary: #666666;
   --text-light: #888888;
   --border-light: #e0e0e0;
-  
+
   /* Light Mode Colors */
   --bg-primary: #ffffff;
   --bg-secondary: #f8f9fa;
@@ -31,20 +31,6 @@
   --card-bg: #ffffff;
   --border-color: #e0e0e0;
   --shadow: rgba(0, 0, 0, 0.1);
-}
-
-/* Dark Mode Colors */
-body.dark-mode {
-  --bg-primary: #0a0e27;
-  --bg-secondary: #151932;
-  --bg-tertiary: #1e2439;
-  --text-color: #e4e6eb;
-  --card-bg: #1e2439;
-  --border-color: #2d3548;
-  --shadow: rgba(0, 0, 0, 0.4);
-  --text-primary: #e4e6eb;
-  --text-secondary: #b0b3b8;
-  --text-light: #8a8d91;
 }
 
 @keyframes gradientShift {
