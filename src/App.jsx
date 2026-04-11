@@ -18,10 +18,12 @@ import {
   LayoutDashboard,
   Menu,
   MessageCircleMore,
+  MoonStar,
   Search,
   Send,
   ShieldCheck,
   Sparkles,
+  SunMedium,
   Target,
   TrendingUp,
   Users,
@@ -305,7 +307,7 @@ function FooterColumn({ title, items }) {
   )
 }
 
-function AppShell({ children, copy, language, setLanguage, signedInName, mobileOpen, setMobileOpen }) {
+function AppShell({ children, copy, language, setLanguage, theme, setTheme, signedInName, mobileOpen, setMobileOpen }) {
   const location = useLocation()
 
   useEffect(() => {
@@ -315,20 +317,28 @@ function AppShell({ children, copy, language, setLanguage, signedInName, mobileO
   const currentGreeting = signedInName === 'Guest' ? copy.login : signedInName
 
   return (
-    <div className="relative min-h-screen overflow-hidden bg-[linear-gradient(180deg,#f8fafc_0%,#f9fafb_45%,#eef2ff_100%)] text-slate-900">
-      <div className="pointer-events-none absolute inset-0 bg-grid opacity-[0.22]" />
-      <div className="pointer-events-none absolute left-[-6rem] top-[-6rem] h-72 w-72 rounded-full bg-brand-500/15 blur-3xl" />
-      <div className="pointer-events-none absolute right-[-5rem] top-[12rem] h-80 w-80 rounded-full bg-saffron/10 blur-3xl" />
+    <div className="relative min-h-screen overflow-hidden bg-[linear-gradient(180deg,#f8fafc_0%,#f9fafb_45%,#eef2ff_100%)] text-slate-900 transition-colors dark:bg-[linear-gradient(180deg,#020617_0%,#0b1220_45%,#111827_100%)] dark:text-slate-100">
+      <div className="pointer-events-none absolute inset-0 bg-grid opacity-[0.22] dark:opacity-[0.12]" />
+      <motion.div
+        className="pointer-events-none absolute left-[-6rem] top-[-6rem] h-72 w-72 rounded-full bg-brand-500/15 blur-3xl dark:bg-brand-500/20"
+        animate={{ x: [0, 18, 0], y: [0, 14, 0] }}
+        transition={{ duration: 9, repeat: Infinity, ease: 'easeInOut' }}
+      />
+      <motion.div
+        className="pointer-events-none absolute right-[-5rem] top-[12rem] h-80 w-80 rounded-full bg-saffron/10 blur-3xl dark:bg-indigo-500/15"
+        animate={{ x: [0, -22, 0], y: [0, -12, 0] }}
+        transition={{ duration: 11, repeat: Infinity, ease: 'easeInOut' }}
+      />
 
-      <header className="sticky top-0 z-40 border-b border-white/60 bg-white/70 backdrop-blur-xl">
+      <header className="sticky top-0 z-40 border-b border-white/60 bg-white/70 backdrop-blur-xl dark:border-white/10 dark:bg-slate-950/70">
         <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-3">
             <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-brand-600 text-white shadow-glow">
               <Sparkles className="h-5 w-5" />
             </div>
             <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500">Bharat Scheme AI</p>
-              <p className="text-sm font-medium text-slate-700">{copy.heroKicker}</p>
+              <p className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500 dark:text-slate-400">Bharat Scheme AI</p>
+              <p className="text-sm font-medium text-slate-700 dark:text-slate-200">{copy.heroKicker}</p>
             </div>
           </div>
 
@@ -338,7 +348,7 @@ function AppShell({ children, copy, language, setLanguage, signedInName, mobileO
                 key={item.to}
                 to={item.to}
                 className={({ isActive }) =>
-                  cn('text-sm font-medium transition', isActive ? 'text-brand-600' : 'text-slate-600 hover:text-brand-600')
+                  cn('text-sm font-medium transition', isActive ? 'text-brand-600 dark:text-brand-300' : 'text-slate-600 hover:text-brand-600 dark:text-slate-300 dark:hover:text-brand-300')
                 }
               >
                 {copy[item.key]}
@@ -357,9 +367,19 @@ function AppShell({ children, copy, language, setLanguage, signedInName, mobileO
               <option value="hi">हिंदी</option>
             </select>
 
+            <button
+              type="button"
+              onClick={() => setTheme((current) => (current === 'dark' ? 'light' : 'dark'))}
+              className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-700 transition hover:border-brand-200 hover:text-brand-600 dark:border-white/10 dark:bg-white/5 dark:text-slate-200"
+              aria-label="Toggle theme"
+              title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+            >
+              {theme === 'dark' ? <SunMedium className="h-5 w-5" /> : <MoonStar className="h-5 w-5" />}
+            </button>
+
             <Link
               to="/login"
-              className="hidden rounded-full border border-slate-200 bg-white px-4 py-2.5 text-sm font-medium text-slate-700 transition hover:border-brand-200 hover:text-brand-600 sm:inline-flex"
+              className="hidden rounded-full border border-slate-200 bg-white px-4 py-2.5 text-sm font-medium text-slate-700 transition hover:border-brand-200 hover:text-brand-600 dark:border-white/10 dark:bg-white/5 dark:text-slate-200 sm:inline-flex"
             >
               {currentGreeting}
             </Link>
@@ -375,7 +395,7 @@ function AppShell({ children, copy, language, setLanguage, signedInName, mobileO
             <button
               type="button"
               onClick={() => setMobileOpen((current) => !current)}
-              className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-700 lg:hidden"
+              className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-700 dark:border-white/10 dark:bg-white/5 dark:text-slate-200 lg:hidden"
               aria-label="Open menu"
             >
               {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
@@ -389,7 +409,7 @@ function AppShell({ children, copy, language, setLanguage, signedInName, mobileO
               initial={{ opacity: 0, y: -12 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -12 }}
-              className="border-t border-white/60 bg-white/95 px-4 py-4 shadow-soft backdrop-blur-xl lg:hidden"
+              className="border-t border-white/60 bg-white/95 px-4 py-4 shadow-soft backdrop-blur-xl dark:border-white/10 dark:bg-slate-950/95 lg:hidden"
             >
               <div className="mx-auto flex max-w-7xl flex-col gap-3">
                 {NAV_ITEMS.map((item) => (
@@ -397,13 +417,13 @@ function AppShell({ children, copy, language, setLanguage, signedInName, mobileO
                     key={item.to}
                     to={item.to}
                     className={({ isActive }) =>
-                      cn('rounded-2xl px-4 py-3 text-sm font-medium transition', isActive ? 'bg-brand-50 text-brand-600' : 'text-slate-700 hover:bg-slate-100')
+                      cn('rounded-2xl px-4 py-3 text-sm font-medium transition', isActive ? 'bg-brand-50 text-brand-600 dark:bg-brand-500/20 dark:text-brand-300' : 'text-slate-700 hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-white/5')
                     }
                   >
                     {copy[item.key]}
                   </NavLink>
                 ))}
-                <Link to="/login" className="rounded-2xl border border-slate-200 px-4 py-3 text-sm font-medium text-slate-700">
+                <Link to="/login" className="rounded-2xl border border-slate-200 px-4 py-3 text-sm font-medium text-slate-700 dark:border-white/10 dark:text-slate-200">
                   {copy.login}
                 </Link>
               </div>
@@ -414,7 +434,7 @@ function AppShell({ children, copy, language, setLanguage, signedInName, mobileO
 
       <main className="relative mx-auto w-full max-w-7xl px-4 pb-24 pt-10 sm:px-6 lg:px-8 lg:pt-14">{children}</main>
 
-      <footer className="relative border-t border-slate-200/80 bg-white/80 backdrop-blur-xl">
+      <footer className="relative border-t border-slate-200/80 bg-white/80 backdrop-blur-xl dark:border-white/10 dark:bg-slate-950/80">
         <div className="mx-auto grid w-full max-w-7xl gap-10 px-4 py-14 sm:px-6 lg:grid-cols-[1.3fr_0.9fr_0.9fr_0.9fr] lg:px-8">
           <div>
             <div className="flex items-center gap-3">
@@ -422,11 +442,11 @@ function AppShell({ children, copy, language, setLanguage, signedInName, mobileO
                 <Sparkles className="h-5 w-5" />
               </div>
               <div>
-                <p className="text-sm font-semibold text-slate-900">Bharat Scheme AI</p>
-                <p className="text-xs text-slate-500">Modern scheme discovery platform</p>
+                <p className="text-sm font-semibold text-slate-900 dark:text-white">Bharat Scheme AI</p>
+                <p className="text-xs text-slate-500 dark:text-slate-400">Modern scheme discovery platform</p>
               </div>
             </div>
-            <p className="mt-5 max-w-md text-sm leading-7 text-slate-600">{copy.footerTagline}</p>
+            <p className="mt-5 max-w-md text-sm leading-7 text-slate-600 dark:text-slate-300">{copy.footerTagline}</p>
             <div className="mt-6 flex gap-3">
               {[
                 { href: 'https://x.com', label: 'Twitter', icon: X },
@@ -438,7 +458,7 @@ function AppShell({ children, copy, language, setLanguage, signedInName, mobileO
                   href={href}
                   target={href.startsWith('http') ? '_blank' : undefined}
                   rel={href.startsWith('http') ? 'noreferrer' : undefined}
-                  className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-600 transition hover:border-brand-200 hover:text-brand-600"
+                  className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-600 transition hover:border-brand-200 hover:text-brand-600 dark:border-white/10 dark:bg-white/5 dark:text-slate-300"
                   aria-label={label}
                 >
                   <Icon className="h-4 w-4" />
@@ -961,8 +981,15 @@ function SchemeModal({ selectedScheme, onClose }) {
 
 function App() {
   const navigate = useNavigate()
+  const location = useLocation()
   const [schemes, setSchemes] = useState([])
   const [loadingSchemes, setLoadingSchemes] = useState(true)
+  const [theme, setTheme] = useState(() => {
+    if (typeof window === 'undefined') return 'light'
+    const stored = window.localStorage.getItem('bharat-theme')
+    if (stored === 'light' || stored === 'dark') return stored
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+  })
   const [language, setLanguage] = useState(() => {
     if (typeof window === 'undefined') return 'en'
     return window.localStorage.getItem('bharat-language') === 'hi' ? 'hi' : 'en'
@@ -990,6 +1017,12 @@ function App() {
     if (typeof window === 'undefined') return
     window.localStorage.setItem('bharat-language', language)
   }, [language])
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return
+    window.localStorage.setItem('bharat-theme', theme)
+    document.documentElement.classList.toggle('dark', theme === 'dark')
+  }, [theme])
 
   useEffect(() => {
     let alive = true
@@ -1112,59 +1145,71 @@ function App() {
       copy={copy}
       language={language}
       setLanguage={setLanguage}
+      theme={theme}
+      setTheme={setTheme}
       signedInName={signedInName}
       mobileOpen={mobileOpen}
       setMobileOpen={setMobileOpen}
     >
-      <Routes>
-        <Route path="/" element={<HomePage copy={copy} />} />
-        <Route
-          path="/schemes"
-          element={
-            <SchemesPage
-              copy={copy}
-              mode={mode}
-              setMode={setMode}
-              query={query}
-              setQuery={setQuery}
-              activeChip={activeChip}
-              setActiveChip={setActiveChip}
-              suggestions={suggestions}
-              handleSearchAction={handleSearchAction}
-              loadingSchemes={loadingSchemes}
-              visibleSchemes={visibleSchemes}
-              onOpen={setSelectedScheme}
-              clearSearch={() => {
-                setQuery('')
-                setMode('search')
-                setActiveChip('')
-              }}
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={location.pathname}
+          initial={{ opacity: 0, y: 14 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -10 }}
+          transition={{ duration: 0.28, ease: 'easeOut' }}
+        >
+          <Routes location={location}>
+            <Route path="/" element={<HomePage copy={copy} />} />
+            <Route
+              path="/schemes"
+              element={
+                <SchemesPage
+                  copy={copy}
+                  mode={mode}
+                  setMode={setMode}
+                  query={query}
+                  setQuery={setQuery}
+                  activeChip={activeChip}
+                  setActiveChip={setActiveChip}
+                  suggestions={suggestions}
+                  handleSearchAction={handleSearchAction}
+                  loadingSchemes={loadingSchemes}
+                  visibleSchemes={visibleSchemes}
+                  onOpen={setSelectedScheme}
+                  clearSearch={() => {
+                    setQuery('')
+                    setMode('search')
+                    setActiveChip('')
+                  }}
+                />
+              }
             />
-          }
-        />
-        <Route
-          path="/assistant"
-          element={
-            <AssistantPage
-              copy={copy}
-              messages={messages}
-              thinking={thinking}
-              chatInput={chatInput}
-              setChatInput={setChatInput}
-              submitChat={submitChat}
-              assistantMatches={assistantMatches}
-              onOpen={setSelectedScheme}
-              chatEndRef={chatEndRef}
+            <Route
+              path="/assistant"
+              element={
+                <AssistantPage
+                  copy={copy}
+                  messages={messages}
+                  thinking={thinking}
+                  chatInput={chatInput}
+                  setChatInput={setChatInput}
+                  submitChat={submitChat}
+                  assistantMatches={assistantMatches}
+                  onOpen={setSelectedScheme}
+                  chatEndRef={chatEndRef}
+                />
+              }
             />
-          }
-        />
-        <Route path="/about" element={<AboutPage copy={copy} />} />
-        <Route
-          path="/login"
-          element={<LoginPage copy={copy} loginForm={loginForm} setLoginForm={setLoginForm} handleLoginSubmit={handleLoginSubmit} />}
-        />
-        <Route path="*" element={<Navigate to="/" replace />} />
-      </Routes>
+            <Route path="/about" element={<AboutPage copy={copy} />} />
+            <Route
+              path="/login"
+              element={<LoginPage copy={copy} loginForm={loginForm} setLoginForm={setLoginForm} handleLoginSubmit={handleLoginSubmit} />}
+            />
+            <Route path="*" element={<Navigate to="/" replace />} />
+          </Routes>
+        </motion.div>
+      </AnimatePresence>
 
       <SchemeModal selectedScheme={selectedScheme} onClose={() => setSelectedScheme(null)} />
     </AppShell>
