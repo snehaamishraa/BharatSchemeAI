@@ -4706,7 +4706,9 @@ body:not(.dark-mode).luxe-v2 .landing-hero {
 
 body:not(.dark-mode).luxe-v2 {
   background:
-    linear-gradient(180deg, #f5f7fb 0%, #eef2f7 34%, #e7edf4 100%);
+    radial-gradient(1200px 500px at 90% -8%, rgba(43, 92, 138, 0.10), transparent 58%),
+    radial-gradient(900px 420px at 0% 0%, rgba(15, 122, 106, 0.08), transparent 54%),
+    linear-gradient(180deg, #f8fafc 0%, #eef3f8 100%);
   color: #182230;
 }
 
@@ -4731,17 +4733,19 @@ body:not(.dark-mode).luxe-v2 .landing-hero {
 
 body:not(.dark-mode).luxe-v2 .landing-kicker {
   color: #5f6b7f;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.14em;
 }
 
 body:not(.dark-mode).luxe-v2 .landing-hero h2 {
   color: #182230;
-  font-size: clamp(58px, 8vw, 104px);
+  font-size: clamp(54px, 7.2vw, 92px);
+  max-width: 680px;
 }
 
 body:not(.dark-mode).luxe-v2 .landing-copy {
   color: #5f6b7f;
   max-width: 560px;
+  font-size: clamp(16px, 1.55vw, 20px);
 }
 
 body:not(.dark-mode).luxe-v2 .landing-pills span {
@@ -4749,6 +4753,7 @@ body:not(.dark-mode).luxe-v2 .landing-pills span {
   border: 1px solid rgba(24, 34, 48, 0.12);
   color: #273244;
   box-shadow: 0 10px 24px rgba(24, 34, 48, 0.06);
+  font-weight: 600;
 }
 
 body:not(.dark-mode).luxe-v2 .auth-box {
